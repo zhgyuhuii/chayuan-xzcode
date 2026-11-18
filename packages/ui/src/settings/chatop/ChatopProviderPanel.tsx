@@ -476,6 +476,16 @@ export function ChatopProviderPanel() {
               {[...GROUPS.map((g) => ({ id: g.id, label: g.label })), { id: "__custom", label: STRINGS.customGroup }].map((group) => {
                 const items = listVendors.filter((v) => v.group === group.id);
                 if (items.length === 0) return null;
+                // 组内排序（用户裁定 2026-11-18，察元 ModelSettings 同语义）：
+                // 已开启 → 已配 Key → 其余；稳定排序保留目录序
+                const rank = (v: CatalogVendor): number => {
+                  const s = unifiedState(v.id);
+                  if (s?.enabled) return 0;
+                  if (s?.keyConfigured) return 1;
+                  return 2;
+                };
+                const sorted = [...items].sort((a, b) => rank(a) - rank(b));
+                const enabledCount = sorted.filter((v) => unifiedState(v.id)?.enabled === true).length;
                 // 搜索/过滤进行中自动展开（结果可见性优先）；平时尊重折叠态
                 const expanded = search.trim() !== "" || freeFilter !== "all" || !collapsedGroups.has(group.id);
                 return (
@@ -489,9 +499,10 @@ export function ChatopProviderPanel() {
                         ? <ChevronDownIcon className="size-3 shrink-0" />
                         : <ChevronRightIcon className="size-3 shrink-0" />}
                       <span>{group.label}</span>
+                      {enabledCount > 0 && <span className="text-emerald-500">{enabledCount} 启用</span>}
                       <span>（{items.length}）</span>
                     </button>
-                    {expanded && items.map((v) => {
+                    {expanded && sorted.map((v) => {
                       const vs = unifiedState(v.id);
                       return (
                         <button
