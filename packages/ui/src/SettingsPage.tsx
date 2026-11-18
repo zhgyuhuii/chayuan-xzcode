@@ -2108,7 +2108,10 @@ export function SettingsPage({
                           ) : activeSection === "shortcuts" ? (
                             <ShortcutSettingsSection isDesktop={Boolean(isDesktop)} />
                           ) : activeSection === "modelProvider" ? (
-                            <ChatopProviderPanel />
+                            <ServiceProvider services={localHostServices}>
+                              {/* 模型配置属于本机全局事实源；离线直连模式需本机 provider 服务（原分支同款注入）。 */}
+                              <ChatopProviderPanel />
+                            </ServiceProvider>
                           ) : activeSection === "personalization" ? (
                             // 个性化指令编辑的是本机 ~/.zcode/AGENTS.md（Agent 实际读取的文件）。
                             // 仅桌面本地入口可编辑：手机远控的 base services 可能归属远程

@@ -45,7 +45,7 @@ export interface ChatopState {
 async function call<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${CHATOP_GATEWAY}${path}`, {
     ...init,
-    headers: { "content-type": "application/json", ...(init?.headers ?? {}) },
+    headers: { "content-type": "application/json", ...init?.headers },
     signal: AbortSignal.timeout(8000),
   });
   const body = await res.json().catch(() => ({}));
