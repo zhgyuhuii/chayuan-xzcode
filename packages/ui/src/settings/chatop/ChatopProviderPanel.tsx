@@ -27,6 +27,7 @@ import { useBaseWorkspaceServices } from "@/hooks/useWorkspaceServices.js";
 import catalogDoc from "./vendor-catalog.generated.json";
 import {
   discoverChatopModels,
+  errorText,
   fetchChatopCredential,
   saveChatopDefaultModel,
   saveChatopVendor,
@@ -335,7 +336,7 @@ export function ChatopProviderPanel() {
       setModels(found.map((id) => ({ id, enabled: true })));
       flash("ok", STRINGS.okModels(found.length));
     } catch (e) {
-      flash("err", e instanceof Error ? e.message : String(e));
+      flash("err", errorText(e) || String(e));
     } finally {
       setBusy("");
     }
@@ -390,7 +391,7 @@ export function ChatopProviderPanel() {
       }
       flash("ok", enabled ? (online ? STRINGS.okEnabledOnline : STRINGS.okEnabledOffline) : STRINGS.okDisabled);
     } catch (e) {
-      flash("err", e instanceof Error ? e.message : String(e));
+      flash("err", errorText(e) || String(e));
     } finally {
       setBusy("");
     }
@@ -403,7 +404,7 @@ export function ChatopProviderPanel() {
       await refresh();
       flash("ok", STRINGS.okDefault);
     } catch (e) {
-      flash("err", e instanceof Error ? e.message : String(e));
+      flash("err", errorText(e) || String(e));
     }
   };
 

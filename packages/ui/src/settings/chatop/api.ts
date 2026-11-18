@@ -42,6 +42,19 @@ export interface ChatopState {
   settingsAvailable: boolean;
 }
 
+/** 错误提取：吃 string / {message} / {error} 三种形状（旧版 52581 代理的 404
+ *  返回 error 为对象——直接 String() 会出 "[object Object]"，2026-11-18 真机实锤）。 */
+export function errorText(x: unknown): string {
+  if (typeof x === "string" && x !== "") return x;
+  if (x instanceof Error) return x.message;
+  if (x !== null && typeof x === "object") {
+    const o = x as { message?: unknown; error?: unknown };
+    if (typeof o.message === "string" && o.message !== "") return o.message;
+    if (o.error !== undefined) return errorText(o.error);
+  }
+  return "";
+}
+
 async function call<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${CHATOP_GATEWAY}${path}`, {
     ...init,
@@ -50,7 +63,7 @@ async function call<T>(path: string, init?: RequestInit): Promise<T> {
   });
   const body = await res.json().catch(() => ({}));
   if (!res.ok) {
-    throw new Error(String((body as { error?: string }).error ?? `HTTP ${res.status}`));
+    throw new Error(errorText((body as { error?: unknown }).error) || `HTTP ${res.status}`);
   }
   return body as T;
 }
@@ -98,6 +111,7 @@ export async function saveChatopDefaultModel(provider: string, model: string): P
 
 export async function discoverChatopModels(input: { apiUrl: string; apiKey?: string }): Promise<string[]> {
   // 主路：52581 发现中继（察元OS 新版在场时）。
+  let primaryError: Error | null = null;
   try {
     const r = await call<{ models: string[] }>("/api/model-config/discover", {
       method: "POST",
@@ -105,6 +119,7 @@ export async function discoverChatopModels(input: { apiUrl: string; apiKey?: str
     });
     return r.models;
   } catch (e) {
+    primaryError = e instanceof Error ? e : new Error(errorText(e) || String(e));
     // 回退：ZCodeHarvest 自带发现中继（wrapper 拉起，端口注册表 ZCODE_DISCOVER_PORT
     // =52596；仅回环）——察元OS 未运行/旧版本时「获取模型列表」同样可用。
     try {
@@ -114,14 +129,21 @@ export async function discoverChatopModels(input: { apiUrl: string; apiKey?: str
         body: JSON.stringify(input),
         signal: AbortSignal.timeout(10_000),
       });
-      const body = (await res.json().catch(() => ({}))) as { ok?: boolean; models?: string[]; error?: string };
+      const body = (await res.json().catch(() => ({}))) as { ok?: boolean; models?: string[]; error?: unknown };
       if (!res.ok || body.ok !== true) {
-        throw new Error(String(body.error ?? `HTTP ${res.status}`));
+        throw new Error(errorText(body.error) || `HTTP ${res.status}`);
       }
       return body.models ?? [];
-    } catch {
-      // 两条路都失败：抛主路错误（信息更贴近察元侧状态）
-      throw e;
+    } catch (relayError) {
+      // 中继给了业务错误（真到过厂商）→ 原样抛；中继本身不可达（旧 app 实例
+      // 未随包启动中继/超时）→ 人话提示
+      const unreachable = relayError instanceof TypeError
+        || (relayError as DOMException | null)?.name === "TimeoutError";
+      if (unreachable) {
+        const hint = "发现服务不可用（察元OS 旧版或未运行，且本机发现中继未启动——重启 ZCodeHarvest 后自动可用）";
+        throw new Error(primaryError.message !== "" && primaryError.message !== "Error" ? `${primaryError.message}；${hint}` : hint);
+      }
+      throw relayError;
     }
   }
 }
