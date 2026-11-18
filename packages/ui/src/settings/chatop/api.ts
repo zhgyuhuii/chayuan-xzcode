@@ -140,7 +140,7 @@ export async function discoverChatopModels(input: { apiUrl: string; apiKey?: str
       const unreachable = relayError instanceof TypeError
         || (relayError as DOMException | null)?.name === "TimeoutError";
       if (unreachable) {
-        const hint = "发现服务不可用（察元OS 旧版或未运行，且本机发现中继未启动——重启 ZCodeHarvest 后自动可用）";
+        const hint = "发现服务不可用（察元OS 旧版或未运行，本机发现中继未启动——重启 ZCodeHarvest 或察元OS 后自动可用）";
         throw new Error(primaryError.message !== "" && primaryError.message !== "Error" ? `${primaryError.message}；${hint}` : hint);
       }
       throw relayError;
