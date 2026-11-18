@@ -18,6 +18,7 @@
  * 组件观感全用 ZCode 原生 ui 件。文案中文（察元体系单语）。
  */
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { ChevronDownIcon, ChevronRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button.js";
 import { Input } from "@/components/ui/input.js";
 import { Switch } from "@/components/ui/switch.js";
@@ -62,6 +63,9 @@ const STRINGS = {
   subtitle: "与察元OS 模型设置同源 · 修改即时生效，全部智能体共享",
   offlineNoDiscover: "离线无法探测厂商清单（浏览器跨域限制），请手动添加模型 id",
   searchPlaceholder: "搜索厂商…",
+  filterAll: "全部",
+  filterNokey: "免Key",
+  filterFreeTier: "免费额度",
   addVendor: "添加供应商",
   addName: "供应商名称",
   addUrl: "API 地址（如 https://api.example.com/v1）",
@@ -100,6 +104,14 @@ const STRINGS = {
 const slugify = (name: string) =>
   name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "custom";
 
+/** 免费过滤（与察元 ModelSettings.matchesFreeFilter 同语义）：nokey=完全免Key
+ *  （含 ollamaLike）；free-tier=免费Key 或有免费额度。 */
+const matchesFreeFilter = (v: CatalogVendor, mode: string): boolean => {
+  if (mode === "nokey") return v.free === "nokey" || v.ollamaLike === true;
+  if (mode === "free-tier") return v.free === "freekey" || v.free === "tier";
+  return true;
+};
+
 const FREE_LABELS: Record<string, string> = { nokey: "免Key", freekey: "免费Key", tier: "免费额度" };
 
 /** 统一厂商态（在线来自 52581 /state；离线映射自 ZCode provider 视图）。 */
@@ -123,6 +135,19 @@ export function ChatopProviderPanel() {
   const providerSettings = baseServices?.providerSettingsService ?? null;
 
   const [search, setSearch] = useState("");
+  // 免费过滤（2026-11-18 用户裁定：做进搜索框内部左侧下拉，不放框外）——
+  // 语义与察元 ModelSettings.matchesFreeFilter 同款
+  const [freeFilter, setFreeFilter] = useState("all");
+  // 厂商组默认折叠（2026-11-18 用户裁定：分组可展开/收起，不再全量平铺遮挡）
+  const [collapsedGroups, setCollapsedGroups] = useState(() => new Set(GROUPS.map((g) => g.id)));
+  const toggleGroup = useCallback((id: string) => {
+    setCollapsedGroups((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }, []);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [drafts, setDrafts] = useState<CatalogVendor[]>([]);
   const [addOpen, setAddOpen] = useState(false);
@@ -246,7 +271,8 @@ export function ChatopProviderPanel() {
     return offlineStateById.get(vendorId) ?? null
   }
 
-  // 列表合成：目录 + （在线=服务端自定义 | 离线=视图自定义）+ 草稿
+  // 列表合成：目录 + （在线=服务端自定义 | 离线=视图自定义）+ 草稿；搜索与
+  // 免费过滤叠加（AND）
   const listVendors = useMemo(() => {
     const q = search.trim().toLowerCase();
     const inCatalog = new Set(CATALOG.map((v) => v.id));
@@ -255,8 +281,9 @@ export function ChatopProviderPanel() {
           .map((v) => ({ id: v.id, name: v.id, group: "__custom", defaultUrl: v.apiUrl, api: v.api, keyUrl: "", ollamaLike: false }))
       : offlineCustoms;
     const all = [...CATALOG, ...serverCustom, ...drafts];
-    return q ? all.filter((v) => v.id.includes(q) || v.name.toLowerCase().includes(q)) : all;
-  }, [search, state, online, drafts, offlineCustoms]);
+    const bySearch = q ? all.filter((v) => v.id.includes(q) || v.name.toLowerCase().includes(q)) : all;
+    return freeFilter === "all" ? bySearch : bySearch.filter((v) => matchesFreeFilter(v, freeFilter));
+  }, [search, freeFilter, state, online, drafts, offlineCustoms]);
 
   const selected = selectedId !== null ? listVendors.find((v) => v.id === selectedId) ?? null : null;
   const selectedState = selectedId !== null ? unifiedState(selectedId) : null;
@@ -419,23 +446,52 @@ export function ChatopProviderPanel() {
           {/* 左栏：搜索 + 分组列表 + 添加 */}
           <div className="flex min-h-0 flex-col border-r border-border">
             <div className="p-2">
-              <Input
-                size="sm"
-                placeholder={STRINGS.searchPlaceholder}
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
+              {/* 组合搜索框：免费过滤下拉嵌在框内左侧（用户裁定 2026-11-18，
+                  不放框外）——外框复刻 Input(sm) 的边框/底色/聚焦态 */}
+              <div className="flex h-6 w-full items-center gap-1 rounded-md border border-input-border bg-input pl-1 pr-2 transition-colors hover:border-input-border-hover focus-within:border-input-border-focused focus-within:bg-input-focused">
+                <Select value={freeFilter} onValueChange={setFreeFilter}>
+                  <SelectTrigger
+                    size="xs"
+                    variant="ghost"
+                    className="h-5 w-fit gap-0.5 rounded-sm px-1 text-ui-base text-foreground-subtle hover:text-foreground"
+                  >
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">{STRINGS.filterAll}</SelectItem>
+                    <SelectItem value="nokey">{STRINGS.filterNokey}</SelectItem>
+                    <SelectItem value="free-tier">{STRINGS.filterFreeTier}</SelectItem>
+                  </SelectContent>
+                </Select>
+                <span className="h-3 w-px shrink-0 bg-input-border" />
+                <input
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder={STRINGS.searchPlaceholder}
+                  className="h-5 min-w-0 flex-1 bg-transparent text-ui-base/relaxed text-foreground outline-none placeholder:text-foreground-subtlest"
+                />
+              </div>
             </div>
             <div className="min-h-0 flex-1 overflow-y-auto pb-2">
               {[...GROUPS.map((g) => ({ id: g.id, label: g.label })), { id: "__custom", label: STRINGS.customGroup }].map((group) => {
                 const items = listVendors.filter((v) => v.group === group.id);
                 if (items.length === 0) return null;
+                // 搜索/过滤进行中自动展开（结果可见性优先）；平时尊重折叠态
+                const expanded = search.trim() !== "" || freeFilter !== "all" || !collapsedGroups.has(group.id);
                 return (
                   <div key={group.id}>
-                    <div className="px-3 pb-1 pt-3 text-[11px] font-medium uppercase tracking-wide text-foreground-subtlest">
-                      {group.label}（{items.length}）
-                    </div>
-                    {items.map((v) => {
+                    <button
+                      type="button"
+                      onClick={() => toggleGroup(group.id)}
+                      className="flex w-full items-center gap-1 px-3 pb-1 pt-3 text-[11px] font-medium uppercase tracking-wide text-foreground-subtlest hover:text-foreground-subtle"
+                    >
+                      {expanded
+                        ? <ChevronDownIcon className="size-3 shrink-0" />
+                        : <ChevronRightIcon className="size-3 shrink-0" />}
+                      <span>{group.label}</span>
+                      <span>（{items.length}）</span>
+                    </button>
+                    {expanded && items.map((v) => {
                       const vs = unifiedState(v.id);
                       return (
                         <button
