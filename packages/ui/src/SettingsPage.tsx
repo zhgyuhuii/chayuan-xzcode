@@ -80,7 +80,10 @@ import {
   SettingsShareManagement,
   type SettingsShareTaskTarget,
 } from "@/conversation-share-interaction/SettingsShareManagement.js";
-import { ModelProviderSection } from "@/settings/ModelProviderSection.js";
+// 察元挂载点（chayuan-harness docs/zcode-model-settings-plan.md，上游最小
+// patch 纪律）：模型设置面板替换为察元同源管理面。原 ModelProviderSection
+// 代码保留、仅停止渲染（import 随之移位，见 chatop/ChatopProviderPanel.tsx）。
+import { ChatopProviderPanel } from "@/settings/chatop/ChatopProviderPanel.js";
 import { useCodingPlanUpgradeDialog } from "@/settings/CodingPlanUpgradeDialogProvider.js";
 import { useEnterpriseCodingPlanProducts } from "@/settings/model-provider-section/useEnterpriseCodingPlanProducts.js";
 import { UsageStatsSection, type UsageStatsSectionTab } from "@/settings/UsageStatsSection.js";
@@ -671,7 +674,7 @@ export function SettingsPage({
     usageZaiEnterpriseProducts.loading;
   const [initialModelProviderTarget] = useState(() => consumePendingSettingsModelProviderTarget());
   const { openCodingPlanUpgrade } = useCodingPlanUpgradeDialog();
-  const [pendingModelProviderTarget, setPendingModelProviderTarget] = useState<
+  const [, setPendingModelProviderTarget] = useState<
     SettingsModelProviderTarget | undefined
   >(() => initialModelProviderTarget);
   const handleUsageTabSelect = useCallback((tab: UsageStatsSectionTab) => {
@@ -793,11 +796,13 @@ export function SettingsPage({
       }),
     [activeWorkspaceIdentity, activeWorkspacePath, activeWorkspaceTab, workspaceTabs],
   );
+  void localModelProviderConnectivityWorkspacePath; // 察元挂载点：原 ModelProviderSection 专用派生值，面板替换后保留计算（上游 diff 最小化）
   const isRemoteModelProviderWorkspace = Boolean(
     activeWorkspaceIdentity?.trim() ||
     activeWorkspaceTab?.remoteSessionId?.trim() ||
     activeWorkspaceTab?.remoteTarget,
   );
+  void isRemoteModelProviderWorkspace;
   const selectDirectory = useSelectDirectory();
   const services = useServices();
   const localHostServices = useBaseWorkspaceServices();
@@ -2103,20 +2108,7 @@ export function SettingsPage({
                           ) : activeSection === "shortcuts" ? (
                             <ShortcutSettingsSection isDesktop={Boolean(isDesktop)} />
                           ) : activeSection === "modelProvider" ? (
-                            <ServiceProvider services={localHostServices}>
-                              {/* 模型配置属于本机全局事实源；激活远端 workspace 时也不能注入远端 Host。 */}
-                              <ModelProviderSection
-                                workspacePath={activeWorkspacePath ?? captionWorkspacePath ?? ""}
-                                connectivityWorkspacePath={
-                                  localModelProviderConnectivityWorkspacePath
-                                }
-                                connectivityWorkspaceRequired={isRemoteModelProviderWorkspace}
-                                pendingModelProviderTarget={pendingModelProviderTarget}
-                                onConsumePendingModelProviderTarget={() =>
-                                  setPendingModelProviderTarget(undefined)
-                                }
-                              />
-                            </ServiceProvider>
+                            <ChatopProviderPanel />
                           ) : activeSection === "personalization" ? (
                             // 个性化指令编辑的是本机 ~/.zcode/AGENTS.md（Agent 实际读取的文件）。
                             // 仅桌面本地入口可编辑：手机远控的 base services 可能归属远程

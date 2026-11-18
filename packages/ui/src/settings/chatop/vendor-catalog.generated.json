@@ -1,0 +1,828 @@
+{
+  "generatedFrom": "dsh-plugin/src/desktop/models/vendor-catalog.js",
+  "vendorCount": 85,
+  "fingerprint": "c268d8022970e071",
+  "groups": [
+    {
+      "id": "cn",
+      "label": "国内平台"
+    },
+    {
+      "id": "global",
+      "label": "国际平台"
+    },
+    {
+      "id": "local",
+      "label": "本地与自建"
+    },
+    {
+      "id": "agg",
+      "label": "API 聚合"
+    }
+  ],
+  "vendors": [
+    {
+      "id": "deepseek",
+      "name": "深度求索 DeepSeek",
+      "group": "cn",
+      "defaultUrl": "https://api.deepseek.com",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://platform.deepseek.com/api_keys"
+    },
+    {
+      "id": "moonshot",
+      "name": "月之暗面 Kimi",
+      "group": "cn",
+      "defaultUrl": "https://api.moonshot.cn/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://platform.moonshot.cn/console/api-keys"
+    },
+    {
+      "id": "aliyun-bailian",
+      "name": "阿里百炼",
+      "group": "cn",
+      "defaultUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://dashscope.console.aliyun.com/api-key_management"
+    },
+    {
+      "id": "baidu-qianfan",
+      "name": "百度云千帆",
+      "group": "cn",
+      "defaultUrl": "https://qianfan.baidubce.com/v2",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://console.bce.baidu.com/qianfan/ais/console/applicationConsole/application"
+    },
+    {
+      "id": "zhipu",
+      "name": "智谱开放平台",
+      "group": "cn",
+      "defaultUrl": "https://open.bigmodel.cn/api/paas/v4",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://open.bigmodel.cn/usercenter/apikeys",
+      "free": "tier"
+    },
+    {
+      "id": "volcengine",
+      "name": "火山引擎（豆包）",
+      "group": "cn",
+      "defaultUrl": "https://ark.cn-beijing.volces.com/api/v3",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey"
+    },
+    {
+      "id": "lingyi-wanwu",
+      "name": "零一万物",
+      "group": "cn",
+      "defaultUrl": "https://api.lingyiwanwu.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://platform.lingyiwanwu.com/apikeys"
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax",
+      "group": "cn",
+      "defaultUrl": "https://api.minimax.chat/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://platform.minimax.io/user-center/basic-information/interface-key"
+    },
+    {
+      "id": "step-ai",
+      "name": "阶跃星辰",
+      "group": "cn",
+      "defaultUrl": "https://api.stepfun.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://platform.stepfun.com/interface-key"
+    },
+    {
+      "id": "baichuan",
+      "name": "百川",
+      "group": "cn",
+      "defaultUrl": "https://api.baichuan-ai.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://platform.baichuan-ai.com/homePage"
+    },
+    {
+      "id": "tencent-hunyuan",
+      "name": "腾讯混元",
+      "group": "cn",
+      "defaultUrl": "https://api.hunyuan.cloud.tencent.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://console.cloud.tencent.com/hunyuan/start"
+    },
+    {
+      "id": "tencent-cloud-ti",
+      "name": "腾讯云 TI",
+      "group": "cn",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://console.cloud.tencent.com/cam/capi"
+    },
+    {
+      "id": "xiaomi-mimo",
+      "name": "Xiaomi MiMo",
+      "group": "cn",
+      "defaultUrl": "https://api.mimo.mi.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://platform.xiaomimimo.com/#/console/api-keys"
+    },
+    {
+      "id": "modelscope",
+      "name": "魔搭 ModelScope",
+      "group": "cn",
+      "defaultUrl": "https://api.modelscope.cn/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://modelscope.cn/my/myaccesstoken",
+      "free": "freekey"
+    },
+    {
+      "id": "tianyi-xirang",
+      "name": "天翼云息壤",
+      "group": "cn",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://ctxirang.ctyun.cn/home"
+    },
+    {
+      "id": "qiniu",
+      "name": "七牛云 AI 推理",
+      "group": "cn",
+      "defaultUrl": "https://ai.qiniuapi.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://portal.qiniu.com/ai-inference/api-key"
+    },
+    {
+      "id": "ppio",
+      "name": "PPIO 派欧云",
+      "group": "cn",
+      "defaultUrl": "https://api.ppio.cloud/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://ppio.cloud/"
+    },
+    {
+      "id": "lanyun",
+      "name": "蓝耘科技",
+      "group": "cn",
+      "defaultUrl": "https://api.lanyun.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://lanyun.com/"
+    },
+    {
+      "id": "ph8",
+      "name": "PH8 大模型开放平台",
+      "group": "cn",
+      "defaultUrl": "https://api.ph8.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://ph8.com/"
+    },
+    {
+      "id": "sophnet",
+      "name": "SophNet",
+      "group": "cn",
+      "defaultUrl": "https://api.sophnet.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://sophnet.com/"
+    },
+    {
+      "id": "alaya-new",
+      "name": "Alaya NeW",
+      "group": "cn",
+      "defaultUrl": "https://api.alaya.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": ""
+    },
+    {
+      "id": "wuwen-xinqiong",
+      "name": "无问芯穹",
+      "group": "cn",
+      "defaultUrl": "https://api.wuwen.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": ""
+    },
+    {
+      "id": "netease-youdao",
+      "name": "网易有道",
+      "group": "cn",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": ""
+    },
+    {
+      "id": "gitee-ai",
+      "name": "Gitee AI",
+      "group": "cn",
+      "defaultUrl": "https://ai.gitee.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://ai.gitee.com/user-center/tokens"
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "group": "global",
+      "defaultUrl": "https://api.openai.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://platform.openai.com/api-keys"
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "group": "global",
+      "defaultUrl": "https://api.anthropic.com/v1",
+      "api": "anthropic-messages",
+      "ollamaLike": false,
+      "keyUrl": "https://console.anthropic.com/settings/keys"
+    },
+    {
+      "id": "gemini",
+      "name": "Google Gemini",
+      "group": "global",
+      "defaultUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://aistudio.google.com/app/apikey",
+      "free": "tier"
+    },
+    {
+      "id": "azure-openai",
+      "name": "Azure OpenAI",
+      "group": "global",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://portal.azure.com/#view/Microsoft_Azure_OpenAI/AzureOpenAIChat"
+    },
+    {
+      "id": "vertex-ai",
+      "name": "Vertex AI",
+      "group": "global",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://console.cloud.google.com/apis/credentials"
+    },
+    {
+      "id": "github-models",
+      "name": "GitHub Models",
+      "group": "global",
+      "defaultUrl": "https://models.github.ai/inference",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://github.com/settings/tokens",
+      "free": "tier"
+    },
+    {
+      "id": "github-copilot",
+      "name": "GitHub Copilot",
+      "group": "global",
+      "defaultUrl": "https://api.githubcopilot.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://github.com/settings/copilot"
+    },
+    {
+      "id": "grok",
+      "name": "xAI Grok",
+      "group": "global",
+      "defaultUrl": "https://api.x.ai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://console.x.ai/"
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral",
+      "group": "global",
+      "defaultUrl": "https://api.mistral.ai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://console.mistral.ai/api-keys",
+      "free": "tier"
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "group": "global",
+      "defaultUrl": "https://api.perplexity.ai",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://www.perplexity.ai/settings/api"
+    },
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "group": "global",
+      "defaultUrl": "https://api.cohere.ai/compatibility/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://dashboard.cohere.com/api-keys",
+      "free": "tier"
+    },
+    {
+      "id": "groq",
+      "name": "Groq",
+      "group": "global",
+      "defaultUrl": "https://api.groq.com/openai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://console.groq.com/keys",
+      "free": "tier"
+    },
+    {
+      "id": "together",
+      "name": "Together",
+      "group": "global",
+      "defaultUrl": "https://api.together.xyz/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://api.together.xyz/settings/api-keys"
+    },
+    {
+      "id": "fireworks",
+      "name": "Fireworks",
+      "group": "global",
+      "defaultUrl": "https://api.fireworks.ai/inference/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://fireworks.ai/api-keys"
+    },
+    {
+      "id": "nvidia",
+      "name": "NVIDIA",
+      "group": "global",
+      "defaultUrl": "https://integrate.api.nvidia.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://build.nvidia.com/settings/api-keys",
+      "free": "tier"
+    },
+    {
+      "id": "cerebras",
+      "name": "Cerebras",
+      "group": "global",
+      "defaultUrl": "https://api.cerebras.ai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://cloud.cerebras.ai/",
+      "free": "tier"
+    },
+    {
+      "id": "hyperbolic",
+      "name": "Hyperbolic",
+      "group": "global",
+      "defaultUrl": "https://api.hyperbolic.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://hyperbolic.xyz/"
+    },
+    {
+      "id": "aws-bedrock",
+      "name": "AWS Bedrock",
+      "group": "global",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://console.aws.amazon.com/bedrock/"
+    },
+    {
+      "id": "huggingface",
+      "name": "Hugging Face",
+      "group": "global",
+      "defaultUrl": "https://router.huggingface.co/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://huggingface.co/settings/tokens",
+      "free": "freekey"
+    },
+    {
+      "id": "jina",
+      "name": "Jina AI",
+      "group": "global",
+      "defaultUrl": "https://api.jina.ai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://jina.ai/zh-CN/api-dashboard/"
+    },
+    {
+      "id": "voyage-ai",
+      "name": "Voyage AI",
+      "group": "global",
+      "defaultUrl": "https://api.voyageai.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://dash.voyageai.com/"
+    },
+    {
+      "id": "poe",
+      "name": "Poe",
+      "group": "global",
+      "defaultUrl": "https://api.poe.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://poe.com/api_key"
+    },
+    {
+      "id": "replicate",
+      "name": "Replicate",
+      "group": "global",
+      "defaultUrl": "https://api.replicate.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://replicate.com/account/api-tokens"
+    },
+    {
+      "id": "vercel-ai",
+      "name": "Vercel AI Gateway",
+      "group": "global",
+      "defaultUrl": "https://ai-gateway.vercel.sh/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://vercel.com/account/settings/tokens"
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "group": "local",
+      "defaultUrl": "http://localhost:11434/v1",
+      "api": "openai-completions",
+      "ollamaLike": true,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "lm-studio",
+      "name": "LM Studio",
+      "group": "local",
+      "defaultUrl": "http://localhost:1234/v1",
+      "api": "openai-completions",
+      "ollamaLike": true,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "xinference",
+      "name": "Xinference",
+      "group": "local",
+      "defaultUrl": "http://localhost:9997/v1",
+      "api": "openai-completions",
+      "ollamaLike": true,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "oneapi",
+      "name": "One API",
+      "group": "local",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": true,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "new-api",
+      "name": "New API",
+      "group": "local",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": true,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "fastchat",
+      "name": "FastChat / vLLM",
+      "group": "local",
+      "defaultUrl": "http://localhost:8000/v1",
+      "api": "openai-completions",
+      "ollamaLike": true,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "gpustack",
+      "name": "GPUStack",
+      "group": "local",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": true,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "openai-compatible",
+      "name": "自定义 OpenAI 兼容",
+      "group": "local",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": true,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "openrouter",
+      "name": "OpenRouter",
+      "group": "agg",
+      "defaultUrl": "https://openrouter.ai/api/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://openrouter.ai/keys",
+      "free": "tier"
+    },
+    {
+      "id": "aihubmix",
+      "name": "AiHubMix",
+      "group": "agg",
+      "defaultUrl": "https://api.aihubmix.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://aihubmix.com/"
+    },
+    {
+      "id": "dmxapi",
+      "name": "DMXAPI",
+      "group": "agg",
+      "defaultUrl": "https://api.dmxapi.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://dmxapi.com/"
+    },
+    {
+      "id": "302-ai",
+      "name": "302.AI",
+      "group": "agg",
+      "defaultUrl": "https://api.302.ai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://302.ai/"
+    },
+    {
+      "id": "tokenflux",
+      "name": "TokenFlux",
+      "group": "agg",
+      "defaultUrl": "https://api.tokenflux.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://tokenflux.com/"
+    },
+    {
+      "id": "burncloud",
+      "name": "BurnCloud",
+      "group": "agg",
+      "defaultUrl": "https://api.burncloud.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://burncloud.com/"
+    },
+    {
+      "id": "ocoolai",
+      "name": "ocoolAI",
+      "group": "agg",
+      "defaultUrl": "https://api.ocoolai.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://ocoolai.com/"
+    },
+    {
+      "id": "cephalon",
+      "name": "Cephalon",
+      "group": "agg",
+      "defaultUrl": "https://api.cephalon.ai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://cephalon.ai/"
+    },
+    {
+      "id": "aionly",
+      "name": "唯一AI",
+      "group": "agg",
+      "defaultUrl": "https://api.aionly.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://aionly.com/"
+    },
+    {
+      "id": "longcat",
+      "name": "龙猫 LongCat",
+      "group": "agg",
+      "defaultUrl": "https://api.longcat.chat/openai",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://longcat.chat/platform/api_keys"
+    },
+    {
+      "id": "cloudflare-workers",
+      "name": "Cloudflare Workers AI",
+      "group": "global",
+      "defaultUrl": "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://dash.cloudflare.com/profile/api-tokens",
+      "free": "tier"
+    },
+    {
+      "id": "ollama-cloud",
+      "name": "Ollama Cloud",
+      "group": "global",
+      "defaultUrl": "https://ollama.com/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://ollama.com/",
+      "free": "tier"
+    },
+    {
+      "id": "kilo-gateway",
+      "name": "Kilo Gateway",
+      "group": "agg",
+      "defaultUrl": "https://kilo.kimai.dev/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "pollinations",
+      "name": "Pollinations",
+      "group": "agg",
+      "defaultUrl": "https://text.pollinations.ai/openai",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "ovh-ai",
+      "name": "OVH AI Endpoints",
+      "group": "global",
+      "defaultUrl": "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "llm7",
+      "name": "LLM7",
+      "group": "agg",
+      "defaultUrl": "https://api.llm7.io/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "nokey"
+    },
+    {
+      "id": "opencode-zen",
+      "name": "OpenCode Zen",
+      "group": "agg",
+      "defaultUrl": "https://opencode.ai/zen/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://opencode.ai/zen",
+      "free": "freekey"
+    },
+    {
+      "id": "agnes",
+      "name": "爱思 Agnes AI",
+      "group": "cn",
+      "defaultUrl": "https://api.agnes-ai.cn/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://www.agnes-ai.cn",
+      "free": "freekey"
+    },
+    {
+      "id": "reka",
+      "name": "Reka",
+      "group": "global",
+      "defaultUrl": "https://api.reka.ai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://platform.reka.ai/",
+      "free": "freekey"
+    },
+    {
+      "id": "siliconflow",
+      "name": "硅基流动 SiliconFlow",
+      "group": "cn",
+      "defaultUrl": "https://api.siliconflow.cn/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://cloud.siliconflow.cn/account/ak",
+      "free": "tier"
+    },
+    {
+      "id": "routeway",
+      "name": "Routeway",
+      "group": "agg",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "freekey"
+    },
+    {
+      "id": "bazaarlink",
+      "name": "BazaarLink",
+      "group": "agg",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "freekey"
+    },
+    {
+      "id": "ainative",
+      "name": "AINative Studio",
+      "group": "agg",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "freekey"
+    },
+    {
+      "id": "aion-labs",
+      "name": "Aion Labs",
+      "group": "agg",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "freekey"
+    },
+    {
+      "id": "requesty",
+      "name": "Requesty",
+      "group": "agg",
+      "defaultUrl": "https://router.requesty.ai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://requesty.ai/",
+      "free": "freekey"
+    },
+    {
+      "id": "navyai",
+      "name": "NavyAI",
+      "group": "agg",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "freekey"
+    },
+    {
+      "id": "nararouter",
+      "name": "NaraRouter",
+      "group": "agg",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "freekey"
+    },
+    {
+      "id": "sea-lion",
+      "name": "SEA-LION",
+      "group": "global",
+      "defaultUrl": "https://api.sea-lion.ai/v1",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "https://sea-lion.ai/",
+      "free": "freekey"
+    },
+    {
+      "id": "ai-horde",
+      "name": "AI Horde",
+      "group": "agg",
+      "defaultUrl": "",
+      "api": "openai-completions",
+      "ollamaLike": false,
+      "keyUrl": "",
+      "free": "nokey"
+    }
+  ]
+}
