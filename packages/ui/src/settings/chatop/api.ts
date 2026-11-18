@@ -97,9 +97,31 @@ export async function saveChatopDefaultModel(provider: string, model: string): P
 }
 
 export async function discoverChatopModels(input: { apiUrl: string; apiKey?: string }): Promise<string[]> {
-  const r = await call<{ models: string[] }>("/api/model-config/discover", {
-    method: "POST",
-    body: JSON.stringify(input),
-  });
-  return r.models;
+  // 主路：52581 发现中继（察元OS 新版在场时）。
+  try {
+    const r = await call<{ models: string[] }>("/api/model-config/discover", {
+      method: "POST",
+      body: JSON.stringify(input),
+    });
+    return r.models;
+  } catch (e) {
+    // 回退：ZCodeHarvest 自带发现中继（wrapper 拉起，端口注册表 ZCODE_DISCOVER_PORT
+    // =52596；仅回环）——察元OS 未运行/旧版本时「获取模型列表」同样可用。
+    try {
+      const res = await fetch("http://127.0.0.1:52596/discover", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(input),
+        signal: AbortSignal.timeout(10_000),
+      });
+      const body = (await res.json().catch(() => ({}))) as { ok?: boolean; models?: string[]; error?: string };
+      if (!res.ok || body.ok !== true) {
+        throw new Error(String(body.error ?? `HTTP ${res.status}`));
+      }
+      return body.models ?? [];
+    } catch {
+      // 两条路都失败：抛主路错误（信息更贴近察元侧状态）
+      throw e;
+    }
+  }
 }

@@ -61,7 +61,6 @@ const GROUPS = catalogDoc.groups as { id: string; label: string }[];
 const STRINGS = {
   title: "模型设置",
   subtitle: "与察元OS 模型设置同源 · 修改即时生效，全部智能体共享",
-  offlineNoDiscover: "离线无法探测厂商清单（浏览器跨域限制），请手动添加模型 id",
   searchPlaceholder: "搜索厂商…",
   filterAll: "全部",
   filterNokey: "免Key",
@@ -603,8 +602,7 @@ export function ChatopProviderPanel() {
                     variant="outline"
                     size="sm"
                     onClick={() => void doFetchModels()}
-                    disabled={!online || busy !== ""}
-                    title={online ? undefined : STRINGS.offlineNoDiscover}
+                    disabled={busy !== ""}
                   >
                     {busy === "fetch" ? STRINGS.busyFetch : STRINGS.fetchModels}
                   </Button>
@@ -624,11 +622,10 @@ export function ChatopProviderPanel() {
                 <div className="space-y-1.5">
                   <div className="text-xs font-medium text-foreground-subtle">
                     {STRINGS.modelsLabel}（{models.filter((m) => m.enabled).length}/{models.length}）
-                    {!online && <span className="ml-2 font-normal text-foreground-subtlest">{STRINGS.offlineNoDiscover}</span>}
                   </div>
                   {models.length === 0 ? (
                     <div className="rounded-lg border border-dashed border-border px-3 py-6 text-center text-xs text-foreground-subtlest">
-                      {online ? STRINGS.fetchModels : STRINGS.addModel}
+                      获取模型列表或手动添加模型 id
                     </div>
                   ) : (
                     <div className="max-h-72 space-y-0.5 overflow-y-auto rounded-lg border border-border p-1.5">
