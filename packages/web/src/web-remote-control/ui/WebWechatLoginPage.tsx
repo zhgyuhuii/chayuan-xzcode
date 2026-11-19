@@ -226,10 +226,36 @@ export function WebWechatLoginPage(): React.ReactNode {
               >
                 微信授权登录
               </a>
+            ) : qrOnly ? (
+              // 察元定制（2026-11-19）：桌面登录弹窗=居中卡片，顶部微信绿图标（官方网
+              // 页登录同构），二维码居中带内边距
+              <div className="mx-auto mt-6 w-[300px] rounded-2xl bg-white px-5 pb-5 pt-5 text-center">
+                <div className="mx-auto flex size-12 items-center justify-center rounded-xl bg-[#07c160]">
+<svg viewBox="0 0 36 30" width="30" height="26" aria-hidden="true">
+                    <ellipse cx="14" cy="12" rx="13" ry="11" fill="#ffffff" />
+                    <circle cx="9.5" cy="10.5" r="1.7" fill="#07c160" />
+                    <circle cx="17.5" cy="10.5" r="1.7" fill="#07c160" />
+                    <path d="M8 19 L5.5 24.5 L12 20.5 Z" fill="#ffffff" />
+                    <ellipse cx="24.5" cy="18.5" rx="10.5" ry="9.5" fill="#ffffff" stroke="#07c160" strokeWidth="1.5" />
+                    <circle cx="21" cy="17" r="1.4" fill="#07c160" />
+                    <circle cx="28" cy="17" r="1.4" fill="#07c160" />
+                    <path d="M30 25.5 L32.5 29.5 L26.5 26.5 Z" fill="#ffffff" />
+                  </svg>
+                </div>
+                <p className="mt-3 text-base font-medium text-[#111]">微信扫码登录</p>
+                <div className="mt-4 flex items-center justify-center">
+                  {qrDataUrl !== "" ? (
+                    <img src={qrDataUrl} alt="微信扫码登录" width={264} height={264} className="rounded-lg border border-[#eee]" />
+                  ) : (
+                    <div className="flex h-[264px] w-[264px] items-center justify-center text-sm text-[#999]">生成中…</div>
+                  )}
+                </div>
+                <p className="mt-3 text-xs text-[#666]">请使用微信「扫一扫」· 扫码后自动登录</p>
+              </div>
             ) : (
-              <div className={qrOnly ? "mt-8 rounded-2xl bg-white p-4" : "mt-6 rounded-2xl bg-white p-3"}>
+              <div className="mt-6 rounded-2xl bg-white p-3">
                 {qrDataUrl !== "" ? (
-                  <img src={qrDataUrl} alt="微信扫码登录" width={qrOnly ? 280 : 232} height={qrOnly ? 280 : 232} />
+                  <img src={qrDataUrl} alt="微信扫码登录" width={232} height={232} />
                 ) : (
                   <div className="flex h-[232px] items-center justify-center text-sm text-[#999]">生成中…</div>
                 )}
