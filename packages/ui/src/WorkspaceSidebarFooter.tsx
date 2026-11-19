@@ -426,14 +426,15 @@ export const WorkspaceSidebarFooter = memo(function WorkspaceSidebarFooterCompon
                 </DropdownMenuSubContent>
               </DropdownMenuSub>
             ) : null}
-            {/* Bugfix: 升级入口状态不再以菜单开关为生命周期边界。 */}
+            {/* 2026-11-19 用户裁定翻案：使用统计菜单保留（连同升级入口一起恢复原样）；
+                「邀请好友」仍隐藏（rewards-menu-item）。 */}
             <WorkspaceSidebarFooterUsageSummaryContent
               state={usageSummaryState}
               onUsageClick={usageButtonClick}
               onUpgradeClick={onUpgradeClick}
             />
             {user ? (
-              <DropdownMenuItem onSelect={() => openRewards?.()} data-testid="rewards-menu-item">
+              <DropdownMenuItem data-testid="rewards-menu-item" className="hidden">
                 <Gift className="size-4" />
                 {intl.formatMessage({ id: "rewards.menuTitle" })}
                 <Badge

@@ -42,6 +42,8 @@ import {
 
 import { WebCallbackPage } from "./auth/WebCallbackPage.js";
 import { WebLoginPage } from "./auth/WebLoginPage.js";
+import { WebWechatLoginPage } from "./web-remote-control/ui/WebWechatLoginPage.js";
+import { exitRemoteToLoginPage } from "./web-remote-control/ui/wechatLoginFlow.js";
 import { createWebAuthService } from "./auth/webAuthService.js";
 import { WEB_ZAI_OAUTH_CONFIG, resolveWebAuthDevReturnTo } from "./auth/webZaiOAuthConfig.js";
 import {
@@ -385,9 +387,8 @@ async function renderConversationSharePage(): Promise<void> {
 
 function renderWebLoginPage(): void {
   document.title = "ZCode - Web Remote Control Sign In";
-  root.render(
-    <WebLoginPage onLogin={(provider, signal) => remoteEntry.startLogin(provider, signal)} />,
-  );
+  // 察元定制（2026-11-18 用户裁定）：官方 Z.AI 登录页换微信扫码/直接进入（新文件，最小 patch）
+  root.render(<WebWechatLoginPage />);
 }
 
 // 访问 window.localStorage 本身在部分浏览器会抛错，统一包在方法里交给调用方兜底。
@@ -1584,6 +1585,7 @@ async function bootstrapExternalRelayWebRemoteControl(
             initialSidebarFileTreeOpen={initialSidebarFileTreeOpen}
             initialWebRemoteControlMobileNavigationIntent={initialNavigationIntent}
             webRemoteControlTerminalTransportState={terminalTransportState}
+            webRemoteAutoRelogin={() => { exitRemoteToLoginPage(); }}
             initialWorkspaceLoadingFallback={
               <WebRemoteControlLoadingScreen
                 state="paired"
@@ -1706,6 +1708,7 @@ async function bootstrapExternalRelayWebRemoteControl(
             initialTaskId={taskId}
             initialWebRemoteControlMobileNavigationIntent={undefined}
             webRemoteControlTerminalTransportState={terminalTransportState}
+            webRemoteAutoRelogin={() => { exitRemoteToLoginPage(); }}
             initialWorkspaceLoadingFallback={
               <WebRemoteControlLoadingScreen
                 state="paired"

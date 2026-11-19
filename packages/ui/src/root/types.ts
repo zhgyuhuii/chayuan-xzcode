@@ -99,6 +99,9 @@ export interface RootProps {
   initialWorkspaceLoadingFallback?: ReactNode;
   /** Web 远程控制入口能力开关；默认只在 development 启用 */
   webRemoteControlFeatureEnabled?: boolean;
+  /** 察元定制（2026-11-18）：web 远控模式会话过期/登出时的静默重登回调——
+   * 传入则不渲染官方 WelcomeScreen 登录门（WebRemoteReloginGate 接管）。 */
+  webRemoteAutoRelogin?: () => void;
   /** Assistant code-comment 卡片灰度；默认关闭，关闭时保留原始 directive。 */
   assistantCodeCommentCardsEnabled?: boolean;
 }

@@ -58,6 +58,7 @@ import {
   WelcomeScreen,
   type LoginCompleteReason,
 } from "@/WelcomeScreen.js";
+import { WebRemoteReloginGate } from "@/WebRemoteReloginGate.js";
 import { useCredentialStoreRecovery } from "@/hooks/useCredentials.js";
 import { setDefaultFileDisplayBasePath } from "@/lib/fileDisplay.js";
 import { readRendererLaunchTimings, shouldReportLaunchToInput } from "@/lib/launchToInputReport.js";
@@ -228,6 +229,7 @@ function RootInner({
   initialWebRemoteControlMobileNavigationIntent,
   webRemoteControlTerminalTransportState,
   initialWorkspaceLoadingFallback,
+  webRemoteAutoRelogin,
 }: RootProps) {
   const credentialRecovery = useCredentialStoreRecovery(isDesktop === true);
   useInterfaceModeTelemetry(platform, isDesktop === true);
@@ -1550,6 +1552,14 @@ function RootInner({
   }
 
   if (welcomeScreenOpenReason) {
+    // 察元定制（2026-11-18）：web 远控模式不落官方登录门——静默重登接管
+    if (webRemoteAutoRelogin) {
+      return (
+        <RootShell>
+          <WebRemoteReloginGate onRelogin={webRemoteAutoRelogin} />
+        </RootShell>
+      );
+    }
     return (
       <RootShell>
         {rootModelSelectionErrorNode}

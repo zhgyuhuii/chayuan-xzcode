@@ -148,6 +148,12 @@ export function resolveLoginRegionForLocale(locale: string): SingleLoginRegion {
 export function WelcomeScreen({ onComplete }: WelcomeScreenProps) {
   const { intl } = useZCodeIntl();
   const platform = usePlatform();
+  // 察元定制（2026-11-18）保险丝：web 远控路径（/remote/*）下一律不渲染官方登录门
+  // ——整页回 /remote/v4（无会话时 bootstrap 渲染微信扫码+直接进入页）。桌面形态不受影响。
+  if (typeof window !== "undefined" && window.location.pathname.startsWith("/remote")) {
+    window.location.replace("/remote/v4");
+    return <main className="h-full min-h-dvh bg-[#161616]" />;
+  }
   return (
     <main className="relative h-full min-h-dvh overflow-hidden bg-background text-foreground">
       <ThemeHeroVisual className="absolute inset-0" />
