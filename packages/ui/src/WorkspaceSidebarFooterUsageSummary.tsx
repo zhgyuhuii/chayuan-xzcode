@@ -452,8 +452,11 @@ export function WorkspaceSidebarFooterUsageSummaryContent({
         {intl.formatMessage({ id: "sidebar.usage.plan.openStats" })}
       </DropdownMenuItem>
       {/* 产品要求：升级入口始终显示；未解析出当前套餐时由当前 provider family 决定品牌。 */}
+      {/* 察元定制（2026-11-20）：隐藏「升级」入口——察元环境无 Z.AI 套餐体系，inventory
+          查询恒失败时它渲染成「套餐查询失败，重试」（用户裁定隐藏）。 */}
       <DropdownMenuItem
         data-testid={TID_SIDEBAR_CODING_PLAN_UPGRADE_BUTTON}
+        className="hidden"
         disabled={entryGate.status === "loading"}
         aria-busy={entryGate.status === "loading"}
         onSelect={() => {

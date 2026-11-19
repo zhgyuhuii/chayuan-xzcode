@@ -186,28 +186,15 @@ function SettingsUsageProviderTabs({
   onTabChange: (tab: UsageStatsSectionTab) => void;
 }) {
   const { intl } = useZCodeIntl();
+  // 察元定制（2026-11-20）：隐藏「个人套餐」tab（codingPlanSources 不渲染），只留使用用量；
+  // 高亮恒落 app（入口意图已在上游丢弃）。
   const tabItems = [
     {
       id: "app" as const,
       label: intl.formatMessage({ id: "settings.usage.tab.appUsage" }),
     },
-    ...codingPlanSources.map((source, index) => ({
-      id: createSettingsUsageCodingPlanTabId(source.id),
-      label: resolveSettingsUsageCodingPlanTabLabel({
-        defaultLabel: intl.formatMessage({
-          id: "settings.usage.tab.codingPlan",
-        }),
-        hasMultiplePersonalSources:
-          codingPlanSources.filter((item) => !isTeamCodingPlanUsageSource(item)).length > 1,
-        index,
-        source,
-      }),
-    })),
   ];
-  const visibleActiveTab =
-    activeTab === "codingPlan" && codingPlanSources[0]
-      ? createSettingsUsageCodingPlanTabId(codingPlanSources[0].id)
-      : activeTab;
+  const visibleActiveTab = "app";
 
   return (
     <div className="flex items-center gap-1.5">
@@ -571,8 +558,10 @@ export function SettingsPage({
     ],
   );
   const [usageActiveTab, setUsageActiveTab] = useState<UsageStatsSectionTab>(() => {
-    const pendingTab = consumePendingSettingsUsageTab();
-    return pendingTab === "codingPlan" ? "codingPlan" : (pendingTab ?? "app");
+    // 察元定制（2026-11-20）：使用统计只保留「使用用量」tab（个人套餐隐藏）——
+    // 入口意图（剩余额度/套餐等）一律丢弃，落 app。
+    consumePendingSettingsUsageTab();
+    return "app";
   });
   const usagePersonalCodingPlanSources = useMemo(() => {
     const sources: CodingPlanUsageSource[] = [];
@@ -2204,7 +2193,8 @@ export function SettingsPage({
                             />
                           ) : activeSection === "usage" ? (
                             <UsageStatsSection
-                              activeTab={usageActiveTab}
+                              // 察元定制（2026-11-20）：只渲染使用用量面板
+                              activeTab="app"
                               providerSourcesLoading={usageProviderSettingsLoading}
                               selectedCodingPlanSource={selectedUsageCodingPlanSource}
                               workspaceIdentity={activeWorkspaceIdentity}
