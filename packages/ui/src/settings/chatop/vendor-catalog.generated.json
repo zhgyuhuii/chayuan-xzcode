@@ -1,7 +1,7 @@
 {
   "generatedFrom": "dsh-plugin/src/desktop/models/vendor-catalog.js",
   "vendorCount": 85,
-  "fingerprint": "c268d8022970e071",
+  "fingerprint": "29bb81346c97a664",
   "groups": [
     {
       "id": "cn",
@@ -134,7 +134,7 @@
       "id": "xiaomi-mimo",
       "name": "Xiaomi MiMo",
       "group": "cn",
-      "defaultUrl": "https://api.mimo.mi.com/v1",
+      "defaultUrl": "https://api.xiaomimimo.com/v1",
       "api": "openai-completions",
       "ollamaLike": false,
       "keyUrl": "https://platform.xiaomimimo.com/#/console/api-keys"
@@ -143,7 +143,7 @@
       "id": "modelscope",
       "name": "魔搭 ModelScope",
       "group": "cn",
-      "defaultUrl": "https://api.modelscope.cn/v1",
+      "defaultUrl": "https://api-inference.modelscope.cn/v1",
       "api": "openai-completions",
       "ollamaLike": false,
       "keyUrl": "https://modelscope.cn/my/myaccesstoken",
@@ -180,19 +180,19 @@
       "id": "lanyun",
       "name": "蓝耘科技",
       "group": "cn",
-      "defaultUrl": "https://api.lanyun.com/v1",
+      "defaultUrl": "https://maas-api.lanyun.net/v1",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "https://lanyun.com/"
+      "keyUrl": "https://www.lanyun.net"
     },
     {
       "id": "ph8",
       "name": "PH8 大模型开放平台",
       "group": "cn",
-      "defaultUrl": "https://api.ph8.com/v1",
+      "defaultUrl": "",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "https://ph8.com/"
+      "keyUrl": ""
     },
     {
       "id": "sophnet",
@@ -207,19 +207,19 @@
       "id": "alaya-new",
       "name": "Alaya NeW",
       "group": "cn",
-      "defaultUrl": "https://api.alaya.com/v1",
+      "defaultUrl": "https://cloud.infini-ai.com/maas/v1",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": ""
+      "keyUrl": "https://www.alayanew.com"
     },
     {
       "id": "wuwen-xinqiong",
       "name": "无问芯穹",
       "group": "cn",
-      "defaultUrl": "https://api.wuwen.com/v1",
+      "defaultUrl": "https://cloud.infini-ai.com/maas/v1",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": ""
+      "keyUrl": "https://cloud.infini-ai.com"
     },
     {
       "id": "netease-youdao",
@@ -228,7 +228,7 @@
       "defaultUrl": "",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": ""
+      "keyUrl": "https://ai.youdao.com/console/"
     },
     {
       "id": "gitee-ai",
@@ -584,7 +584,7 @@
       "id": "tokenflux",
       "name": "TokenFlux",
       "group": "agg",
-      "defaultUrl": "https://api.tokenflux.com/v1",
+      "defaultUrl": "https://api.tokenflux.ai/v1",
       "api": "openai-completions",
       "ollamaLike": false,
       "keyUrl": "https://tokenflux.com/"
@@ -611,7 +611,7 @@
       "id": "cephalon",
       "name": "Cephalon",
       "group": "agg",
-      "defaultUrl": "https://api.cephalon.ai/v1",
+      "defaultUrl": "",
       "api": "openai-completions",
       "ollamaLike": false,
       "keyUrl": "https://cephalon.ai/"
@@ -658,11 +658,11 @@
       "id": "kilo-gateway",
       "name": "Kilo Gateway",
       "group": "agg",
-      "defaultUrl": "https://kilo.kimai.dev/v1",
+      "defaultUrl": "https://api.kilo.ai/api/gateway/v1",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "",
-      "free": "nokey"
+      "keyUrl": "https://app.kilo.ai/profile",
+      "free": "tier"
     },
     {
       "id": "pollinations",
@@ -671,8 +671,8 @@
       "defaultUrl": "https://text.pollinations.ai/openai",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "",
-      "free": "nokey"
+      "keyUrl": "https://enter.pollinations.ai",
+      "free": "tier"
     },
     {
       "id": "ovh-ai",
@@ -681,8 +681,8 @@
       "defaultUrl": "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "",
-      "free": "nokey"
+      "keyUrl": "https://www.ovh.com/manager/public-cloud/",
+      "free": "tier"
     },
     {
       "id": "llm7",
@@ -691,8 +691,8 @@
       "defaultUrl": "https://api.llm7.io/v1",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "",
-      "free": "nokey"
+      "keyUrl": "https://dash.llm7.io",
+      "free": "tier"
     },
     {
       "id": "opencode-zen",
@@ -738,20 +738,20 @@
       "id": "routeway",
       "name": "Routeway",
       "group": "agg",
-      "defaultUrl": "",
+      "defaultUrl": "https://api.routeway.ai/v1",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "",
+      "keyUrl": "https://routeway.ai",
       "free": "freekey"
     },
     {
       "id": "bazaarlink",
       "name": "BazaarLink",
       "group": "agg",
-      "defaultUrl": "",
+      "defaultUrl": "https://api.bazaarlink.ai/v1",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "",
+      "keyUrl": "https://bazaarlink.ai",
       "free": "freekey"
     },
     {
@@ -761,17 +761,17 @@
       "defaultUrl": "",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "",
+      "keyUrl": "https://ainative.studio/claim",
       "free": "freekey"
     },
     {
       "id": "aion-labs",
       "name": "Aion Labs",
       "group": "agg",
-      "defaultUrl": "",
+      "defaultUrl": "https://api.aionlabs.ai/v1",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "",
+      "keyUrl": "https://www.aionlabs.ai/app/api-keys/",
       "free": "freekey"
     },
     {
@@ -791,7 +791,7 @@
       "defaultUrl": "",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "",
+      "keyUrl": "https://api.navy",
       "free": "freekey"
     },
     {
@@ -821,8 +821,8 @@
       "defaultUrl": "",
       "api": "openai-completions",
       "ollamaLike": false,
-      "keyUrl": "",
-      "free": "nokey"
+      "keyUrl": "https://aihorde.net/register",
+      "free": "freekey"
     }
   ]
 }
