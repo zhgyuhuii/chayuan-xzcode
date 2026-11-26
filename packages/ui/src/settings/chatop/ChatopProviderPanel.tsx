@@ -24,7 +24,10 @@ import { Input } from "@/components/ui/input.js";
 import { Switch } from "@/components/ui/switch.js";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select.js";
 import { useBaseWorkspaceServices } from "@/hooks/useWorkspaceServices.js";
-import catalogDoc from "./vendor-catalog.generated.json";
+// JSON 导入必须带 type 属性（module=NodeNext 强制，TS1543）——目录快照导入
+// 自 bd69d6ec 起缺失该属性，此前靠 tsc -b 增量缓存未暴露；仓库同款写法见
+// settings/recommendedPlugins.ts
+import catalogDoc from "./vendor-catalog.generated.json" with { type: "json" };
 import {
   discoverChatopModels,
   errorText,
@@ -43,6 +46,7 @@ import {
   type ChatopProviderSettingsService,
   type ZcodeProviderViewEntry,
 } from "./zcodeOffline.js";
+import { groupModelsByCategory } from "./modelCategories.js";
 import { useChatopModelConfig } from "./useChatopModelConfig.js";
 
 interface CatalogVendor {
@@ -99,6 +103,11 @@ const STRINGS = {
   okDefault: "已设为默认模型（全家共享，谁最后切换谁赢）",
   busyFetch: "获取中…",
   busySave: "保存中…",
+  // 模型清单分组（Q17 裁定 2026-11-26）
+  selectAll: "全选",
+  selectNone: "全不选",
+  groupAll: "全选",
+  groupClear: "清空",
 };
 
 const slugify = (name: string) =>
@@ -161,6 +170,17 @@ export function ChatopProviderPanel() {
   const [keyEchoed, setKeyEchoed] = useState<string | null>(null);
   const [showKey, setShowKey] = useState(false);
   const [models, setModels] = useState<{ id: string; enabled: boolean }[]>([]);
+  // 模型类型分组折叠态（Q17 裁定 2026-11-26：默认全展开）。与左栏厂商组的
+  // collapsedGroups 是两个独立语义，状态不共用。
+  const [collapsedModelGroups, setCollapsedModelGroups] = useState(() => new Set<string>());
+  const toggleModelGroup = useCallback((id: string) => {
+    setCollapsedModelGroups((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }, []);
   const [manualModel, setManualModel] = useState("");
   const [busy, setBusy] = useState("");
   const [msg, setMsg] = useState<{ kind: "ok" | "err"; text: string } | null>(null);
@@ -278,7 +298,10 @@ export function ChatopProviderPanel() {
     const inCatalog = new Set(CATALOG.map((v) => v.id));
     const serverCustom = online
       ? (state?.vendors ?? []).filter((v) => v.custom && !inCatalog.has(v.id))
-          .map((v) => ({ id: v.id, name: v.id, group: "__custom", defaultUrl: v.apiUrl, api: v.api, keyUrl: "", ollamaLike: false }))
+          // 显式标注 CatalogVendor：字面量缺 free 字段会让 [...CATALOG, ...serverCustom]
+          // 的联合类型失去 free，下方 matchesFreeFilter 访问 v.free 报 TS2339
+          // （bd69d6ec 引入，增量缓存掩盖至今）
+          .map((v): CatalogVendor => ({ id: v.id, name: v.id, group: "__custom", defaultUrl: v.apiUrl, api: v.api, keyUrl: "", ollamaLike: false }))
       : offlineCustoms;
     const all = [...CATALOG, ...serverCustom, ...drafts];
     const bySearch = q ? all.filter((v) => v.id.includes(q) || v.name.toLowerCase().includes(q)) : all;
@@ -338,10 +361,16 @@ export function ChatopProviderPanel() {
     if (selected === null) return;
     setBusy("fetch");
     try {
-      const found = await discoverChatopModels({
-        apiUrl: apiUrl.trim() || selected.defaultUrl,
-        apiKey: keyInput.trim() || undefined,
-      });
+      const found = await discoverChatopModels(
+        {
+          apiUrl: apiUrl.trim() || selected.defaultUrl,
+          apiKey: keyInput.trim() || undefined,
+        },
+        // host 兜底：察元OS 不在场时经 ZCode 自身发现（独立运行可用）
+        providerSettings !== null
+          ? (input) => providerSettings.discoverVendorModels(input)
+          : undefined,
+      );
       setModels(found.map((id) => ({ id, enabled: true })));
       flash("ok", STRINGS.okModels(found.length));
     } catch (e) {
@@ -432,6 +461,10 @@ export function ChatopProviderPanel() {
 
   const isDefaultVendor = selectedState !== null && state?.defaultModel != null
     && state.defaultModel.provider === (selectedState.routeId ?? `chatop-${selectedId}`);
+
+  // 模型清单按类型分组（Q17 裁定 2026-11-26）：渲染层派生，不复制 models
+  // state（唯一所有者仍是上面的 models useState）
+  const modelGroups = useMemo(() => groupModelsByCategory(models), [models]);
 
   return (
     <div className="space-y-4">
@@ -650,37 +683,70 @@ export function ChatopProviderPanel() {
                     </div>
                   ) : (
                     <div className="max-h-72 space-y-0.5 overflow-y-auto rounded-lg border border-border p-1.5">
-                      <div className="flex items-center gap-2 px-1 pb-1">
+                      {/* 全局全选/全不选 sticky 固定（Q17 裁定 2026-11-26）：滚动时钉在
+                          滚动容器顶缘，模型行从其下方滚过——bg-card 不透明遮盖（先例
+                          DataSyncDialog.tsx sticky 表头） */}
+                      <div className="sticky top-0 z-10 flex items-center gap-2 bg-card px-1 pb-1 pt-0.5">
                         <button type="button" className="text-[11px] text-primary hover:underline"
-                          onClick={() => setModels((prev) => prev.map((m) => ({ ...m, enabled: true })))}>全选</button>
+                          onClick={() => setModels((prev) => prev.map((m) => ({ ...m, enabled: true })))}>{STRINGS.selectAll}</button>
                         <button type="button" className="text-[11px] text-foreground-subtle hover:text-foreground"
-                          onClick={() => setModels((prev) => prev.map((m) => ({ ...m, enabled: false })))}>全不选</button>
+                          onClick={() => setModels((prev) => prev.map((m) => ({ ...m, enabled: false })))}>{STRINGS.selectNone}</button>
                         {isDefaultVendor && <span className="text-[11px] text-foreground-subtlest">★ {STRINGS.defaultModel}</span>}
                       </div>
-                      {models.map((m) => (
-                        <label key={m.id} className="flex cursor-pointer items-center gap-2 rounded px-1.5 py-1 text-xs hover:bg-surface/60">
-                          <input
-                            type="checkbox"
-                            checked={m.enabled}
-                            onChange={(e) => setModels((prev) => prev.map((x) => (x.id === m.id ? { ...x, enabled: e.target.checked } : x)))}
-                            className="h-3.5 w-3.5 accent-[var(--color-primary)]"
-                          />
-                          <span className="min-w-0 flex-1 truncate font-mono text-[11px] text-foreground-subtle">{m.id}</span>
-                          {online && selectedState?.enabled && (
-                            <button
-                              type="button"
-                              className={`shrink-0 rounded px-1.5 py-0.5 text-[10px] ${
-                                isDefaultVendor && state?.defaultModel?.model === m.id
-                                  ? "bg-primary text-primary-foreground"
-                                  : "bg-surface text-foreground-subtle hover:text-foreground"
-                              }`}
-                              onClick={(e) => { e.preventDefault(); void doSetDefault(m.id); }}
-                            >
-                              {STRINGS.setDefault}
-                            </button>
-                          )}
-                        </label>
-                      ))}
+                      {modelGroups.map(({ category, models: groupModels }) => {
+                        const expanded = !collapsedModelGroups.has(category.id);
+                        // 组内全选/清空（Q17）：用 Set 匹配，避免逐行 includes
+                        const groupIds = new Set(groupModels.map((m) => m.id));
+                        const setGroupEnabled = (enabled: boolean) => {
+                          setModels((prev) => prev.map((m) => (groupIds.has(m.id) ? { ...m, enabled } : m)));
+                        };
+                        return (
+                          <div key={category.id}>
+                            <div className="flex items-center gap-1 px-1 pb-0.5 pt-1.5 text-[11px] font-medium text-foreground-subtlest">
+                              <button
+                                type="button"
+                                className="flex items-center gap-0.5 hover:text-foreground-subtle"
+                                onClick={() => toggleModelGroup(category.id)}
+                              >
+                                {expanded
+                                  ? <ChevronDownIcon className="size-3 shrink-0" />
+                                  : <ChevronRightIcon className="size-3 shrink-0" />}
+                                <span>{category.label}</span>
+                                <span>（{groupModels.filter((m) => m.enabled).length}/{groupModels.length}）</span>
+                              </button>
+                              <span className="flex-1" />
+                              <button type="button" className="text-[10px] text-primary hover:underline"
+                                onClick={() => setGroupEnabled(true)}>{STRINGS.groupAll}</button>
+                              <button type="button" className="text-[10px] text-foreground-subtle hover:text-foreground"
+                                onClick={() => setGroupEnabled(false)}>{STRINGS.groupClear}</button>
+                            </div>
+                            {expanded && groupModels.map((m) => (
+                              <label key={m.id} className="flex cursor-pointer items-center gap-2 rounded px-1.5 py-1 text-xs hover:bg-surface/60">
+                                <input
+                                  type="checkbox"
+                                  checked={m.enabled}
+                                  onChange={(e) => setModels((prev) => prev.map((x) => (x.id === m.id ? { ...x, enabled: e.target.checked } : x)))}
+                                  className="h-3.5 w-3.5 accent-[var(--color-primary)]"
+                                />
+                                <span className="min-w-0 flex-1 truncate font-mono text-[11px] text-foreground-subtle">{m.id}</span>
+                                {online && selectedState?.enabled && (
+                                  <button
+                                    type="button"
+                                    className={`shrink-0 rounded px-1.5 py-0.5 text-[10px] ${
+                                      isDefaultVendor && state?.defaultModel?.model === m.id
+                                        ? "bg-primary text-primary-foreground"
+                                        : "bg-surface text-foreground-subtle hover:text-foreground"
+                                    }`}
+                                    onClick={(e) => { e.preventDefault(); void doSetDefault(m.id); }}
+                                  >
+                                    {STRINGS.setDefault}
+                                  </button>
+                                )}
+                              </label>
+                            ))}
+                          </div>
+                        );
+                      })}
                     </div>
                   )}
                   <div className="flex gap-1.5">

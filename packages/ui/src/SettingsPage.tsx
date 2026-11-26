@@ -82,8 +82,8 @@ import {
 } from "@/conversation-share-interaction/SettingsShareManagement.js";
 // 察元挂载点（chayuan-harness docs/zcode-model-settings-plan.md，上游最小
 // patch 纪律）：模型设置面板替换为察元同源管理面。原 ModelProviderSection
-// 代码保留、仅停止渲染（import 随之移位，见 chatop/ChatopProviderPanel.tsx）。
-import { ChatopProviderPanel } from "@/settings/chatop/ChatopProviderPanel.js";
+// 代码保留、仅停止渲染。settings-chatop 已登记受管模块，跨模块只走公共入口。
+import { ChatopProviderPanel } from "@/settings/chatop/index.js";
 import { useCodingPlanUpgradeDialog } from "@/settings/CodingPlanUpgradeDialogProvider.js";
 import { useEnterpriseCodingPlanProducts } from "@/settings/model-provider-section/useEnterpriseCodingPlanProducts.js";
 import { UsageStatsSection, type UsageStatsSectionTab } from "@/settings/UsageStatsSection.js";
