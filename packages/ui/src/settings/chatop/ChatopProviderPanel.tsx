@@ -286,7 +286,16 @@ export function ChatopProviderPanel() {
   }, [search, freeFilter, state, online, drafts, offlineCustoms]);
 
   const selected = selectedId !== null ? listVendors.find((v) => v.id === selectedId) ?? null : null;
-  const selectedState = selectedId !== null ? unifiedState(selectedId) : null;
+  // 选中态 memo 化（React #185 根治，2026-11-26 真机点智谱实锤）：unifiedState
+  // 每次渲染都返回新对象，直接当表单重建 effect 的依赖会形成
+  // 「effect → setModels(新数组) → 重渲染 → 依赖(新对象)又变 → effect 再跑」
+  // 的无限更新循环（在线模式必炸；离线返回 memo 稳定对象故不炸）。
+  // 依赖改为两个状态图 memo + online——只在真换状态时变，引用稳定。
+  const selectedState = useMemo(
+    () => (selectedId !== null ? unifiedState(selectedId) : null),
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- unifiedState 闭包即 online+两个状态图 memo
+    [selectedId, online, onlineStateById, offlineStateById],
+  );
 
   // 选中厂商 → 表单重建（状态值优先，缺省目录默认）
   useEffect(() => {
