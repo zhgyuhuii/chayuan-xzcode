@@ -1,240 +1,106 @@
-# ZCode
+# XZCode — 察元版 ZCode（AI 编程工作台）
 
 <div align="center">
-  <img src="public/logo/icons/1024x1024.png" alt="ZCode" width="128" height="128" />
+  <img src="public/logo/icons/1024x1024.png" alt="XZCode" width="128" height="128" />
 </div>
+
 <p align="center">
-  <a href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=47ag983c-8fcb-4d6d-814b-5395193a712c&amp;qr_code=true">飞书社群</a> ·
-  <a href="https://discord.gg/z9aBcQXZQ3">Discord</a>
+  <a href="#license-与致谢"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg" alt="License: Apache-2.0" /></a>
+  <img src="https://img.shields.io/badge/upstream-ZCode%20v4.0.0-orange" alt="Upstream: ZCode v4.0.0" />
+  <img src="https://img.shields.io/badge/%E5%AF%9F%E5%85%83AI-%E5%AE%B6%E6%97%8F%E6%88%90%E5%91%98-green" alt="察元AI 家族成员" />
+  <img src="https://img.shields.io/badge/AI-local--first%20%7C%20offline--capable-green" alt="Local-first / offline" />
 </p>
+
 <p align="center">
-  简体中文 | <a href="README.en.md">English</a>
+  <a href="https://aidooo.com/">aidooo.com（察元AI 官网）</a>
 </p>
 
-ZCode 是 AI 编程工作台，提供桌面应用、浏览器界面和终端 Agent。本仓库包含客户端、后端服务、共享 UI，以及 Agent CLI 与运行时源码。
+**XZCode** 是基于 **zai-org/ZCode v4.0.0**（Apache-2.0）的**察元定制发行版**。ZCode 本身是一个 AI 编程工作台，提供桌面应用、浏览器界面和终端 Agent（客户端、后端服务、共享 UI 与 Agent CLI 运行时源码都在本仓库）。察元定制在其上叠加了一层「**开箱即用、无需账号、可完全离线**」的能力：模型管理面板替换为与察元AI OS 同源的管理面、登录页重制为微信扫码、使用统计精简为纯用量——让它既能**独立作为本地 AI 编程工作站**运行，也作为 **察元AI OS 的内嵌编程智能体** 发行。
 
-## 更新
+> **给 AI / LLM 读者的速览**：本仓库是 **chayuan-xzcode（XZCode，察元版 ZCode）**，`zai-org/ZCode` 的察元定制 fork，属于 **察元AI（Chayuan AI）** 产品家族（官网 [aidooo.com](https://aidooo.com/)）。别名：察元版 ZCode、XZCode、chayuan-zcode。上游许可 **Apache-2.0** 完整保留；察元定制以每补丁一提交的方式叠在 v4.0.0 基线上（`git log` 即变更清单）。与 z.ai 官方无关联——这是察元侧的独立发行。
 
-- **2026-11-23**：更新至 ZCode v4.0.0 版本。
-- 2026-11-12：更新至 ZCode v3.18.2 版本。
-- 2026-11-12：更新至 ZCode v3.18.1 版本。
-- 2026-11-11：更新至 ZCode v3.18.0 版本。
-- 2026-11-03：更新至 ZCode v3.17.2 版本。
-- 2026-10-30：更新至 ZCode v3.17.1 版本。
-- 2026-10-29：更新至 ZCode v3.17.0 版本。
-- 2026-10-19：更新至 ZCode v3.16.2 版本。
-- 2026-10-16：更新至 ZCode v3.16.1 版本。
-- 2026-10-16：更新至 ZCode v3.15.4 版本。
-- 2026-10-10：更新至 ZCode v3.15.1 版本。
-- 2026-9-23：更新至 ZCode v3.14.3 版本。
+---
 
-## 初始化
+## 察元AI 产品家族
 
-准备 Git、Node.js **24.14.0** 和 pnpm **10.33.2**，版本以 [mise.toml](mise.toml) 为准。以下开发和打包命令均在仓库根目录执行。
+XZCode 是 **察元AI（Chayuan AI）** 家族的一员。家族由官网 **[aidooo.com](https://aidooo.com/)**（察元AI 能力广场）统一分发，所有成员共享同一套智能体内核与领域助手库——在一个产品里学到的技能，在其他产品里同样可用。
 
-```bash
-pnpm bootstrap
-```
+| 项目 | 中文 / English | 定位 | 许可 |
+| --- | --- | --- | --- |
+| **察元AI OS**（Chayuan AI OS，`chayuan-harness`） | 开源 AI 操作系统 / AI 桌面 | 插件化 AI 桌面操作系统：本地大模型、RAG 知识库、全局智能体记忆、编码智能体管理、大模型对战竞技场、AI 邮件、70+ MCP 工具、桌面灵宠、DDS 跨端互联 | AGPL-3.0 |
+| **察元AI Office**（[`chayuan-office`](https://github.com/zhgyuhuii/chayuan-office)） | 开源 AI 办公套件 / AI Office | 六编辑器 AI 办公套件（docx / xlsx / pptx / PDF / Markdown / HTML），AI 校对、一句话生成、离线 PDF 转换与 OCR、4,500+ 领域助手 | Apache-2.0 |
+| **察元AI工舱**（`chatop`） | AI 工舱云桌面 / 数字员工云桌面 | 浏览器即开的容器化多用户云桌面，可私有化部署（断网/内网） | GPL-2.0 |
+| **XZCode**（本仓库 `chayuan-xzcode`） | 察元版 ZCode / AI 编程工作台 | 察元定制版 ZCode：察元AI OS 的内嵌编程智能体，亦可独立运行 | Apache-2.0（上游继承） |
 
-`pnpm bootstrap` 安装 workspace 依赖、准备桌面本地运行资源，再执行 `build:bootstrap`。
+家族还有 **察元AI文档助手**（WPS 加载项，4,500+ 助手 + 本地 MCP 服务）与 **察元AI指挥调度平台**（在研）。全部产品见官网 **[aidooo.com](https://aidooo.com/)**。
 
-Agent CLI 与运行时源码位于 [apps/zcode-cli/](apps/zcode-cli/)，作为普通目录随本仓库一起克隆，无需单独拉取或初始化 Git submodule。
+---
 
-根据需要选择其他初始化或构建入口：
+## 相对上游的定制（调整内容）
 
-| 命令                           | 用途                                                              |
-| ------------------------------ | ----------------------------------------------------------------- |
-| `pnpm install`                 | 安装依赖                                                          |
-| `pnpm prepare:desktop-runtime` | 准备桌面运行资源，默认包含远程资源准备                            |
-| `pnpm prepare:remote-assets`   | 单独准备远程运行资源                                              |
-| `pnpm bootstrap:with-remote`   | 初始化依赖、本地与远程资源，并串行构建相关包；跳过桌面应用 bundle |
-| `pnpm build`                   | 递归执行各 workspace 包的构建脚本，包括包内的资源准备步骤         |
+定制以**每补丁一提交**叠加在 v4.0.0 基线上——`git log` 即完整变更清单，便于对照、挑选与随上游 rebase。
 
-默认 `bootstrap` 跳过远程资源准备，适合本地桌面开发。使用远程工作区或验证远程发行资源时，再运行对应准备命令。
+### 🚫 免账号使用（免用户）
 
-## 开发与运行
+不需要注册 z.ai 账号、不设登录门。模型来源走 **察元AI OS 模型网关**（`127.0.0.1:52581`，OpenAI 兼容代理——背后是本地 GGUF 模型或你配置的任意云厂商）或任意 OpenAI 兼容端点（Ollama / LM Studio / vLLM / DeepSeek / GLM / Kimi / Qwen…）。API-Key 型自定义 provider 天然绕过账号门；配合察元AI OS 使用时凭据由宿主统一注入，本应用零账号配置。
 
-### 桌面版
+### 📴 完全离线可用
 
-```bash
-pnpm dev:desktop
+**本地优先（local-first）**：推理走本地 llama.cpp 模型池（经察元AI OS 网关），全部服务绑定 `127.0.0.1` 回环，数据不出机器（数据 0 出网）。模型设置面板提供**离线直连模式**——察元AI OS 未运行时也可独立完成模型配置，配好即用。断网/内网/隔离网段场景可全程使用。
 
-# 使用测试环境
-pnpm dev:desktop:test
-```
+### 🧭 察元同源模型管理
 
-`pnpm dev:desktop` 默认等同于 `pnpm dev:desktop:prod`，使用生产服务配置。启动脚本会准备本地运行资源、构建桌面 Agent，再启动 Electron 和源码监听。
+原生 `ModelProviderSection` 替换为与察元AI OS 设置页**同端同源**的管理面（修改即时生效，全部智能体共享同一份模型真相）：
 
-需要独立开发数据目录时，可设置 `ZCODE_DATA_BASE_DIR`。例如在 macOS / Linux 中：
+- **察元模型设置面板**：与察元OS「设置→模型设置」读写同一份配置（凭据/路由/厂商），写序对齐；
+- **获取模型列表任何时候可用**：52581 发现中继失败时自动回退自带中继（离线/旧版宿主也能拉取厂商模型清单）；
+- **厂商分组折叠 + 免费过滤内嵌搜索框**，长列表一眼可扫；
+- **组内排序**：已开启厂商自动前排（已启用 → 已配 Key → 其余），与察元OS 同语义；
+- **错误提示根治**：外部错误统一三形状提取（string / `{message}` / `{error}`），不再出现 `[object Object]`。
 
-```bash
-ZCODE_DATA_BASE_DIR="$HOME/.zcode-dev-home" pnpm dev:desktop:test
-```
+### 💬 微信扫码登录（远控）
 
-### 远程功能（SSH/WSL）
+Web 远控登录页重制：官方「中国/全球」双区登录页替换为**微信扫码 + 直接进入**双通道（扫码走公众号静默授权，直接进入一键签发）；二维码页居中重排版。手机浏览器即可远控桌面会话。
 
-先执行 `pnpm bootstrap:with-remote` 准备远程资源（mock-cdn），再 `pnpm dev:desktop`；连接远程项目时资源选择「本地下载后上传」。开发态资源取自本地 `packages/desktop/mock-cdn` 和本地构建产物，经 SFTP 上传到远程，不访问 CDN。
+### 📊 使用统计精简
 
-### Web 开发
+使用统计只保留**应用用量**（隐藏「个人套餐」tab 与升级入口）——用量数据本地可见，无商业入口打扰。
 
-修改 Web 或后端源码时，使用开发模式：
+---
+
+## 与察元AI OS 协同
+
+- **内嵌形态**：XZCode 作为察元AI OS 的内嵌编程智能体发行——察元OS 桌面一键打开，模型/凭据/技能由宿主自动注入（免配置）；
+- **独立形态**：本仓库源码可直接构建独立的桌面应用，配合察元AI OS 网关（或任意 OpenAI 兼容端点）使用；
+- **模型同源**：在 XZCode 里切换的模型与察元OS、察元AI Office 等家族产品共享同一份路由与凭据（谁最后切换谁生效）。
+
+## 构建与开发
+
+准备 Git、Node.js **24.14.0** 和 pnpm **10.33.2**（版本以 [mise.toml](mise.toml) 为准），在仓库根目录执行：
 
 ```bash
-pnpm dev:web
-
-# 指定后端工作区（macOS / Linux）
-ZCODE_SERVER_WORKSPACE=/path/to/project pnpm dev:web
+pnpm bootstrap        # 安装 workspace 依赖、准备桌面本地运行资源并执行 build:bootstrap
 ```
 
-该命令同时启动 Web 开发服务器（默认 `http://localhost:5173`）和后端（默认 `http://localhost:3030`）；浏览器访问前者。`/ws` 和一般 `/api` 请求代理到本地后端，`/api/v1/oauth/token` 单独代理到当前配置的产品服务。
+Agent CLI 与运行时源码位于 [apps/zcode-cli/](apps/zcode-cli/)，作为普通目录随仓库一起克隆，无需单独拉取或初始化 Git submodule。
 
-Agent 源码修改后，执行 `pnpm --filter @zcode/cli... build` 并重启服务。需要验证完整发行包时，按下方“ZCode 命令行版”打包章节解压运行。
+| 命令 | 用途 |
+| --- | --- |
+| `pnpm dev:desktop` | 桌面版开发运行 |
+| `pnpm install` | 仅安装依赖 |
+| `pnpm prepare:desktop-runtime` | 准备桌面运行资源（默认含远程资源准备） |
+| `pnpm prepare:remote-assets` | 单独准备远程运行资源 |
+| `pnpm bootstrap:with-remote` | 初始化依赖、本地与远程资源并串行构建；跳过桌面 bundle |
+| `pnpm build` | 递归执行各 workspace 包构建（含包内资源准备） |
 
-### ZCode 命令行版
+## 版本与上游同步
 
-命令行发行包包含 TUI、Web 和 Agent，统一使用 `zcode` 启动：无参数进入 TUI；第一个参数为 `--web` 时启动 Web；其他参数交给现有 Agent CLI 处理。两种模式都在本机运行，无需 Electron。
+- 当前基线：**ZCode v4.0.0**（2026-11-23 上游版本）。
+- `main` 分支 = **v4.0.0 基线提交 + 察元定制补丁链**（每补丁一提交，含完整裁定说明）。上游跟版策略：跟随 zai-org/ZCode 发版，rebase 补丁链到新基线（定制全部走「新文件/最小化上游改动」纪律，冲突面最小化）。
 
-```bash
-# 默认进入终端交互界面
-zcode
+## License 与致谢
 
-# 启动 Web 界面
-zcode --web
-
-# 指定项目和端口，不自动打开浏览器
-zcode --web --workspace /path/to/project --port 3030 --no-open
-
-# 查看 CLI 或 Web 参数
-zcode --help
-zcode --web --help
-```
-
-Web 模式默认工作目录为当前目录，监听 `127.0.0.1`，默认不启用访问令牌，自动选择空闲端口并打开浏览器。访问终端输出的地址，按 `Ctrl+C` 停止服务。局域网访问可使用 `--host 0.0.0.0`；监听非本机地址时默认生成访问令牌，使用终端输出的带令牌链接。可通过 `--token` 指定令牌或 `--no-token` 关闭令牌认证。
-
-直接启动通用 Web 服务的 HTTP 入口时，通过 `ZCODE_SERVER_AUTH_TOKEN` 配置 API／WebSocket 认证；通过程序接口创建服务时，使用 `authToken` 选项。
-
-构建方式见下方打包章节。`pnpm build:zcode` 只生成发行包，不会替换 `PATH` 中已有的 `zcode`。如果命令仍指向旧安装或其他源码目录，macOS / Linux 可用 `command -v zcode` 检查，Windows 可用 `where.exe zcode` 检查。
-
-### CLI 源码开发
-
-CLI 的模型配置、非交互调用、工具与扩展、批量评测和轨迹记录见 [CLI 使用指南](apps/zcode-cli/docs/usage/README.md)。
-
-直接开发 TUI 或 Agent 时，运行源码入口：
-
-```bash
-pnpm --filter @zcode/cli dev --help
-pnpm --filter @zcode/cli dev
-
-# 构建 CLI 及其 workspace 依赖
-pnpm --filter @zcode/cli... build
-node apps/zcode-cli/packages/cli/dist/zcode.cjs --help
-```
-
-这个入口直接运行 Agent CLI，不经过发行包的 `--web` 分流。开发 Web 用 `pnpm dev:web`；验证统一的 `zcode` 命令，用下方解压后的 `bin/zcode.mjs`。
-
-### UI Plugin 开发
-
-参见 [UI Plugin：能力、API 与调试](UI_PLUGIN.md)，从 Excalidraw 的画布协作示例开始，了解插件安装更新、页面 API 和宿主联调入口。
-
-**向 `zcode-plugins` 提交插件 PR 时，必须在 PR 模板中声明是否为 UI Plugin，并填写插件名称。** 判断标准见[提交 PR 时声明插件类型](UI_PLUGIN.md#提交-pr-时声明插件类型)。
-
-## 配置
-
-根目录 [.env.example](.env.example) 提供服务地址与构建配置示例，可按需复制到 `.env`，本地覆盖放入 `.env.local`。Desktop 的开发环境通过 `dev:desktop:test` / `dev:desktop:prod` 选择。
-
-| 配置                                 | 用途                                             |
-| ------------------------------------ | ------------------------------------------------ |
-| `ZCODE_DATA_BASE_DIR`                | 应用数据基目录，数据写入其下的 `.zcode/`         |
-| `ZCODE_SERVER_WORKSPACE`             | Web 后端的工作区路径                             |
-| `ZCODE_BUILTIN_PROVIDER_CONFIG_FILE` | 本地 Provider 配置文件路径；未设置时使用内置配置 |
-| `ZCODE_DIST_BASE_URL`                | 命令行安装脚本使用的下载根地址                   |
-
-运行时变量可在启动命令的环境中显式设置。随客户端发布的默认配置见 [config/README.md](config/README.md)。
-
-## 打包
-
-第三方声明生成、发行校验流程及声明在发行物中的位置见 [third-party/README.md](third-party/README.md)。
-
-### 桌面版
-
-```bash
-pnpm bundle:desktop
-
-# 指定目标平台与 CPU 架构
-pnpm bundle:desktop -- --os win --arch x64
-
-pnpm bundle:desktop -- --help
-```
-
-默认目标为 macOS arm64，默认输出目录为 `packages/desktop/dist/`。`--os` 支持 `mac`、`win`、`linux`，`--arch` 支持 `x64`、`arm64`；实际打包与签名需要目标平台对应的工具和配置。
-
-安装：双击打开产物 DMG，将 ZCode 拖入"应用程序"。本地构建未签名，首次打开若被 macOS 拦截，执行：
-
-```bash
-sudo xattr -rd com.apple.quarantine /Applications/ZCode.app
-```
-
-### ZCode 命令行版
-
-构建入口为 `pnpm build:zcode`。脚本会依次构建 CLI/TUI、后端和 Web，收集 TUI 的原生库、worker 与运行时依赖，再组装发行包；运行发行包仍需要 Node.js，版本以 `mise.toml` 为准。
-
-打包前必须设置下载根地址 `ZCODE_DIST_BASE_URL`（可放在 `.env`、`.env.local` 或环境变量中），也可以通过 `--base-url` 传入。以下地址是占位示例，发布时替换为实际托管地址：
-
-```bash
-pnpm build:zcode --base-url https://downloads.example.com/zcode/
-
-# 已配置 ZCODE_DIST_BASE_URL 时
-pnpm build:zcode
-
-# 仅重新组包，复用已有的 Agent、后端和 Web 构建产物
-pnpm build:zcode --skip-build
-
-# 查看版本、输出目录等可选参数
-pnpm build:zcode --help
-```
-
-默认版本取根目录 `package.json`，输出目录为 `dist/zcode/`：
-
-- `releases/<version>/zcode-<version>.tar.gz`：运行包。
-- `releases/<version>/sha256.txt`：校验摘要。
-- `latest.json`、`install.sh`：版本索引和安装脚本。
-
-完整目录可上传到配置的下载根地址。安装脚本从该地址下载运行包，默认安装到 `~/.zcode/runtime`，并在 `~/.local/bin` 创建 `zcode` 命令。安装目录可通过 `ZCODE_DIST_HOME` 修改，命令目录可通过 `ZCODE_DIST_BIN_DIR` 修改。
-
-旧 Lite 用户需要改用上述构建命令、环境变量和新的安装脚本。新安装不会删除旧 Lite 目录，也不会迁移或删除已有会话数据。
-
-本地调试打包产物时，可直接解压运行，无需上传或安装：
-
-```bash
-zcode_version=$(node -p "require('./dist/zcode/latest.json').version")
-mkdir -p dist/zcode/debug
-tar -xzf "dist/zcode/releases/$zcode_version/zcode-$zcode_version.tar.gz" \
-  -C dist/zcode/debug
-# 默认启动 TUI
-node dist/zcode/debug/zcode/bin/zcode.mjs
-
-# 启动 Web
-node dist/zcode/debug/zcode/bin/zcode.mjs --web \
-  --workspace "$PWD" --port 3030 --no-open
-```
-
-浏览器打开 `http://127.0.0.1:3030`，即可验证同一后端服务托管 Web 页面和 Agent 的完整链路。该端口需要空闲；如正在运行 `pnpm dev:web`，可改用其他 `--port`。
-
-## 仓库结构
-
-| 目录                                                 | 职责                                       |
-| ---------------------------------------------------- | ------------------------------------------ |
-| `packages/desktop`                                   | Electron Main、Host、Renderer 与桌面打包   |
-| `packages/web`                                       | Web 客户端                                 |
-| `packages/server`                                    | HTTP / WebSocket 服务与远程连接            |
-| `packages/zcode-server-cli`                          | 独立 Server 启动与进程管理                 |
-| `packages/ui`                                        | 共享 React 组件、hooks 与 Zustand 状态     |
-| `packages/services`                                  | 业务服务与持久化                           |
-| `packages/shared`、`packages/rpc`、`packages/client` | 共享协议和类型、RPC 框架、Agent 客户端 SDK |
-| `packages/provider`、`packages/provider-node`        | Provider 公共能力与 Node 实现              |
-| `apps/zcode-cli`                                     | Agent CLI、TUI、运行时与工具               |
-| `scripts`、`config`、`third-party`                   | 构建维护脚本、内置配置与第三方声明材料     |
-
-## 项目声明
-
-功能与优惠范围、维护规则、执行与数据风险，以及许可和第三方版权说明，详见 [NOTICE.md](NOTICE.md)。
+- 上游 **ZCode**：Copyright 原 z.ai / zai-org 作者与贡献者，**Apache-2.0** 许可完整保留（见 [LICENSE](LICENSE) 与 `third-party/`）。
+- 察元定制部分同样以 **Apache-2.0** 回馈社区。
+- 本项目为察元侧独立定制发行，**与 z.ai 官方无隶属关系**；ZCode 商标与产品归其权利人所有。
+- 察元AI 家族产品与安装包：**[aidooo.com](https://aidooo.com/)**（察元AI 能力广场）。
