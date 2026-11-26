@@ -8,6 +8,8 @@
  * CSP）唯一直连可达的察元服务面；dsh web 口动态口无 ACAO、RPC 要 cookie。
  *
  * 服务不可达（察元未运行）= 面板只读目录快照 + 离线提示（Q8 降级语义）。
+ * 「获取模型列表」通道顺序见 docs/chayuan-model-settings-discovery.md：
+ * 52581 同源 → ZCode host RPC（discoverVendorModels）兜底，独立运行可用。
  */
 
 export const CHATOP_GATEWAY = "http://127.0.0.1:52581";
@@ -109,8 +111,21 @@ export async function saveChatopDefaultModel(provider: string, model: string): P
   });
 }
 
-export async function discoverChatopModels(input: { apiUrl: string; apiKey?: string }): Promise<string[]> {
-  // 主路：52581 发现中继（察元OS 新版在场时）。
+export interface DiscoverChatopModelsInput {
+  apiUrl: string;
+  apiKey?: string;
+}
+
+/** host 兜底通道签名（IProviderSettingsService.discoverVendorModels 的结构面）。 */
+export type HostModelDiscoverer = (
+  input: DiscoverChatopModelsInput,
+) => Promise<{ models: string[] }>;
+
+export async function discoverChatopModels(
+  input: DiscoverChatopModelsInput,
+  hostDiscover?: HostModelDiscoverer,
+): Promise<string[]> {
+  // 主路：52581 发现中继（察元OS 新版在场时；可解析 harness keyRef 凭据）。
   let primaryError: Error | null = null;
   try {
     const r = await call<{ models: string[] }>("/api/model-config/discover", {
@@ -120,30 +135,16 @@ export async function discoverChatopModels(input: { apiUrl: string; apiKey?: str
     return r.models;
   } catch (e) {
     primaryError = e instanceof Error ? e : new Error(errorText(e) || String(e));
-    // 回退：ZCodeHarvest 自带发现中继（wrapper 拉起，端口注册表 ZCODE_DISCOVER_PORT
-    // =52596；仅回环）——察元OS 未运行/旧版本时「获取模型列表」同样可用。
-    try {
-      const res = await fetch("http://127.0.0.1:52596/discover", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(input),
-        signal: AbortSignal.timeout(10_000),
-      });
-      const body = (await res.json().catch(() => ({}))) as { ok?: boolean; models?: string[]; error?: unknown };
-      if (!res.ok || body.ok !== true) {
-        throw new Error(errorText(body.error) || `HTTP ${res.status}`);
-      }
-      return body.models ?? [];
-    } catch (relayError) {
-      // 中继给了业务错误（真到过厂商）→ 原样抛；中继本身不可达（旧 app 实例
-      // 未随包启动中继/超时）→ 人话提示
-      const unreachable = relayError instanceof TypeError
-        || (relayError as DOMException | null)?.name === "TimeoutError";
-      if (unreachable) {
-        const hint = "发现服务不可用（察元OS 旧版或未运行，本机发现中继未启动——重启 ZCodeHarvest 或察元OS 后自动可用）";
-        throw new Error(primaryError.message !== "" && primaryError.message !== "Error" ? `${primaryError.message}；${hint}` : hint);
-      }
-      throw relayError;
-    }
   }
+  // 兜底：ZCode 自身 host 进程发现（IProviderSettingsService.discoverVendorModels，
+  // Node 无 CORS 限制）——察元OS / ZCodeHarvest 均不在场（ZCode 独立运行）时
+  // 「获取模型列表」同样可用。host 错误（真到了厂商的业务错误 / 如实报网络
+  // 不可达）原样抛出，不叠加误导性提示。
+  // （2026-11-26 用户裁定：移除原 52596 发现中继兜底分支，host 路径全面接位。）
+  if (hostDiscover !== undefined) {
+    return (await hostDiscover(input)).models;
+  }
+  throw primaryError?.message !== "" && primaryError?.message !== "Error"
+    ? primaryError
+    : new Error("获取模型列表失败：察元OS 与 ZCode 模型服务均不可用");
 }

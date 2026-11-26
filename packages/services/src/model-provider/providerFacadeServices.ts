@@ -20,6 +20,77 @@ import { createServiceDescriptor } from "../descriptors.js";
 import type { ModelConnectivityResult } from "@zcode/shared";
 import { createServiceLogger } from "../logger/serviceLogger.js";
 
+/**
+ * 厂商模型发现（host 端，docs/chayuan-model-settings-discovery.md）。
+ *
+ * 察元模型设置面板「获取模型列表」的 ZCode 自身兜底通道：察元OS gateway
+ * （52581）不可达（察元OS 未运行）时，经 IProviderSettingsService 在 host
+ * 进程内发起厂商 /models 发现——Node 侧无 CORS 限制，ZCode 独立运行同样
+ * 可用（2026-11-26 用户裁定移除 renderer 的 52596 中继分支后由本实现接位）。
+ * 语义与 chayuan-harness chatop-models discoverVendorModels 逐字一致（base
+ * 归一、Bearer、8s 超时、data[].id、三类错误文案），面板提示在两条通道间
+ * 无回归差异。无状态只读，不落盘不触发事件。与发现消费方同文件内聚
+ * （services 根模块 unmanaged，独立新文件会被 newFilesRequireManagedModule 拦截）。
+ */
+
+export interface VendorModelDiscoveryInput {
+  readonly apiUrl: string;
+  readonly apiKey?: string;
+}
+
+/** 去尾斜杠；末段非 v<N> 则补 /v1（与 harness normBase 同算法）。 */
+export function normalizeVendorBase(raw: unknown): string {
+  const base = String(raw ?? "")
+    .trim()
+    .replace(/\/+$/, "");
+  if (base === "") return "";
+  const last = base.split("/").pop() ?? "";
+  return /^v\d+$/i.test(last) ? base : `${base}/v1`;
+}
+
+/** data[].id 提取（只留非空字符串；非对象/缺 data 视为空清单）。 */
+export function parseVendorModelsPayload(text: string): string[] {
+  let data: unknown;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    throw new Error("厂商返回非 JSON");
+  }
+  const entries = (data as { data?: unknown } | null)?.data;
+  if (!Array.isArray(entries)) return [];
+  return entries
+    .map((m) => (typeof (m as { id?: unknown })?.id === "string" ? (m as { id: string }).id : ""))
+    .filter((id) => id !== "");
+}
+
+export async function discoverVendorModelsViaFetch(
+  input: VendorModelDiscoveryInput,
+  fetchImpl: (input: string, init?: RequestInit) => Promise<Response>,
+): Promise<{ models: string[] }> {
+  const base = normalizeVendorBase(input.apiUrl);
+  if (base === "") throw new Error("apiUrl required");
+  const apiKey = String(input.apiKey ?? "").trim();
+  try {
+    const res = await fetchImpl(`${base}/models`, {
+      headers: apiKey !== "" ? { authorization: `Bearer ${apiKey}` } : {},
+      signal: AbortSignal.timeout(8000),
+    });
+    const text = await res.text();
+    if (!res.ok) {
+      throw new Error(`厂商返回 ${res.status}：${text.slice(0, 200)}`);
+    }
+    return { models: parseVendorModelsPayload(text) };
+  } catch (error) {
+    // 业务错误（厂商应答）原样抛；网络层失败（含超时）统一「不可达：」前缀，
+    // 与 52581/52596 通道文案一致，面板不区分通道。
+    if (error instanceof Error && (error.message.startsWith("厂商返回") || error.message === "厂商返回非 JSON")) {
+      throw error;
+    }
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(`不可达：${message.slice(0, 160)}`);
+  }
+}
+
 export type {
   ProviderSettingsProviderView,
   ModelSelectionView,
@@ -68,6 +139,8 @@ export interface IProviderSettingsService {
   testModelConnectivity(
     input: ProviderSettingsConnectivityRequest,
   ): Promise<ModelConnectivityResult>;
+  /** 厂商模型发现（host 端 Node fetch，无 CORS；见 docs/chayuan-model-settings-discovery.md）。 */
+  discoverVendorModels(input: VendorModelDiscoveryInput): Promise<{ models: string[] }>;
 }
 
 export const IProviderSettingsService = createServiceDescriptor<IProviderSettingsService>(
@@ -206,6 +279,8 @@ export function createProviderSettingsService(
         modelId: input.modelId,
       });
     },
+    // 无状态厂商发现，不需要 Environment/注入依赖——所有装配本服务的环境自动具备。
+    discoverVendorModels: (input) => discoverVendorModelsViaFetch(input, fetch),
   };
 }
 

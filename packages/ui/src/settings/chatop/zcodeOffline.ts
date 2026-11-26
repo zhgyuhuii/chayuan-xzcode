@@ -58,6 +58,8 @@ export interface ChatopProviderSettingsService {
   deletePersonalProvider(providerId: string): Promise<unknown>
   addPersonalModel(providerId: string, modelId: string, config: unknown, useRecommendedConfig?: boolean): Promise<unknown>
   deletePersonalModel(providerId: string, modelId: string): Promise<unknown>
+  /** 厂商模型发现 host 兜底（docs/chayuan-model-settings-discovery.md）。 */
+  discoverVendorModels(input: { apiUrl: string; apiKey?: string }): Promise<{ models: string[] }>
 }
 
 export interface ZcodeProviderViewEntry {
