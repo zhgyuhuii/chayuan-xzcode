@@ -18,8 +18,11 @@ export const BIGMODEL_OAUTH_PROVIDER_CONFIG: Omit<OAuthProviderRuntimeConfig, "a
   authorizeUrl: "https://bigmodel.cn/login",
   tokenUrl: "https://zcode.z.ai/api/v1/oauth/token",
   userinfoUrl: buildBigModelApiUrl({ ZCODE_ENV: "production" }, BIGMODEL_USERINFO_PATH),
+  // appId 是服务商侧注册的 OAuth client_id，与产品身份无关，不改。
   appId: "zcode",
-  redirectUri: "zcode://oauth/callback",
+  // XZCode 发行版独立回调 scheme（docs/desktop/xzcode-product-identity.md）；
+  // 需在提供商控制台同步新增 xzcode://oauth/callback 白名单。
+  redirectUri: "xzcode://oauth/callback",
 };
 
 export function createBigModelProviderRuntimeConfig(

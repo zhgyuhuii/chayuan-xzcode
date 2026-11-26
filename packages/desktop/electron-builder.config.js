@@ -966,9 +966,10 @@ export default {
   protocols: [
     {
       // 协议处理器的展示名之前使用小写 scheme，打包产物里的协议描述无法体现产品名。
-      // 展示名跟随安装包身份；scheme 仍保持 zcode，因此两个应用中最后注册者会成为默认 handler。
+      // 展示名跟随安装包身份；XZCode 发行版使用独立 scheme（docs/desktop/xzcode-product-identity.md），
+      // 与官方 ZCode 的 zcode:// 互不抢占系统默认 handler。
       name: desktopProductIdentity.productName,
-      schemes: ["zcode"],
+      schemes: ["xzcode"],
     },
   ],
   mac: {
@@ -1096,13 +1097,11 @@ export default {
   },
   detectUpdateChannel: false,
   publish: {
-    provider: "generic",
-    // 当前 OSS/CDN 对多 Range 请求返回 206，但 Content-Type 仍是 application/x-msdownload，
-    // electron-updater 会因缺少 multipart/byteranges 直接回退整包下载。关闭 multiple range 后仍走差分，
-    // 只是按单 Range 顺序拉取差异块，避免 Windows 用户更新时从约 15MB 退化成 300MB+ 全量包。
-    useMultipleRangeRequest: false,
-    // 新客户端运行时使用服务端 manifest provider；这里仅保留 electron-builder 必需的
-    // generic publish 占位，避免打包产物继续携带可配置的旧 stable feed。
-    url: "http://localhost:8081",
+    // XZCode 发行版更新通道：GitHub Releases（docs/desktop/xzcode-product-identity.md）。
+    // 打包产物 app-update.yml 携带该配置，打包态运行时 feed 同样使用原生 GitHub provider；
+    // 发布时把安装包、blockmap 与 latest*.yml 作为 Release assets 上传，preview 版勾选 Pre-release。
+    provider: "github",
+    owner: "zhgyuhuii",
+    repo: "chayuan-xzcode",
   },
 };

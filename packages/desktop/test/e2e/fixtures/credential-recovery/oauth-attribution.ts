@@ -32,7 +32,7 @@ try {
     const empty = await readFile(file, "utf8");
     const generation = await readFile(`${file}.recovery-generation`, "utf8");
     const callback = (state: string) =>
-      `zcode://oauth/callback?state=${state}&utm_source=synthetic-${provider}`;
+      `xzcode://oauth/callback?state=${state}&utm_source=synthetic-${provider}`;
     await assert.rejects(oauth.handleCallback(callback(flow.state)), {
       code: "ZCODE_CREDENTIAL_STORE_CHANGED",
     });

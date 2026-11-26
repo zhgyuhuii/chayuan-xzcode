@@ -801,7 +801,7 @@ export class OAuthService implements IOAuthService {
     }
     if (provider === BIGMODEL_PROVIDER_ID) {
       // BigModel CLI callback 的失败页会截断原有 Desktop deep link 回调体验。
-      // flow 仍由 Host 轮询，但浏览器回调恢复到官网中转页，再透传到 zcode://oauth/callback。
+      // flow 仍由 Host 轮询，但浏览器回调恢复到官网中转页，再透传到 xzcode://oauth/callback。
       authorizeUrl.searchParams.set("redirect", buildDesktopOAuthRedirectUriFromEnv(this.env));
     } else if (isZaiOAuthProvider(provider)) {
       // 国内渠道曾漏过中转改写；显式传渠道，避免官网把国内授权码送往海外回调。

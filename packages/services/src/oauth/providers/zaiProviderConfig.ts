@@ -24,8 +24,11 @@ export const ZAI_OAUTH_PROVIDER_CONFIG: Omit<OAuthProviderRuntimeConfig, "appSec
   userinfoUrl: "https://chat.z.ai/api/oauth/userinfo",
   businessLoginUrl: "https://api.z.ai/api/auth/z/login",
   // 生产 client_id 不是 secret，但保留 fallback 可以避免未配置 env 的旧构建直接无法登录。
+  // 生产 client_id 不是 secret，但保留 fallback 可以避免未配置 env 的旧构建直接无法登录。
   appId: "client_P8X5CMWmlaRO9gyO-KSqtg",
-  redirectUri: "zcode://oauth/callback",
+  // XZCode 发行版独立回调 scheme（docs/desktop/xzcode-product-identity.md）；
+  // 需在提供商控制台同步新增 xzcode://oauth/callback 白名单。
+  redirectUri: "xzcode://oauth/callback",
 };
 
 export function createZaiProviderRuntimeConfig(env: NodeJS.ProcessEnv): OAuthProviderRuntimeConfig {

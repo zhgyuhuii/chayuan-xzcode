@@ -66,7 +66,8 @@ export function buildShareImportDeepLink(shareCode: string): string {
   if (!isSafeConversationShareCode(shareCode)) {
     throw new TypeError("Invalid conversation share code");
   }
-  return `zcode://share/import?code=${encodeURIComponent(shareCode)}`;
+  // XZCode 发行版独立 scheme（docs/desktop/xzcode-product-identity.md）。
+  return `xzcode://share/import?code=${encodeURIComponent(shareCode)}`;
 }
 
 export interface ConversationSharePreviewClientOptions {

@@ -82,7 +82,7 @@ describe("OAuth 双路径完成竞态", () => {
     await browser.electron.execute((electron, channel) => {
       electron.BrowserWindow.getAllWindows()[0]!.webContents.send(
         channel,
-        "zcode://oauth/callback?state=e2e-race&authCode=cancelled-failure",
+        "xzcode://oauth/callback?state=e2e-race&authCode=cancelled-failure",
       );
     }, PlatformChannels.OAuthCallback);
     await browser.waitUntil(
@@ -161,7 +161,7 @@ describe("OAuth 双路径完成竞态", () => {
     expect(bridgeUrl.origin).toBe(new URL(baseUrl).origin);
     expect(bridgeUrl.pathname).toBe("/app/oauth/login");
     expect(bridgeUrl.searchParams.get("provider")).toBe("zai_cn");
-    expect(bridgeUrl.searchParams.get("redirect")).toBe("zcode://oauth/callback");
+    expect(bridgeUrl.searchParams.get("redirect")).toBe("xzcode://oauth/callback");
     // Mocha 直接导入的版本常量是 0.0.0-dev；桌面构建的注入值来自根 package.json。
     const packageInfo = JSON.parse(
       await readFile(new URL("../../../../../../package.json", import.meta.url), "utf8"),
@@ -330,7 +330,7 @@ describe("OAuth 双路径完成竞态", () => {
     await browser.electron.execute((electron, channel) => {
       electron.BrowserWindow.getAllWindows()[0]!.webContents.send(
         channel,
-        "zcode://oauth/callback?state=e2e-race&authCode=cancelled",
+        "xzcode://oauth/callback?state=e2e-race&authCode=cancelled",
       );
     }, PlatformChannels.OAuthCallback);
     await browser.waitUntil(
@@ -385,7 +385,7 @@ describe("OAuth 双路径完成竞态", () => {
     await browser.electron.execute((electron, channel) => {
       electron.BrowserWindow.getAllWindows()[0]!.webContents.send(
         channel,
-        "zcode://oauth/callback?state=e2e-race&authCode=e2e-code&channel_id=desktop&utm_source=website&utm_campaign=race",
+        "xzcode://oauth/callback?state=e2e-race&authCode=e2e-code&channel_id=desktop&utm_source=website&utm_campaign=race",
       );
     }, PlatformChannels.OAuthCallback);
     await browser.waitUntil(
@@ -428,7 +428,7 @@ describe("OAuth 双路径完成竞态", () => {
     await browser.electron.execute((electron, channel) => {
       electron.BrowserWindow.getAllWindows()[0]!.webContents.send(
         channel,
-        "zcode://oauth/callback?state=e2e-race&authCode=late&channel_id=desktop&utm_source=website&utm_campaign=late",
+        "xzcode://oauth/callback?state=e2e-race&authCode=late&channel_id=desktop&utm_source=website&utm_campaign=late",
       );
     }, PlatformChannels.OAuthCallback);
     await browser.waitUntil(
@@ -484,7 +484,7 @@ describe("OAuth 双路径完成竞态", () => {
           const state = window as any;
           state.__oauthRaceService = service;
           state.__oauthRaceExchange = service.handleCallback(
-            "zcode://oauth/callback?state=e2e-race&authCode=slow-success",
+            "xzcode://oauth/callback?state=e2e-race&authCode=slow-success",
           );
           return;
         }
@@ -564,7 +564,7 @@ describe("OAuth 双路径完成竞态", () => {
         const state = window as any;
         await state.__oauthExpiryService.startOAuthWithPolling("zai");
         state.__oauthExpiryExchange = state.__oauthExpiryService.handleCallback(
-          "zcode://oauth/callback?state=e2e-race&authCode=after-expiry",
+          "xzcode://oauth/callback?state=e2e-race&authCode=after-expiry",
         );
       });
       await browser.waitUntil(
@@ -754,7 +754,7 @@ describe("OAuth 双路径完成竞态", () => {
           await services.oauthService.startOAuthWithPolling("zai_cn");
           // 中转先唤起 App，带授权码的回调也不能触发客户端二次兑换。
           return services.oauthService.handleCallback(
-            "zcode://oauth/callback?code=cn-bridge-code&state=e2e-race&channel_id=e2e-cn-bridge",
+            "xzcode://oauth/callback?code=cn-bridge-code&state=e2e-race&channel_id=e2e-cn-bridge",
           );
         }
         fiber = fiber.return;
@@ -765,7 +765,7 @@ describe("OAuth 双路径完成竞态", () => {
     expect(
       await browser.execute(async () =>
         (window as any).__cnOAuth.handleCallback(
-          "zcode://oauth/callback?code=cn-bridge-code&state=e2e-race",
+          "xzcode://oauth/callback?code=cn-bridge-code&state=e2e-race",
         ),
       ),
     ).toBeNull();
@@ -782,7 +782,7 @@ describe("OAuth 双路径完成竞态", () => {
     expect(JSON.parse(credentials["oauth:login_attribution"]!).channel_id).toBe("e2e-cn-bridge");
     const lateCallback = await browser.execute(async () =>
       (window as any).__cnOAuth.handleCallback(
-        "zcode://oauth/callback?code=cn-late-code&state=e2e-race&channel_id=e2e-cn-late",
+        "xzcode://oauth/callback?code=cn-late-code&state=e2e-race&channel_id=e2e-cn-late",
       ),
     );
     expect(lateCallback).toMatchObject({ kind: "duplicate", provider: "zai_cn" });
@@ -836,7 +836,7 @@ describe("OAuth 双路径完成竞态", () => {
       await service.cancelPending("zai_cn");
       try {
         await service.handleCallback(
-          "zcode://oauth/callback?code=cn-cancelled&state=e2e-race&channel_id=cancelled",
+          "xzcode://oauth/callback?code=cn-cancelled&state=e2e-race&channel_id=cancelled",
         );
         return false;
       } catch {

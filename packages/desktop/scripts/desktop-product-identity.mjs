@@ -5,21 +5,23 @@
  */
 export const ZCODE_PREVIEW_IDENTITY_ENV = "ZCODE_PREVIEW_IDENTITY";
 
+// XZCode 发行版身份（docs/desktop/xzcode-product-identity.md）：与上游官方 ZCode
+// （dev.zcode.app / zcode 包）在同一台机器上共存，appId、包名、可执行名全部独立。
 const PRODUCTION_IDENTITY = Object.freeze({
   flavor: "production",
-  appId: "dev.zcode.app",
-  productName: "ZCode",
-  linuxExecutableName: "zcode",
-  linuxPackageName: "zcode",
+  appId: "dev.xzcode.app",
+  productName: "XZCode",
+  linuxExecutableName: "xzcode",
+  linuxPackageName: "xzcode",
   cuaHelperInstallVariant: null,
 });
 
 const PREVIEW_IDENTITY = Object.freeze({
   flavor: "preview",
-  appId: "dev.zcode.app.preview",
-  productName: "ZCode Preview",
-  linuxExecutableName: "zcode-preview",
-  linuxPackageName: "zcode-preview",
+  appId: "dev.xzcode.app.preview",
+  productName: "XZCode Preview",
+  linuxExecutableName: "xzcode-preview",
+  linuxPackageName: "xzcode-preview",
   cuaHelperInstallVariant: "preview",
 });
 

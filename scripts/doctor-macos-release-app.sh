@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-APP_PATH="${1:-${ZCODE_MACOS_RELEASE_APP_PATH:-/Applications/ZCode.app}}"
+APP_PATH="${1:-${ZCODE_MACOS_RELEASE_APP_PATH:-/Applications/XZCode.app}}"
 ZCODE_HOME_DIR="${ZCODE_HOME:-${HOME:+$HOME/.zcode}}"
 CUA_HELPER_INSTALL_VARIANT="${ZCODE_CUA_HELPER_INSTALL_VARIANT:-}"
 # 安装包身份与后端环境分轴：ZCODE_PREVIEW_IDENTITY=1 让生产后端的构建仍是 ZCode Preview。
@@ -35,10 +35,10 @@ fi
 if [ "${APP_PATH:-}" = "--help" ] || [ "${APP_PATH:-}" = "-h" ]; then
   cat <<'USAGE'
 Usage:
-  bash scripts/doctor-macos-release-app.sh /Applications/ZCode.app
-  ZCODE_CUA_REQUIRE_HELPER=1 bash scripts/doctor-macos-release-app.sh /Applications/ZCode.app
-  ZCODE_CUA_HELPER_APP_PATH=/path/to/ZCode\ Computer\ Use.app ZCODE_CUA_REQUIRE_HELPER=1 bash scripts/doctor-macos-release-app.sh /Applications/ZCode.app
-  ZCODE_MACOS_RELEASE_APP_PATH=/Applications/ZCode.app pnpm run doctor:macos-release
+  bash scripts/doctor-macos-release-app.sh /Applications/XZCode.app
+  ZCODE_CUA_REQUIRE_HELPER=1 bash scripts/doctor-macos-release-app.sh /Applications/XZCode.app
+  ZCODE_CUA_HELPER_APP_PATH=/path/to/ZCode\ Computer\ Use.app ZCODE_CUA_REQUIRE_HELPER=1 bash scripts/doctor-macos-release-app.sh /Applications/XZCode.app
+  ZCODE_MACOS_RELEASE_APP_PATH=/Applications/XZCode.app pnpm run doctor:macos-release
 
 Always validates the installed macOS release app with:
   codesign --verify --deep --strict <app>
@@ -49,7 +49,7 @@ also validates the independently signed Helper bundle selected below with the
 same codesign/spctl checks and a local notarization staple check.
 
 Helper lookup order:
-  1. ZCODE_CUA_HELPER_APP_PATH (CI passes the Helper bundled inside ZCode.app)
+  1. ZCODE_CUA_HELPER_APP_PATH (CI passes the Helper bundled inside XZCode.app (helper identity unchanged))
   2. ${ZCODE_HOME:-$HOME/.zcode}/computer-use/<optional variant>/ZCode Computer Use.app
 
 CI release acceptance validates the copy actually shipped at

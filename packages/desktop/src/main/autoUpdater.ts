@@ -917,11 +917,44 @@ async function syncAutoUpdateCheckChannelFromSettings(
   // 如果 begin 阶段仍用默认 stable 作为 expected channel，冷启动 preview 结果会被误判为 stale。
   availableUpdateChannel = nextChannel;
   activeAutoUpdateCheckChannel = nextChannel;
+  // GitHub provider 没有 manifest 内嵌 channel 参数，preview 语义由 prerelease 过滤承担。
+  if (app.isPackaged) {
+    applyGithubUpdateChannel(nextChannel);
+  }
+}
+
+// XZCode 发行版的 GitHub 更新仓库（docs/desktop/xzcode-product-identity.md）。
+// electron-updater 的 GitHub provider 从该仓库的 Releases 读取 latest*.yml 与安装包；
+// 发布约定：stable 版为普通 release，preview 版勾选 Pre-release 标记。
+const GITHUB_UPDATE_PUBLISH_OWNER = "zhgyuhuii";
+const GITHUB_UPDATE_PUBLISH_REPO = "chayuan-xzcode";
+
+/** 打包态 GitHub provider 下，把 release 通道映射为 electron-updater 的 prerelease 语义。 */
+function applyGithubUpdateChannel(channel: "stable" | "preview"): void {
+  const allowPrerelease = channel === "preview";
+  if (autoUpdater.allowPrerelease !== allowPrerelease) {
+    logger.info(`[auto-update] github channel ${channel}: allowPrerelease=${allowPrerelease}`);
+  }
+  autoUpdater.allowPrerelease = allowPrerelease;
 }
 
 function applyManifestUpdateProvider(options: InitAutoUpdaterOptions): void {
+  // 打包态走 GitHub Releases（原生 provider，无灰度/设备维度）；开发态保留服务端
+  // manifest provider 供 e2e 用本地 manifest 服务器验证下载、校验与安装闭环。
+  if (app.isPackaged) {
+    autoUpdater.setFeedURL({
+      provider: "github",
+      owner: GITHUB_UPDATE_PUBLISH_OWNER,
+      repo: GITHUB_UPDATE_PUBLISH_REPO,
+    });
+    applyGithubUpdateChannel("stable");
+    logger.info(
+      `[auto-update] github provider applied repo=${GITHUB_UPDATE_PUBLISH_OWNER}/${GITHUB_UPDATE_PUBLISH_REPO}`,
+    );
+    return;
+  }
   // 在更新器装配边界再次约束，避免内部调用绕过启动配置解析。
-  const manifestUrl = app.isPackaged ? undefined : options.updateFeedSource?.url.trim();
+  const manifestUrl = options.updateFeedSource?.url.trim();
   autoUpdater.setFeedURL({
     provider: "custom",
     updateProvider: ManifestUpdateProvider,
@@ -2243,6 +2276,9 @@ export function checkForUpdateMenuClick(originWindow?: BrowserWindow | null) {
   }
   const checkId = beginAutoUpdateCheck();
   (async () => {
+    if (app.isPackaged) {
+      applyGithubUpdateChannel(manualCheckChannel);
+    }
     await clearSkippedUpdateVersionForManualCheck(manualCheckChannel, autoUpdaterSettingService);
     if (isUpdateTargetLocked()) return;
     await autoUpdater.checkForUpdates();

@@ -126,8 +126,8 @@ const ruRU: Record<string, string> = {
     "Проекты на этом компьютере можно позже восстановить в разделе «Убранные проекты» на этой странице.",
   "projectManagement.confirm.restoreRemote":
     "Чтобы вернуть удалённый проект, добавьте его снова со своего устройства.",
-  "projectManagement.confirm.data.option": "Также удалить их данные ZCode",
-  "projectManagement.confirm.data.optionOne": "Также удалить его данные ZCode",
+  "projectManagement.confirm.data.option": "Также удалить их данные XZCode",
+  "projectManagement.confirm.data.optionOne": "Также удалить его данные XZCode",
   "projectManagement.confirm.data.note":
     "Сеансы, файлы сеансов, контрольные точки и память проектов на этом компьютере (проектов: {count}).",
   "projectManagement.confirm.data.noteOne":
@@ -207,8 +207,8 @@ const ruRU: Record<string, string> = {
   "project.hasUnread": "В проекте есть непрочитанные задачи",
   "project.projectOrder": "Порядок проектов",
   "project.taskOrder": "Порядок задач",
-  "project.browseHint": "ZCode может читать и изменять эти папки",
-  "project.connectAndBrowseHint": "Статус устройства: {status}. Сначала ZCode подключится.",
+  "project.browseHint": "XZCode может читать и изменять эти папки",
+  "project.connectAndBrowseHint": "Статус устройства: {status}. Сначала XZCode подключится.",
   "project.selectHost": "Выберите удалённое подключение",
   "project.back": "Назад",
   "project.next": "Далее",
@@ -221,7 +221,7 @@ const ruRU: Record<string, string> = {
   "project.trustFolderTitle": "Доверять этой папке?",
   "project.trustFoldersTitle": "Доверять этим папкам?",
   "project.trustFoldersDescription":
-    "ZCode сможет читать и изменять файлы в этих папках и выполнять команды в рамках текущих настроек разрешений. Продолжайте, только если доверяете каждой папке из списка.",
+    "XZCode сможет читать и изменять файлы в этих папках и выполнять команды в рамках текущих настроек разрешений. Продолжайте, только если доверяете каждой папке из списка.",
   "project.trustFoldersAndCreate": "Доверять и создать",
   "project.trustFoldersAndRestore": "Доверять и восстановить",
   "project.existingOnDeviceHint": "Уже есть проекты на этом устройстве?",
@@ -355,7 +355,7 @@ const ruRU: Record<string, string> = {
   "remote.action.downgrade-server": "Перевести удалённое устройство на {version}",
   "remote.downgradeConfirmTitle": "Перевести удалённое устройство на {version}?",
   "remote.downgradeConfirmDescription":
-    "Удалённый сервис ZCode будет переключён с {current} на {version} — ту же версию, что у этого приложения. Устройствам с более новым приложением при подключении придётся снова обновить удалённую сторону. Старая версия может не полностью отображать содержимое, записанное новой.",
+    "Удалённый сервис XZCode будет переключён с {current} на {version} — ту же версию, что у этого приложения. Устройствам с более новым приложением при подключении придётся снова обновить удалённую сторону. Старая версия может не полностью отображать содержимое, записанное новой.",
   "remote.downgradeConfirm": "Переключить",
   "remote.downgradedHint":
     "Более старое приложение переключило это удалённое устройство с {from} на текущую версию. Удалённая сторона обновится только после вашего подтверждения.",
@@ -514,7 +514,7 @@ const ruRU: Record<string, string> = {
   "startPlan.recommendation.dismiss": "Больше не показывать",
   "occupationOnboarding.stepMode": "Режим интерфейса",
   "occupationOnboarding.modeTitle": "Выберите режим интерфейса",
-  "occupationOnboarding.modeDescription": "Как ZCode показывать свою работу?",
+  "occupationOnboarding.modeDescription": "Как XZCode показывать свою работу?",
   "occupationOnboarding.coding": "Режим разработки",
   "occupationOnboarding.codingDescription":
     "Хочу видеть код, вывод команд и подробности изменений на всех этапах разработки.",
@@ -567,27 +567,27 @@ const ruRU: Record<string, string> = {
   "occupationOnboarding.migrationDescription": "Перенести историю диалогов из Claude Code",
   "occupationOnboarding.memory": "Включить память рабочего пространства",
   "occupationOnboarding.memoryDescription":
-    "ZCode будет запоминать ваши предпочтения и контекст работы.",
+    "XZCode будет запоминать ваши предпочтения и контекст работы.",
   "occupationOnboarding.suggestions": "Включить проактивные подсказки задач",
   "occupationOnboarding.suggestionsDescription":
     "Показывать подсказки в новых диалогах. Нажмите, чтобы подставить в поле ввода.",
   "occupationOnboarding.close": "Выйти из мастера",
-  "startup.global.silent": "Запуск ZCode",
+  "startup.global.silent": "Запуск XZCode",
   "startup.global.upgrading": "Обновление локальных данных",
   "startup.global.initializing": "Инициализация локальных данных",
   "startup.global.waiting": "Ожидание подготовки базы данных",
   "startup.global.saving": "Сохранение обновлений",
   "startup.global.finishing": "Завершение запуска",
   "startup.global.servicesFailed":
-    "Локальные данные готовы, но сервисы приложения не запустились. Скопируйте диагностику, затем закройте и снова откройте ZCode.",
+    "Локальные данные готовы, но сервисы приложения не запустились. Скопируйте диагностику, затем закройте и снова откройте XZCode.",
   "startup.global.starting": "Подготовка локальных данных",
   "startup.global.preparing_host_storage": "Подготовка индекса задач",
   "startup.global.preparing_session_storage": "Подготовка истории чатов",
-  "startup.global.starting_services": "Запуск ZCode",
+  "startup.global.starting_services": "Запуск XZCode",
   "startup.global.ready": "Локальные данные готовы",
   "startup.global.failed": "Ошибка подготовки к запуску",
   "startup.global.help":
-    "ZCode откроется после завершения подготовки. При большой истории это может занять больше времени. Не закрывайте приложение.",
+    "XZCode откроется после завершения подготовки. При большой истории это может занять больше времени. Не закрывайте приложение.",
   "startup.global.diagnostic": "ID диагностики",
   "startup.global.copy": "Копировать диагностику",
   "startup.global.exportLogs": "Экспорт логов",
@@ -612,15 +612,15 @@ const ruRU: Record<string, string> = {
   "startup.global.error.open_failed":
     "Не удалось открыть базу данных. Проверьте, что папка данных существует и доступна, и повторите попытку.",
   "startup.global.error.lock_timeout":
-    "Истекло время ожидания блокировки записи базы данных. Возможно, данные обновляет другой процесс ZCode или CLI. Повторите после его завершения.",
+    "Истекло время ожидания блокировки записи базы данных. Возможно, данные обновляет другой процесс XZCode или CLI. Повторите после его завершения.",
   "startup.global.error.sql_failed":
     "Подготовка не завершена. Скопируйте диагностику и проверьте логи. Устраните проблему и повторите вручную. Приложение не будет повторять автоматически.",
   "startup.global.error.startup_status_timeout":
-    "Статус запуска не получен. Закройте и снова откройте ZCode. Если ошибка повторится, передайте диагностику в поддержку.",
+    "Статус запуска не получен. Закройте и снова откройте XZCode. Если ошибка повторится, передайте диагностику в поддержку.",
   "startup.global.error.transport_closed":
-    "Процесс подготовки завершился или отключился. Закройте и снова откройте ZCode, чтобы заново проверить записи миграций.",
+    "Процесс подготовки завершился или отключился. Закройте и снова откройте XZCode, чтобы заново проверить записи миграций.",
   "startup.global.error.unsupported_runtime":
-    "Настроенный агент не поддерживает подготовку хранилища. Восстановите встроенный агент и снова откройте ZCode.",
+    "Настроенный агент не поддерживает подготовку хранилища. Восстановите встроенный агент и снова откройте XZCode.",
 
   "startup.database.checking": "Проверка истории",
   "startup.database.waiting_for_lock": "Ожидание подготовки данных другим окном",
@@ -677,7 +677,7 @@ const ruRU: Record<string, string> = {
   "offPeak.chatCreated.queuedAt": "№{position} в очереди",
   "offPeak.chatCreated.open": "К задачам в простое",
   "settings.computerUse.disabledToast":
-    "Computer Use отключён. Для существующих диалогов изменения вступят в силу после перезапуска ZCode.",
+    "Computer Use отключён. Для существующих диалогов изменения вступят в силу после перезапуска XZCode.",
   "settings.modelProvider.connectionUnavailableNotice": "Текущий план недоступен.",
   "settings.modelProvider.switchConnection": "Переключиться на «{connection}»",
   "settings.modelProvider.connectionSuggestionStale":
@@ -793,7 +793,7 @@ const ruRU: Record<string, string> = {
   "manualClaimPlan.claim.share.copyImageSucceeded": "Изображение скопировано",
   "manualClaimPlan.claim.share.actionFailed": "Не удалось поделиться. Повторите попытку.",
   "manualClaimPlan.claim.share.twitterText":
-    "Я получил {subtitle} в ZCode. Скачайте и установите ZCode, чтобы получить свой. https://zcode.z.ai",
+    "Я получил {subtitle} в XZCode. Скачайте и установите XZCode, чтобы получить свой. https://zcode.z.ai",
   "manualClaimPlan.claim.share.twitterTextLabel": "Текст поста для Twitter/X",
   // Common
   "common.loading": "Загрузка...",
@@ -841,9 +841,9 @@ const ruRU: Record<string, string> = {
   "conversationShare.readonly.execute": "Выполнение",
   "conversationShare.readonly.changes": "Изменения",
   "conversationShare.readonly.artifactPreview": "Скачать файл",
-  "conversation.row.unreadable": "Для просмотра этого сообщения нужна более новая версия ZCode",
+  "conversation.row.unreadable": "Для просмотра этого сообщения нужна более новая версия XZCode",
   "conversationShare.readonly.unsupportedRows":
-    "Часть содержимого требует более новой версии ZCode",
+    "Часть содержимого требует более новой версии XZCode",
   "conversationShare.workflowSnapshot": "Снимок на момент выполнения инструмента; не обновляется",
   "conversationShare.shareTitle": "Заголовок публикации",
   "conversationShare.permissionLabel": "Доступ",
@@ -876,7 +876,7 @@ const ruRU: Record<string, string> = {
   "conversationShare.import.notAllowed":
     "Эта публикация только для просмотра. Попросите автора разрешить импорт.",
   "conversationShare.import.unsupportedVersion":
-    "Формат публикации не поддерживается. Обновите ZCode.",
+    "Формат публикации не поддерживается. Обновите XZCode.",
   "conversationShare.issue.ruleLabel": "Правило проверки",
   "conversationShare.issue.pathLabel": "Путь поля",
   "conversationShare.issue.fieldLabel": "Поле",
@@ -884,7 +884,7 @@ const ruRU: Record<string, string> = {
   "conversationShare.issue.rowKindLabel": "Тип содержимого",
   "conversationShare.publishFailed": "Не удалось создать ссылку. Повторите попытку.",
   "conversationShare.error.authenticationRequired":
-    "Войдите в ZCode, чтобы поделиться. Если вы уже вошли, войдите снова и повторите попытку.",
+    "Войдите в XZCode, чтобы поделиться. Если вы уже вошли, войдите снова и повторите попытку.",
   "conversationShare.error.featureDisabled": "Публикация сейчас недоступна. Повторите позже.",
   "conversationShare.error.artifactNotAllowed":
     "Тип просматриваемого файла не поддерживается для публикации. Снимите выбор с этого диалога и повторите.",
@@ -894,7 +894,7 @@ const ruRU: Record<string, string> = {
   "conversationShare.error.invalidContractHttp":
     "Сервис публикации вернул HTTP {status}. Повторите попытку; если проблема сохранится, передайте подробности ошибки.",
   "conversationShare.error.invalidContract":
-    "ZCode не смог прочитать ответ сервиса публикации, поэтому публикация не завершена. Повторите позже. Если ошибка сохранится, скопируйте ID запроса из подробностей ошибки и обратитесь в поддержку.",
+    "XZCode не смог прочитать ответ сервиса публикации, поэтому публикация не завершена. Повторите позже. Если ошибка сохранится, скопируйте ID запроса из подробностей ошибки и обратитесь в поддержку.",
   "conversationShare.issue.clientRequestIdLabel": "ID клиентского запроса",
   "conversationShare.issue.codeLabel": "Код ошибки",
   "conversationShare.error.network":
@@ -1093,7 +1093,7 @@ const ruRU: Record<string, string> = {
   "conversationShare.import.committing": "Создание общего диалога",
   "conversationShare.import.complete": "Импорт публикации завершён",
   "conversationShare.import.loginRequired":
-    "Эту публикацию нельзя импортировать анонимно. Войдите в ZCode и повторите попытку",
+    "Эту публикацию нельзя импортировать анонимно. Войдите в XZCode и повторите попытку",
   "conversationShare.import.notFound":
     "Публикация не найдена или доступ запрещён. Проверьте ссылку и аккаунт.",
   "conversationShare.import.expired": "Срок публикации истёк. Попросите автора создать новую",
@@ -1216,7 +1216,7 @@ const ruRU: Record<string, string> = {
     "Не удалось выполнить операцию или обновить список. Обновите, чтобы проверить оставшиеся задачи.",
   "taskList.noArchivedTasks": "Архивных задач нет",
   "bots.title": "Боты",
-  "bots.description": "Подключайте внешние чаты и webhook к ботам ZCode.",
+  "bots.description": "Подключайте внешние чаты и webhook к ботам XZCode.",
   "bots.listTitle": "Боты",
   "bots.addBot": "Новый бот",
   "bots.addBinding": "Добавить привязку",
@@ -1272,9 +1272,9 @@ const ruRU: Record<string, string> = {
   "bots.setup.guide.weixin.create.1":
     "Запустите вход в Weixin по QR-коду, отсканируйте код в Weixin и подтвердите на телефоне.",
   "bots.setup.guide.weixin.create.2":
-    "ZCode автоматически сохраняет bot_token от iLink; после сканирования отправьте боту в Weixin любое сообщение, чтобы активировать чат.",
+    "XZCode автоматически сохраняет bot_token от iLink; после сканирования отправьте боту в Weixin любое сообщение, чтобы активировать чат.",
   "bots.setup.guide.weixin.create.3":
-    "ZCode использует встроенный клиент iLink: `/ilink/bot/getupdates` для long polling и `/ilink/bot/sendmessage` для ответов.",
+    "XZCode использует встроенный клиент iLink: `/ilink/bot/getupdates` для long polling и `/ilink/bot/sendmessage` для ответов.",
   "bots.setup.guide.weixin.bind.1": "Откройте личный чат Weixin, который нужно привязать.",
   "bots.setup.guide.weixin.bind.2": "Отправьте {command}.",
   "bots.setup.guide.weixin.bind.3":
@@ -1291,13 +1291,13 @@ const ruRU: Record<string, string> = {
   "bots.setup.guide.feishu.bind.3":
     "После успешной привязки вернитесь сюда, чтобы задать рабочее пространство и параметры CLI.",
   "bots.setup.guide.webhook.create.1":
-    "Режиму webhook не нужен собственный бот в сторонней платформе: интеграции достаточно отправлять сообщения в ZCode методом POST.",
+    "Режиму webhook не нужен собственный бот в сторонней платформе: интеграции достаточно отправлять сообщения в XZCode методом POST.",
   "bots.setup.guide.webhook.create.2":
     "Сначала задайте общий секрет; добавьте исходящий webhook URL, если нужны асинхронные ответы.",
   "bots.setup.guide.webhook.create.3":
     "Используйте один постоянный userId для каждого внешнего пользователя, чтобы привязка и контекст относились к одному человеку.",
   "bots.setup.guide.webhook.bind.1":
-    "Отправьте POST-callback личного сообщения на endpoint ZCode `/api/bots/webhook`.",
+    "Отправьте POST-callback личного сообщения на endpoint XZCode `/api/bots/webhook`.",
   "bots.setup.guide.webhook.bind.2":
     'Payload должен содержать как минимум этот botId, постоянный userId, `chatType: "private"`, а text должен быть равен {command}.',
   "bots.setup.guide.webhook.bind.3":
@@ -1442,7 +1442,7 @@ const ruRU: Record<string, string> = {
   "bots.runtime.telegramLongPollingStarting": "Telegram long polling запускается.",
   "bots.runtime.telegramLongPollingStopped": "Telegram long polling остановлен.",
   "bots.runtime.telegramLongPollingHandledElsewhere":
-    "Telegram long polling обрабатывается другим окном ZCode.",
+    "Telegram long polling обрабатывается другим окном XZCode.",
   "bots.runtime.telegramTokenMissing": "Нет учётных данных бота Telegram.",
   "bots.runtime.telegramPollingFailedRetrying": "Ошибка опроса Telegram; повтор.",
   "bots.runtime.feishuWebSocketStarting": "Feishu WebSocket запускается.",
@@ -1532,14 +1532,14 @@ const ruRU: Record<string, string> = {
   "bots.deleteFailed": "Не удалось удалить бота: {error}",
 
   // Welcome / Login
-  "welcome.title": "Добро пожаловать в ZCode",
+  "welcome.title": "Добро пожаловать в XZCode",
   "welcome.username": "Имя пользователя",
   "welcome.password": "Пароль",
   "welcome.login": "Войти",
   "welcome.loggingIn": "Вход...",
   "welcome.loginFailed": "Не удалось войти",
-  "login.title": "Добро пожаловать в ZCode",
-  "login.description": "Подключите аккаунт, чтобы начать работу с ZCode",
+  "login.title": "Добро пожаловать в XZCode",
+  "login.description": "Подключите аккаунт, чтобы начать работу с XZCode",
   "login.oauth.activeProviderHint":
     "Текущий провайдер: {provider}. Повторный вход заменит текущую учётную запись.",
   "login.oauth.loadingProviders": "Загрузка провайдеров аккаунтов...",
@@ -1585,7 +1585,7 @@ const ruRU: Record<string, string> = {
   "app.currentTheme": "Текущая: {theme}",
   "app.login": "Подключиться",
   "app.logout": "Отключиться",
-  "logout.confirm.title": "Отключиться и перезапустить ZCode?",
+  "logout.confirm.title": "Отключиться и перезапустить XZCode?",
   "logout.confirm.descriptionWithRunningSessions":
     "Запущено сеансов: {count}. Отключение прервёт их и перезапустит приложение.",
   "logout.confirm.descriptionDefault":
@@ -1936,7 +1936,7 @@ const ruRU: Record<string, string> = {
   "modelTrajectory.refresh": "Обновить",
   "modelTrajectory.close": "Закрыть",
   "modelTrajectory.loading": "Загрузка траектории…",
-  "modelTrajectory.empty": "Вызовы модели не записаны (model-io пишет только ZCode Agent)",
+  "modelTrajectory.empty": "Вызовы модели не записаны (model-io пишет только XZCode Agent)",
   "modelTrajectory.error": "Не удалось загрузить траекторию",
   "modelTrajectory.truncatedNotice": "Слишком много записей, показаны последние вызовы",
   "modelTrajectory.summaryCalls": "Вызовов: {count}",
@@ -2430,14 +2430,14 @@ const ruRU: Record<string, string> = {
   "titleBar.menu.view.actualSize": "Фактический размер",
   "titleBar.menu.view.zoomIn": "Увеличить",
   "titleBar.menu.view.zoomOut": "Уменьшить",
-  "titleBar.menu.help.about": "О ZCode",
+  "titleBar.menu.help.about": "О XZCode",
   "titleBar.menu.help.checkForUpdates": "Проверить обновления",
   "titleBar.menu.help.feedback": "Обратная связь",
   "sidebar.menu.community": "Сообщество",
   "titleBar.menu.help.exportLogs": "Экспорт логов",
   "titleBar.menu.help.toggleDevTools": "Инструменты разработчика",
   "titleBar.menu.help.resourceManager": "Диспетчер ресурсов",
-  "titleBar.menu.help.toggleZCodeStdioTap": "Перехват stdio агента",
+  "titleBar.menu.help.toggleXZCodeStdioTap": "Перехват stdio агента",
   "titleBar.menu.help.clearAllData": "Очистить все данные",
 
   // Directory browser
@@ -2488,7 +2488,7 @@ const ruRU: Record<string, string> = {
   "update.toast.ready": "v{version} загружена, перезапустите для установки",
   "update.toast.devSkipped": "Обновления отключены в dev-сборках",
   "update.toast.error": "Не удалось проверить обновления: {error}",
-  "forceUpdate.title": "Обновите ZCode, чтобы продолжить",
+  "forceUpdate.title": "Обновите XZCode, чтобы продолжить",
   "forceUpdate.description":
     "Текущая версия v{currentVersion} ниже минимально поддерживаемой v{minimalVersion}. Обновите клиент, чтобы продолжить работу.",
   "forceUpdate.currentVersion": "Текущая версия",
@@ -2583,7 +2583,7 @@ const ruRU: Record<string, string> = {
   "remote.error.credentialsRequired":
     "Нет подходящего пароля SSH или закрытого ключа. Вернитесь в настройки и добавьте их.",
   "remote.error.sourceServerUpgradeRequired":
-    "Удалённое устройство несовместимо с этой версией ZCode Desktop и требует обновления.",
+    "Удалённое устройство несовместимо с этой версией XZCode Desktop и требует обновления.",
   "remote.error.sourceServerRunningTasks":
     "На удалённом устройстве выполняются задачи. Дождитесь их завершения или подтвердите принудительное обновление.",
   "remote.error.sourceServerDowngradeUnconfirmed":
@@ -2624,7 +2624,7 @@ const ruRU: Record<string, string> = {
   "remote.error.retryableHint": "Можно повторить попытку позже.",
   "remote.error.connectionClosed": "Удалённое подключение закрыто",
   "workspaceSidebar.unavailableLocalDirectory":
-    "Папка рабочего пространства не существует или недоступна. Сейчас можно только просматривать историю. Восстановите папку и перезапустите ZCode, чтобы продолжить.",
+    "Папка рабочего пространства не существует или недоступна. Сейчас можно только просматривать историю. Восстановите папку и перезапустите XZCode, чтобы продолжить.",
   "workspaceSidebar.toggleSidebar": "Показать/скрыть боковую панель",
   "workspaceSidebar.resizeSidebar": "Изменить ширину боковой панели",
   "workspaceSidebar.showFileTree": "Показать файлы",
@@ -2661,7 +2661,7 @@ const ruRU: Record<string, string> = {
   "ssh.assetInstallMode.local-download-upload": "Скачать локально и загрузить на сервер",
   "ssh.assetInstallMode.remote-download": "Скачать на удалённом сервере",
   "ssh.assetInstallModeDescription":
-    "Загрузка на удалённом сервере сокращает ожидание, но сервер должен иметь доступ к CDN ZCode и инструменты для загрузки, распаковки и проверки контрольных сумм.",
+    "Загрузка на удалённом сервере сокращает ожидание, но сервер должен иметь доступ к CDN XZCode и инструменты для загрузки, распаковки и проверки контрольных сумм.",
   "ssh.password": "Пароль",
   "ssh.passwordPlaceholder": "Введите пароль SSH",
   "ssh.privateKey": "Закрытый ключ",
@@ -2752,7 +2752,7 @@ const ruRU: Record<string, string> = {
   "remote.connectingSubtitleFailed": "Ошибка подключения · повторите или измените конфигурацию",
   "remote.phase.channel": "Подключение к устройству",
   "remote.phase.identify": "Определение устройства",
-  "remote.phase.deploy": "Установка ZCode Server",
+  "remote.phase.deploy": "Установка XZCode Server",
   "remote.phase.handshake": "Запуск и проверка совместимости",
   "remote.phase.workspace": "Открытие папки проекта",
   "remote.phaseSub.workspaceReading": "Чтение {path}",
@@ -2762,7 +2762,7 @@ const ruRU: Record<string, string> = {
   "remote.progress.copyError": "Копировать подробности ошибки",
   "remote.progress.copied": "Скопировано",
   "remote.link.local": "Это устройство",
-  "remote.link.localVersion": "ZCode v{version}",
+  "remote.link.localVersion": "XZCode v{version}",
   "remote.link.deviceHint": "Сведения об устройстве появятся после подключения",
   "remote.link.devicePending": "Удалённое устройство",
   "remote.recognizedDevice": "Подключено к устройству {device}",
@@ -2795,7 +2795,7 @@ const ruRU: Record<string, string> = {
   "remote.phaseSub.channelEstablished.docker": "Подключено к контейнеру",
   "remote.phaseSub.channelEstablished": "Подключено к устройству",
   "remote.phaseSub.identifyExisting": "Подключено к устройству {device}",
-  "remote.phaseSub.identifyNew": "Новое устройство · ZCode Server не установлен",
+  "remote.phaseSub.identifyNew": "Новое устройство · XZCode Server не установлен",
   "remote.phaseSub.deploySkipped": "На удалённой стороне уже v{version} · развёртывание пропущено",
   "remote.phaseSub.deployWaitingConfirm": "Ожидание подтверждения установки…",
   "remote.phaseSub.deployUploading": "Передача {file} · {sent} / {total}",
@@ -2927,7 +2927,7 @@ const ruRU: Record<string, string> = {
   "remote.kind.wsl": "WSL",
   "remote.kind.docker": "Docker",
   "remote.kind.server.note":
-    "Сервер (прямое подключение к запущенному сервису ZCode) показывается только в dev-сборках.",
+    "Сервер (прямое подключение к запущенному сервису XZCode) показывается только в dev-сборках.",
   "remote.addAndConnect": "Добавить и подключиться",
   "remote.connect": "Подключиться",
   "remote.connecting": "Подключение...",
@@ -2938,16 +2938,16 @@ const ruRU: Record<string, string> = {
   "remote.connectionLog": "Журнал подключения",
   "remote.connectionLogEmpty": "ожидание вывода подключения...",
   "remote.connectingConfirmTitle": "Прервать текущее подключение?",
-  "remote.sourceServerInstallTitle": "Требуется установка ZCode Server",
+  "remote.sourceServerInstallTitle": "Требуется установка XZCode Server",
   "remote.sourceServerInstallDescription":
-    "ZCode загрузит подходящий релиз, установит его в ~/.zcode/server и запустит удалённый сервис. Существующие старые удалённые файлы сохранятся.",
+    "XZCode загрузит подходящий релиз, установит его в ~/.zcode/server и запустит удалённый сервис. Существующие старые удалённые файлы сохранятся.",
   "remote.sourceServerInstallConfirm": "Установить и продолжить",
   "remote.installTarget": "Целевой аккаунт",
   "remote.installVersion": "Устанавливаемая версия",
   "remote.installLocation": "Место установки",
   "remote.sourceServerBoundaryTitle": "Локально офлайн — задачи выполняются",
   "remote.sourceServerBoundaryDescription":
-    "Удалённые задачи продолжают выполняться, даже если закрыть ZCode или перевести компьютер в сон.",
+    "Удалённые задачи продолжают выполняться, даже если закрыть XZCode или перевести компьютер в сон.",
   "remote.sourceServerBoundaryEyebrow": "Новое удалённое подключение",
   "remote.sourceServerBoundaryLocalDevice": "Этот компьютер",
   "remote.sourceServerBoundaryLocalStatus": "Сон / закрыт",
@@ -2972,7 +2972,7 @@ const ruRU: Record<string, string> = {
     "Цель подключения изменилась; новый идентификатор подтверждён",
   "settings.source.retiredNameSuffix": " (старое)",
   "settings.source.reinstallRequired":
-    "ZCode Server был удалён на удалённой стороне; записи о подключении и задачах остались на этом устройстве.",
+    "XZCode Server был удалён на удалённой стороне; записи о подключении и задачах остались на этом устройстве.",
   "settings.source.reinstallAndConnect": "Переустановить и подключиться",
   "settings.source.copyDeviceId": "Копировать ID устройства",
   "common.justNow": "только что",
@@ -2994,7 +2994,7 @@ const ruRU: Record<string, string> = {
     "Используется версия этого компьютера. Проекты и задачи сохраняются.",
   "settings.source.reinstallRemoteServiceTitle": "Переустановить удалённый сервис?",
   "settings.source.reinstallRemoteServiceDescription":
-    "ZCode Server {version} будет переустановлен на {source}. Повреждённые файлы программы будут заменены. Проекты, задачи, настройки и данные входа сохранятся.",
+    "XZCode Server {version} будет переустановлен на {source}. Повреждённые файлы программы будут заменены. Проекты, задачи, настройки и данные входа сохранятся.",
   "settings.source.reinstallRemoteServiceConfirm": "Переустановить",
   "settings.source.stopRemoteService": "Остановить удалённый сервис",
   "settings.source.stopRemoteServiceTitle": "Остановить удалённый сервис?",
@@ -3003,9 +3003,9 @@ const ruRU: Record<string, string> = {
   "settings.source.remoteServiceRunningTasksUnavailable": "Устройство не передало список задач.",
   "settings.source.remoteServiceNoRunningTasks": "Сейчас на этом устройстве нет выполняемых задач.",
   "settings.source.remoteServiceOtherClientsNotice":
-    "Если к этому устройству подключён ZCode с другого компьютера, он может снова запустить удалённый сервис.",
+    "Если к этому устройству подключён XZCode с другого компьютера, он может снова запустить удалённый сервис.",
   "settings.source.stopRemoteServiceStartupReconnectNotice":
-    "Включено «Автоматически переподключаться при запуске», поэтому удалённый сервис снова запустится при следующем открытии ZCode.",
+    "Включено «Автоматически переподключаться при запуске», поэтому удалённый сервис снова запустится при следующем открытии XZCode.",
   "settings.source.remoteServiceUpdateRequired": "Доступно после обновления удалённого сервиса",
   "settings.source.removeOpenProjects": "Эти открытые проекты будут отключены:\n{projects}",
   "settings.source.noOpenProjects": "На этом устройстве нет открытых проектов.",
@@ -3013,7 +3013,7 @@ const ruRU: Record<string, string> = {
   "settings.machine.unknownRemote": "Удалённое устройство",
   "settings.source.connectionName": "Имя подключения",
   "settings.source.connectionAddress": "Адрес",
-  "settings.source.connectionNameHint": "Используется только для различения подключения в ZCode.",
+  "settings.source.connectionNameHint": "Используется только для различения подключения в XZCode.",
   "settings.source.deviceNameRequired": "Имя устройства обязательно.",
   "settings.source.error.connection-profile-unavailable":
     "Это подключение больше недоступно. Обновите и повторите.",
@@ -3059,7 +3059,7 @@ const ruRU: Record<string, string> = {
   "settings.source.updatePhase.checking": "Проверка устройства и файлов обновления",
   "settings.source.updatePhase.downloading": "Загрузка файлов обновления",
   "settings.source.updatePhase.uploading": "Передача файлов обновления",
-  "settings.source.updatePhase.installing": "Установка ZCode Server",
+  "settings.source.updatePhase.installing": "Установка XZCode Server",
   "settings.source.updatePhase.reconnecting": "Запуск сервиса и переподключение",
   "settings.source.updatePhase.completed": "Обновление завершено",
   "settings.source.updateLog": "Журнал обновления ({count})",
@@ -3127,13 +3127,13 @@ const ruRU: Record<string, string> = {
   "sourceServer.restartFailedToast":
     "Не удалось перезапустить удалённый сервис на {source}. См. подробности.",
   "sourceServer.controllerUpdateAvailableToast":
-    "Для {source} есть обновление ZCode\nПриложение {current} → {available}; обновите ZCode под этот источник.",
+    "Для {source} есть обновление XZCode\nПриложение {current} → {available}; обновите XZCode под этот источник.",
   "settings.source.forceUpdate": "Принудительное обновление",
   "settings.source.forceUpdateTitle": "Принудительно обновить это устройство?",
   "settings.source.forceUpdateDescription":
     "Принудительное обновление остановит задачи, ещё выполняющиеся на этом устройстве. Подтвердите, что их можно прервать.",
   "settings.source.controllerUpdateRequired":
-    "Сначала обновите этот ZCode Desktop; отсюда Server обновить нельзя.",
+    "Сначала обновите этот XZCode Desktop; отсюда Server обновить нельзя.",
   "settings.source.neverConnected": "Не подключено",
   "settings.source.unidentifiedProfiles": "Не подключено",
   "settings.source.unidentifiedProfilesDescription":
@@ -3196,7 +3196,7 @@ const ruRU: Record<string, string> = {
   "remote.log.dockerTarget": "Целевой контейнер Docker: {container}",
   "remote.log.requestingSession": "Запрос к хост-процессу на создание удалённого сеанса...",
   "remote.log.sessionReady": "Удалённый сеанс создан. Теперь можно выбрать папку.",
-  "server.description": "Подключение к уже запущенному серверу ZCode.",
+  "server.description": "Подключение к уже запущенному серверу XZCode.",
   "server.url": "URL сервера",
   "server.urlPlaceholder": "например, https://studio.example.com:3030",
   "server.name": "Отображаемое имя",
@@ -3361,7 +3361,7 @@ const ruRU: Record<string, string> = {
   "chat.changeSummary.reverted": "Отменено",
   "chat.changeSummary.rewindDialog.title": "Отменить изменения файлов",
   "chat.changeSummary.rewindDialog.description":
-    "Перед записью ZCode повторно проверяет текущее содержимое файлов. Если файл изменил другой процесс, ни один файл не будет записан.",
+    "Перед записью XZCode повторно проверяет текущее содержимое файлов. Если файл изменил другой процесс, ни один файл не будет записан.",
   "chat.changeSummary.rewindDialog.loading": "Проверка файлов, которые можно откатить…",
   "chat.changeSummary.rewindDialog.safeTitle": "Можно безопасно отменить: {count}",
   "chat.changeSummary.rewindDialog.unsafeTitle": "Нельзя безопасно отменить: {count}",
@@ -3406,7 +3406,7 @@ const ruRU: Record<string, string> = {
   "chat.previewCards.video": "Видео",
   "chat.previewCards.audio": "Аудио",
   "chat.previewCards.openExternal": "Открыть в браузере",
-  "chat.message.link.openInZCode": "Открыть в ZCode",
+  "chat.message.link.openInXZCode": "Открыть в XZCode",
   "chat.previewCards.previewInSidePane": "Предпросмотр",
   "chat.previewCards.openDefaultApp": "Открыть в приложении по умолчанию",
   "chat.previewCards.openWith": "Открыть с помощью",
@@ -3548,7 +3548,7 @@ const ruRU: Record<string, string> = {
     "При запуске встроенного терминала по возможности наследовать окружение login shell, прокси, переменные Kubernetes и шрифт локального терминала.",
   "settings.terminalFontFamily": "Шрифт терминала",
   "settings.terminalFontFamilyDescription":
-    "Оставьте пустым, чтобы определить настройки системного терминала автоматически; укажите значение, чтобы переопределить шрифт терминала ZCode.",
+    "Оставьте пустым, чтобы определить настройки системного терминала автоматически; укажите значение, чтобы переопределить шрифт терминала XZCode.",
   "settings.terminalFontFamilyPlaceholder": "Пусто — наследовать, например MesloLGS NF, monospace",
   "settings.integratedTerminalShell": "Shell встроенного терминала",
   "settings.integratedTerminalShellDescription":
@@ -3675,7 +3675,7 @@ const ruRU: Record<string, string> = {
     "При включённых уведомлениях можно отдельно отключить звук уведомлений о задачах.",
   "settings.mobilePush": "Push-уведомления на телефон",
   "settings.mobilePushDescription":
-    "Когда вы не у компьютера, уведомления о завершении, ошибке или ожидании подтверждения задачи отправляются в ZCode App, где выполнен вход.",
+    "Когда вы не у компьютера, уведомления о завершении, ошибке или ожидании подтверждения задачи отправляются в XZCode App, где выполнен вход.",
   "notification.taskWithTitle": "Задача: {title}",
   "notification.taskWaiting": "Задача ждёт вашего подтверждения",
   "notification.completed": "Задача завершена",
@@ -3714,7 +3714,7 @@ const ruRU: Record<string, string> = {
     "Объединять последовательные вызовы Write, Edit и ApplyPatch в раздел «Изменения».",
   "settings.zcodeInteractionBehavior": "Поведение взаимодействия",
   "settings.zcodeInteractionBehaviorDescription":
-    "Пока ZCode работает, добавлять последующие действия в очередь или направлять их на выполнение после следующего вызова инструмента.",
+    "Пока XZCode работает, добавлять последующие действия в очередь или направлять их на выполнение после следующего вызова инструмента.",
   "settings.zcodeInteractionBehavior.option.queue": "Очередь",
   "settings.zcodeInteractionBehavior.option.guide": "Направлять",
   "settings.askUserQuestionAutoResolution": "Автоматически продолжать вопросы",
@@ -3760,7 +3760,7 @@ const ruRU: Record<string, string> = {
   "settings.dataBaseDirCopying": "Копирование данных, не закрывайте приложение...",
   "settings.dataBaseDirCopyFailed": "Не удалось скопировать данные. Путь не изменён.",
   "settings.dataBaseDirForbiddenInstallDir":
-    "В Windows папка данных не может совпадать с папкой установки ZCode. Выберите папку вне места установки приложения.",
+    "В Windows папка данных не может совпадать с папкой установки XZCode. Выберите папку вне места установки приложения.",
   "settings.dataBaseDirRestartRequired":
     "Данные сохранены. Перезапустите приложение, чтобы изменения вступили в силу.",
   "settings.locale.system": "Как в системе",
@@ -3777,7 +3777,7 @@ const ruRU: Record<string, string> = {
   "settings.migration.title": "Миграция",
   "settings.migration.sectionTitle": "Миграция истории Claude",
   "settings.migration.sectionDescription":
-    "Сканировать нативную историю Claude Code на этом компьютере, при необходимости отфильтровать по рабочему пространству и периоду активности, затем импортировать выбранные сеансы в соответствующие списки задач ZCode.",
+    "Сканировать нативную историю Claude Code на этом компьютере, при необходимости отфильтровать по рабочему пространству и периоду активности, затем импортировать выбранные сеансы в соответствующие списки задач XZCode.",
   "settings.migration.badge.localOnly": "Локальные записи Claude",
   "settings.migration.badge.manualOnly": "Только вручную",
   "settings.migration.currentWorkspace": "Текущее рабочее пространство",
@@ -3834,14 +3834,14 @@ const ruRU: Record<string, string> = {
   "settings.usageTitle": "Статистика использования",
   "settings.usageDescription":
     "Примерная активность и использование моделей по данным локальных сеансов.",
-  "resourceManager.storage.summaryTotal": "Всего занято ZCode",
+  "resourceManager.storage.summaryTotal": "Всего занято XZCode",
   "resourceManager.storage.scanning": "Подсчёт…",
   "resourceManager.storage.lastScanned": "Последний подсчёт {time}",
   "resourceManager.storage.idle": "Ещё не подсчитано",
   "resourceManager.storage.failed": "Ошибка подсчёта",
   "resourceManager.storage.rescan": "Пересчитать",
   "resourceManager.storage.disk": "Диск",
-  "resourceManager.storage.diskUsage": "ZCode занимает {used}",
+  "resourceManager.storage.diskUsage": "XZCode занимает {used}",
   "resourceManager.storage.diskFree": "Свободно {free} из {total}",
   "resourceManager.storage.diskUnknown": "Ёмкость диска недоступна",
   "resourceManager.storage.roots": "Папки данных",
@@ -3917,7 +3917,7 @@ const ruRU: Record<string, string> = {
     "Настройка сертификатов сохранена. Перезапустите приложение, чтобы она вступила в силу.",
   "settings.browser.data.section": "Данные браузера",
   "settings.browser.desktopOnly":
-    "Данными браузера можно управлять только в настольном приложении ZCode.",
+    "Данными браузера можно управлять только в настольном приложении XZCode.",
   "settings.browser.import.title": "Импорт состояния входа Chrome",
   "settings.browser.import.description":
     "Однократно перенести состояние входа Chrome во встроенный браузер, чтобы AI мог открывать сайты, где вы уже вошли, и работать без лишних шагов.",
@@ -3934,13 +3934,13 @@ const ruRU: Record<string, string> = {
   "settings.browser.import.elevationCancelled":
     "Запрос прав администратора Windows отменён. Cookie не импортированы.",
   "settings.browser.import.helperVerificationFailed":
-    "ZCode не смог проверить компонент безопасного импорта Windows. Переустановите или обновите ZCode перед импортом cookie.",
+    "XZCode не смог проверить компонент безопасного импорта Windows. Переустановите или обновите XZCode перед импортом cookie.",
   "settings.browser.import.appBoundFailed":
     "Windows не смогла разблокировать cookie Chrome с App-Bound. Cookie не импортированы.",
   "settings.browser.import.adminConfirmTitle":
     "Разрешить права администратора для импорта cookie Chrome?",
   "settings.browser.import.adminConfirmDescription":
-    "В Windows Chrome защищает cookie шифрованием App-Bound. Только для этого импорта ZCode запросит права администратора, запустит временную системную службу и сразу удалит её. Пароли Chrome никогда не читаются и не импортируются.",
+    "В Windows Chrome защищает cookie шифрованием App-Bound. Только для этого импорта XZCode запросит права администратора, запустит временную системную службу и сразу удалит её. Пароли Chrome никогда не читаются и не импортируются.",
   "settings.browser.import.adminConsent":
     "Подтверждаю права администратора только для этого импорта cookie",
   "settings.browser.import.adminConfirmAction": "Продолжить и запросить доступ",
@@ -4008,7 +4008,7 @@ const ruRU: Record<string, string> = {
   "settings.mcp.trust.failed":
     "Объявление изменилось или доверие недоступно. Обновите и повторите.",
   "settings.mcp.description":
-    "Управление конфигурациями MCP-серверов, которые использует ZCode Agent.",
+    "Управление конфигурациями MCP-серверов, которые использует XZCode Agent.",
   "settings.mcp.create.open": "Добавить MCP-сервер",
   "settings.mcp.import.open": "Импорт MCP-серверов из внешних агентов",
   "settings.mcp.import.action": "Импорт",
@@ -4043,7 +4043,7 @@ const ruRU: Record<string, string> = {
     "Откройте авторизацию, чтобы завершить подключение MCP-сервера плагина.",
   "settings.mcp.oauth.openAuthorization": "Открыть авторизацию",
   "settings.mcp.statusOnlyUnsupported":
-    "Этот ZCode Agent не умеет обновлять статус OAuth. Обновите или перезапустите ZCode и снова откройте настройки MCP для полного обновления.",
+    "Этот XZCode Agent не умеет обновлять статус OAuth. Обновите или перезапустите XZCode и снова откройте настройки MCP для полного обновления.",
   "settings.mcp.refreshFailed": "Не удалось обновить статус MCP: {error}",
   "settings.mcp.status.toolCount": "Инструментов: {count}",
   "settings.mcp.status.connectedReason": "Подключён и доступен.",
@@ -4070,7 +4070,7 @@ const ruRU: Record<string, string> = {
   "settings.mcp.failure.official_origin_untrusted":
     "URL MCP-сервера не прошёл проверку безопасности. Подключение заблокировано.",
   "settings.mcp.failure.not_authenticated":
-    "Вы не вошли. Войдите в ZCode, чтобы использовать этот MCP-сервер.",
+    "Вы не вошли. Войдите в XZCode, чтобы использовать этот MCP-сервер.",
   "settings.mcp.failure.coding_plan_required":
     "У этого аккаунта нет Coding Plan. Купите или настройте Coding Plan, чтобы использовать этот MCP-сервер.",
   "settings.mcp.failure.server_not_found":
@@ -4087,7 +4087,7 @@ const ruRU: Record<string, string> = {
   "settings.mcp.failureAdvice.config_invalid":
     "Проверьте команду MCP, аргументы, адрес сервера и переменные окружения. Исправьте конфигурацию и обновите статус.",
   "settings.mcp.failureAdvice.runtime_unavailable":
-    "На устройстве, где запускается этот MCP, установите или настройте нужную среду выполнения и убедитесь, что ZCode находит команду запуска.",
+    "На устройстве, где запускается этот MCP, установите или настройте нужную среду выполнения и убедитесь, что XZCode находит команду запуска.",
   "settings.mcp.failureAdvice.process_start_failed":
     "На устройстве, где запускается этот MCP, проверьте команду запуска, рабочий каталог, пути к скриптам и права на выполнение. Установите зависимости Python из файла requirements плагина (например, requirements.txt), используя интерпретатор или виртуальное окружение этой команды. Для MCP на Node проверьте Node.js и зависимости пакетов. После исправления обновите статус.",
   "settings.mcp.failureAdvice.network_unreachable":
@@ -4101,11 +4101,11 @@ const ruRU: Record<string, string> = {
   "settings.mcp.failureAdvice.unexpected_disconnect":
     "Изучите ошибку ниже и журналы сервера. Проверьте, не завершился ли процесс, не отсутствует ли зависимость и не прервалось ли соединение, затем обновите статус.",
   "settings.mcp.failureAdvice.oauth_authorization_failed":
-    "Снова откройте ссылку авторизации этого сервера MCP. Завершите авторизацию в браузере, вернитесь в ZCode и обновите статус.",
+    "Снова откройте ссылку авторизации этого сервера MCP. Завершите авторизацию в браузере, вернитесь в XZCode и обновите статус.",
   "settings.mcp.failureAdvice.official_origin_untrusted":
     "Убедитесь, что плагин и адрес сервера получены из доверенной конфигурации. Не отключайте проверки безопасности и не вводите учётные данные для неизвестного адреса.",
   "settings.mcp.failureAdvice.not_authenticated":
-    "Войдите в ZCode и обновите статус MCP. Если учётная запись кажется выполнившей вход, войдите снова и повторите попытку.",
+    "Войдите в XZCode и обновите статус MCP. Если учётная запись кажется выполнившей вход, войдите снова и повторите попытку.",
   "settings.mcp.failureAdvice.coding_plan_required":
     "В настройках модели проверьте Coding Plan учётной записи и выбранную команду или проект. Убедившись, что доступ активен, обновите статус.",
   "settings.mcp.failureAdvice.server_not_found":
@@ -4179,7 +4179,7 @@ const ruRU: Record<string, string> = {
   "settings.mcpServers.import.targetLabel": "Куда импортировать",
   "settings.mcpServers.import.target.global": "Импорт в глобальные",
   "settings.mcpServers.import.target.project": "Импорт в проект",
-  "settings.mcpServers.import.importing": "Импорт MCP-серверов в ZCode",
+  "settings.mcpServers.import.importing": "Импорт MCP-серверов в XZCode",
   "settings.mcpServers.import.imported": "Импортировано",
   "settings.mcpServers.import.skipped": "Пропущено",
   "settings.mcpServers.import.failed": "Ошибка",
@@ -4318,7 +4318,7 @@ const ruRU: Record<string, string> = {
   "settings.modelProvider.startPlan.highlight.trial.label": "Пробный период",
   "settings.modelProvider.startPlan.highlight.trial.value": "5 календарных дней",
   "settings.modelProvider.startPlan.highlight.trial.description":
-    "Отсчёт начинается после входа в ZCode 3.x.",
+    "Отсчёт начинается после входа в XZCode 3.x.",
   "settings.modelProvider.startPlan.highlight.quota.label": "Дневная квота",
   "settings.modelProvider.startPlan.highlight.quota.value": "3M токенов в день",
   "settings.modelProvider.startPlan.highlight.quota.description":
@@ -4329,7 +4329,7 @@ const ruRU: Record<string, string> = {
   "settings.modelProvider.startPlan.highlight.metering.description":
     "Учитывается только после использования флагманских моделей GLM платформы.",
   "settings.modelProvider.startPlan.compatibility":
-    "Поддерживает BYOK и BYOA. Base URL, формат API и API Key ZCode поддерживает автоматически.",
+    "Поддерживает BYOK и BYOA. Base URL, формат API и API Key XZCode поддерживает автоматически.",
   "settings.modelProvider.codingPlan.title": "{provider} - Coding Plan",
   "settings.modelProvider.codingPlan.webview.title": "Улучшить план",
   "settings.modelProvider.codingPlan.webview.authInjectFailed":
@@ -4465,7 +4465,7 @@ const ruRU: Record<string, string> = {
   "settings.modelProvider.codingPlan.purchase.teamMemberNoticeTitle":
     "Назначьте участников командного плана",
   "settings.modelProvider.codingPlan.purchase.teamMemberNoticeDescription":
-    "Добавьте себя или других участников на странице управления командным планом BigModel. После назначения командная квота станет доступна в ZCode.",
+    "Добавьте себя или других участников на странице управления командным планом BigModel. После назначения командная квота станет доступна в XZCode.",
   "settings.modelProvider.codingPlan.purchase.manageTeamPlan": "Управление командным планом",
   "settings.modelProvider.codingPlan.manage": "Управление",
   "settings.modelProvider.planCard.codingPlan": "Coding Plan",
@@ -4862,7 +4862,7 @@ const ruRU: Record<string, string> = {
   "settings.modelProvider.resetForm": "Сбросить форму",
   "settings.modelProvider.fieldHelp": "О поле «{field}»",
   "settings.modelProvider.help.contextWindow":
-    "Объём контекста, который модель может обработать за раз, в токенах. ZCode использует это значение для управления контекстом.\nНе превышайте фактический лимит модели.",
+    "Объём контекста, который модель может обработать за раз, в токенах. XZCode использует это значение для управления контекстом.\nНе превышайте фактический лимит модели.",
   "settings.modelProvider.help.maxOutputTokens":
     "Максимальное число токенов, которое модель может сгенерировать за один запрос.\nНе превышайте фактический лимит модели.",
   "settings.modelProvider.help.inputModalities":
@@ -4878,7 +4878,7 @@ const ruRU: Record<string, string> = {
   "settings.modelProvider.help.advanced":
     "**MFJS tool schema**: включает совместимость с Moonshot Flavored JSON Schema, которую обычно использует API моделей Kimi от Moonshot. Включайте, только если API модели требует этот формат.",
   "settings.modelProvider.help.followRecommendedConfig":
-    "Подбирает рекомендуемую конфигурацию по ID модели, Base URL и формату API. ZCode постоянно обновляет рекомендации и автоматически синхронизирует их.\nЕсли вы вручную измените параметр, он перейдёт в ручное управление и перестанет следовать обновлениям рекомендаций; остальные параметры останутся под управлением умной настройки.",
+    "Подбирает рекомендуемую конфигурацию по ID модели, Base URL и формату API. XZCode постоянно обновляет рекомендации и автоматически синхронизирует их.\nЕсли вы вручную измените параметр, он перейдёт в ручное управление и перестанет следовать обновлениям рекомендаций; остальные параметры останутся под управлением умной настройки.",
   "settings.modelProvider.modelDefaultsLoaded": "Для этой модели подобрана умная настройка",
   "settings.modelProvider.modelConfigIncomplete": "Конфигурация модели неполная",
   "settings.modelProvider.models": "Список моделей",
@@ -4958,7 +4958,7 @@ const ruRU: Record<string, string> = {
   "settings.usage.sourceProvider": "Источник: {provider}",
   "settings.usage.billingBanner.title": "{provider} Coding Plan",
   "settings.usage.billingBanner.description":
-    "Подключите аккаунт {provider}, чтобы проверить доступ к Coding Plan, а после покупки или настройки продолжайте программировать в ZCode.",
+    "Подключите аккаунт {provider}, чтобы проверить доступ к Coding Plan, а после покупки или настройки продолжайте программировать в XZCode.",
   "settings.usage.billingBanner.compactDescription":
     "Подключите аккаунт {provider} для синхронизации использования.",
   "settings.usage.billingBanner.buy": "Купить Coding Plan",
@@ -5025,7 +5025,7 @@ const ruRU: Record<string, string> = {
   "settings.usage.entitlementFiveHourUsage": "Остаток за 5 часов",
   "settings.usage.entitlementWeeklyUsage": "Остаток за неделю",
   "settings.usage.entitlementMonthlyMcpUsage": "Вызовы инструментов",
-  "settings.usage.entitlementServerMcpUsage": "ZCode MCP",
+  "settings.usage.entitlementServerMcpUsage": "XZCode MCP",
   "settings.usage.entitlementResetAt": "Сброс: {time}",
   "settings.usage.entitlementUsageDetails": "Подробности использования инструментов",
   "settings.usage.entitlementPromptCap": "5-часовой пул запросов",
@@ -5083,9 +5083,9 @@ const ruRU: Record<string, string> = {
   "sidebar.usage.plan.fiveHour": "5 часов",
   "sidebar.usage.plan.weekly": "Неделя",
   "sidebar.usage.plan.toolCalls": "Вызовы инструментов",
-  "sidebar.usage.plan.mcp": "ZCode MCP",
-  "sidebar.usage.plan.zcodeMcp": "ZCode MCP",
-  "sidebar.usage.plan.zcodeMcpDescription": "Суммарная дневная квота встроенных MCP-плагинов ZCode",
+  "sidebar.usage.plan.mcp": "XZCode MCP",
+  "sidebar.usage.plan.zcodeMcp": "XZCode MCP",
+  "sidebar.usage.plan.zcodeMcpDescription": "Суммарная дневная квота встроенных MCP-плагинов XZCode",
   "chat.planUsage.title": "Использование тарифа",
   "chat.planUsage.titleWithPlan": "Использование тарифа {plan}",
   "chat.planUsage.providerFallback": "Текущий провайдер",
@@ -5272,7 +5272,7 @@ const ruRU: Record<string, string> = {
   "settings.skills.delete.title": "Удалить навык",
   "settings.skills.delete.description":
     "Удалить «{name}»? Папка навыка будет удалена с диска. Это действие нельзя отменить.",
-  "settings.skills.agent.glm": "ZCode Agent",
+  "settings.skills.agent.glm": "XZCode Agent",
   "settings.skills.agent.unknown": "Неизвестный источник",
   "settings.skills.create.open": "Новый навык",
   "settings.skills.create.taskCreateFailed":
@@ -5313,10 +5313,10 @@ const ruRU: Record<string, string> = {
   "settings.skills.import.mode.copy": "Копирование",
   "settings.skills.import.mode.symlink": "Символьная ссылка",
   "settings.skills.import.mode.copy.description":
-    "Полностью копирует каталог навыка в ZCode. Последующие изменения в каталоге внешнего агента не синхронизируются автоматически.",
+    "Полностью копирует каталог навыка в XZCode. Последующие изменения в каталоге внешнего агента не синхронизируются автоматически.",
   "settings.skills.import.mode.symlink.description":
-    "Создаёт ссылку на каталог навыка внешнего агента. ZCode подхватывает изменения в источнике, но навык зависит от доступности исходного пути.",
-  "settings.skills.import.importing": "Импорт навыков в ZCode",
+    "Создаёт ссылку на каталог навыка внешнего агента. XZCode подхватывает изменения в источнике, но навык зависит от доступности исходного пути.",
+  "settings.skills.import.importing": "Импорт навыков в XZCode",
   "settings.skills.import.imported": "Импортировано",
   "settings.skills.import.skipped": "Пропущено",
   "settings.skills.import.failed": "Ошибка",
@@ -5366,7 +5366,7 @@ const ruRU: Record<string, string> = {
   "settings.skills.diagnostics.code.skill_not_found": "Навык не найден",
   "settings.subagents.title": "Субагенты",
   "settings.subagents.description":
-    "Управление Markdown-файлами субагентов уровня пользователя, которые использует ZCode Agent.",
+    "Управление Markdown-файлами субагентов уровня пользователя, которые использует XZCode Agent.",
   "settings.subagents.workspaceScopeUnsupported":
     "Создание и редактирование на уровне рабочего пространства не поддерживается",
   "settings.subagents.searchPlaceholder": "Поиск субагентов...",
@@ -5760,10 +5760,10 @@ const ruRU: Record<string, string> = {
   "settings.plugins.import.mode.copy": "Копирование",
   "settings.plugins.import.mode.symlink": "Символьная ссылка",
   "settings.plugins.import.mode.copy.description":
-    "Полностью копирует каталог плагина в ZCode и регистрирует его в plugins.dirs. Последующие изменения в каталоге внешнего агента не синхронизируются автоматически.",
+    "Полностью копирует каталог плагина в XZCode и регистрирует его в plugins.dirs. Последующие изменения в каталоге внешнего агента не синхронизируются автоматически.",
   "settings.plugins.import.mode.symlink.description":
-    "Создаёт ссылку на каталог плагина внешнего агента и регистрирует её в plugins.dirs. ZCode подхватывает изменения в источнике, но плагин зависит от доступности исходного пути.",
-  "settings.plugins.import.importing": "Импорт плагинов в ZCode",
+    "Создаёт ссылку на каталог плагина внешнего агента и регистрирует её в plugins.dirs. XZCode подхватывает изменения в источнике, но плагин зависит от доступности исходного пути.",
+  "settings.plugins.import.importing": "Импорт плагинов в XZCode",
   "settings.plugins.import.imported": "Импортировано",
   "settings.plugins.import.skipped": "Пропущено",
   "settings.plugins.import.failed": "Ошибка",
@@ -5772,9 +5772,9 @@ const ruRU: Record<string, string> = {
   "settings.plugins.import.finish": "Готово",
   "settings.commands.title": "Команды",
   "settings.commands.description":
-    "Управление файлами команд .md для ZCode Agent. Команды вызываются в чате через /command-name.",
+    "Управление файлами команд .md для XZCode Agent. Команды вызываются в чате через /command-name.",
   "settings.commands.sourceFilterLabel": "Фильтр по источнику",
-  "settings.commands.source.zcodeAgent": "ZCode Agent",
+  "settings.commands.source.zcodeAgent": "XZCode Agent",
   "settings.commands.add": "Создать",
   "settings.commands.addNew": "Новая команда",
   "settings.commands.addDescription":
@@ -5833,10 +5833,10 @@ const ruRU: Record<string, string> = {
   "settings.commands.import.mode.copy": "Копирование",
   "settings.commands.import.mode.symlink": "Символьная ссылка",
   "settings.commands.import.mode.copy.description":
-    "Копирует файл команды в ZCode. Последующие изменения в файле внешнего агента не синхронизируются автоматически.",
+    "Копирует файл команды в XZCode. Последующие изменения в файле внешнего агента не синхронизируются автоматически.",
   "settings.commands.import.mode.symlink.description":
-    "Создаёт ссылку на файл команды внешнего агента. ZCode подхватывает изменения в источнике, но команда зависит от доступности исходного пути.",
-  "settings.commands.import.importing": "Импорт команд в ZCode",
+    "Создаёт ссылку на файл команды внешнего агента. XZCode подхватывает изменения в источнике, но команда зависит от доступности исходного пути.",
+  "settings.commands.import.importing": "Импорт команд в XZCode",
   "settings.commands.import.imported": "Импортировано",
   "settings.commands.import.skipped": "Пропущено",
   "settings.commands.import.failed": "Ошибка",
@@ -5934,7 +5934,7 @@ const ruRU: Record<string, string> = {
   "settings.hooks.customJson": "JSON пользовательских полей",
   "settings.hooks.customJsonObjectError": "Пользовательские поля должны быть JSON-объектом.",
   "settings.hooks.customJsonParseError": "Не удалось разобрать JSON пользовательских полей.",
-  "settings.plugins.zcodeOnly": "Только ZCode Agent",
+  "settings.plugins.zcodeOnly": "Только XZCode Agent",
   "settingsSync.dialog.title": "Импорт настроек",
   "settingsSync.dialog.description":
     "Импортируются только отсутствующие элементы. Существующие настройки будут пропущены автоматически.",
@@ -5943,8 +5943,8 @@ const ruRU: Record<string, string> = {
   "settingsSync.action.rescanning": "Сканирование...",
   "settingsSync.action.importSelected": "Импортировать выбранное",
   "settingsSync.action.importing": "Импорт...",
-  "settingsSync.action.finish": "Начать работу с ZCode",
-  "settingsSync.agent.zcode": "ZCode Agent",
+  "settingsSync.action.finish": "Начать работу с XZCode",
+  "settingsSync.agent.zcode": "XZCode Agent",
   "settingsSync.agent.claudeCode": "Claude Code",
   "settingsSync.agent.codexCli": "Codex CLI",
   "settingsSync.agent.openCode": "OpenCode",
@@ -5994,7 +5994,7 @@ const ruRU: Record<string, string> = {
   "settingsSync.discovery.description":
     "Настройки агентов для импорта больше не сканируются автоматически.",
   "settingsSync.discovery.helper":
-    "Импортируются только отсутствующие элементы; текущие настройки ZCode не будут перезаписаны.",
+    "Импортируются только отсутствующие элементы; текущие настройки XZCode не будут перезаписаны.",
   "settingsSync.discovery.agentCount": "Найдено агентов: {count}",
   "settingsSync.discovery.categoryCount": "Найдено категорий: {count}",
   "settingsSync.discovery.error": "Ошибка сканирования: {error}",
@@ -6020,7 +6020,7 @@ const ruRU: Record<string, string> = {
     "Импортируйте выбранные команды из внешних агентов перед финальной миграцией.",
   "onboarding.stepDescription.agentSettings": "Выберите, провайдеров каких агентов перенести.",
   "onboarding.stepDescription.migration":
-    "Запустите миграцию и подождите, пока ZCode импортирует выбранное.",
+    "Запустите миграцию и подождите, пока XZCode импортирует выбранное.",
   "onboarding.sessions.empty":
     "Рабочих пространств пока нет. Просканируйте локальную историю, затем выберите рабочие пространства для миграции.",
   "onboarding.sessions.count": "Сеансов: {count}",
@@ -6041,7 +6041,7 @@ const ruRU: Record<string, string> = {
   "onboarding.agentsFile.error": "Не удалось проверить статус миграции AGENTS.md: {error}",
   "onboarding.agentsFile.confirmTitle": "Перезаписать AGENTS.md по умолчанию?",
   "onboarding.agentsFile.confirmDescription":
-    "ZCode скопирует {source} в {target}.\nЕсли целевой файл уже существует, конфигурация AGENTS по умолчанию в ZCode будет перезаписана.",
+    "XZCode скопирует {source} в {target}.\nЕсли целевой файл уже существует, конфигурация AGENTS по умолчанию в XZCode будет перезаписана.",
   "onboarding.agentsFile.confirmAction": "Перезаписать и перенести",
   "onboarding.finish.summary.label.imported": "Импортировано",
   "onboarding.finish.summary.label.skipped": "Пропущено",
@@ -6132,8 +6132,8 @@ const ruRU: Record<string, string> = {
   "chat.emptyResult.description":
     "Задача завершилась без содержимого в чате. Возможно, она была остановлена до того, как модель дала ответ.",
   "chat.placeholder.newTask":
-    "Спросите ZCode о чём угодно, @ — добавить контекст, / — команды и возможности",
-  "chat.placeholder.newTaskMobile": "Спросите ZCode о чём угодно…",
+    "Спросите XZCode о чём угодно, @ — добавить контекст, / — команды и возможности",
+  "chat.placeholder.newTaskMobile": "Спросите XZCode о чём угодно…",
   "chat.placeholder.followUpAsk": "Попросите внести дополнительные изменения",
   "chat.placeholder.followUpQueue": "Продолжайте печатать, чтобы поставить изменения в очередь",
   "chat.placeholder.loading": "Инициализация задачи...",
@@ -6411,7 +6411,7 @@ const ruRU: Record<string, string> = {
   "chat.compact.duplicateBlocked": "Сжатие уже выполняется или стоит в очереди.",
   "chat.modelSwitch.contextWindowGuard.title": "Сожмите контекст перед сменой модели",
   "chat.modelSwitch.contextWindowGuard.description":
-    "В этом диалоге использовано {used} токенов — больше, чем доступный контекст {modelName} ({target} токенов) с учётом резерва на максимальный вывод.\nСначала сожмите текущий диалог текущей моделью. Если сжатый контекст поместится, ZCode продолжит переключение модели.",
+    "В этом диалоге использовано {used} токенов — больше, чем доступный контекст {modelName} ({target} токенов) с учётом резерва на максимальный вывод.\nСначала сожмите текущий диалог текущей моделью. Если сжатый контекст поместится, XZCode продолжит переключение модели.",
   "chat.modelSwitch.contextWindowGuard.compress": "Сжать",
   "chat.modelSwitch.contextWindowGuard.runningBlocked":
     "Этот диалог использовал больше контекста, чем доступно целевой модели с учётом резерва на максимальный вывод. Перед сменой модели диалог нужно сжать, но текущая задача ещё выполняется и сжатие сейчас невозможно. Дождитесь завершения задачи и снова переключите модель.",
@@ -6424,11 +6424,11 @@ const ruRU: Record<string, string> = {
     "Computer Use неактивен — запустится автоматически при первом использовании",
   "chat.toolbar.computerUse.tooltip.starting": "Включение плагина Computer Use…",
   "chat.toolbar.computerUse.tooltip.ready":
-    "Computer Use готов — просто опишите, что ZCode должен сделать",
+    "Computer Use готов — просто опишите, что XZCode должен сделать",
   "chat.toolbar.computerUse.tooltip.permissionRequired":
     "Нет разрешений macOS — нажмите, чтобы выдать",
   "chat.toolbar.computerUse.tooltip.error":
-    "Не удалось включить Computer Use. Перезапустите приложение ZCode и повторите попытку или попросите ZCode изучить логи",
+    "Не удалось включить Computer Use. Перезапустите приложение XZCode и повторите попытку или попросите XZCode изучить логи",
   "chat.toolbar.computerUse.tooltip.sessionBusy":
     "Выполняется диалог. Сейчас Computer Use нельзя переключить — повторите после его завершения.",
   "chat.toolbar.mode.description":
@@ -6782,7 +6782,7 @@ const ruRU: Record<string, string> = {
     "Не удалось связаться с локальным агентом; глобальные рабочие процессы недоступны.",
   "workflows.hub.empty.title": "В открытых проектах пока нет сохранённых рабочих процессов",
   "workflows.hub.empty.hint":
-    "Разработайте рабочий процесс вместе с ZCode в чате, а когда он заработает, попросите сохранить его в проект. Неоткрытые проекты здесь не отображаются.",
+    "Разработайте рабочий процесс вместе с XZCode в чате, а когда он заработает, попросите сохранить его в проект. Неоткрытые проекты здесь не отображаются.",
   "workflows.hub.noWorkspace": "Откройте рабочее пространство, чтобы увидеть его рабочие процессы.",
   "workflows.hub.loadError": "Не удалось прочитать рабочие процессы: {error}",
   "workflows.hub.invalid": "Не удалось прочитать файлов: {count}",
@@ -6847,7 +6847,7 @@ const ruRU: Record<string, string> = {
   "workflows.hub.detail.description": "Описание",
   "workflows.hub.detail.whenToUse": "Когда использовать",
   "workflows.hub.detail.whenToUse.help":
-    "Подсказка для ZCode: в каких случаях подходит этот рабочий процесс.",
+    "Подсказка для XZCode: в каких случаях подходит этот рабочий процесс.",
   "workflows.hub.detail.args": "Аргументы",
   "workflows.hub.detail.args.name": "Имя",
   "workflows.hub.detail.args.type": "Тип",
@@ -6868,7 +6868,7 @@ const ruRU: Record<string, string> = {
   "workflows.hub.detail.meta.descriptionRequired": "Описание обязательно",
   "workflows.hub.detail.script": "Скрипт",
   "workflows.hub.detail.script.note":
-    "Скрипт только для чтения. Чтобы изменить его, доработайте его с ZCode в чате и сохраните новую версию.",
+    "Скрипт только для чтения. Чтобы изменить его, доработайте его с XZCode в чате и сохраните новую версию.",
   "workflows.hub.detail.script.copy": "Копировать скрипт",
   "workflows.hub.detail.loadError": "Не удалось прочитать этот рабочий процесс: {reason}",
   "workflows.hub.detail.notFound": "Этого рабочего процесса больше нет в проекте.",
@@ -7058,7 +7058,7 @@ const ruRU: Record<string, string> = {
   // 「配置」弹层（docs/dynamic-workflow/presentation.md「The settings popover」）：改子代理模型与最大并发数，
   // 应用即一次 GUI 修订（新 run 接着跑，旧 run 停下，已完成的步骤作缓存带过去）。
   // 完成卡与 run 侧板上的「保存 / 再次运行」（docs/dynamic-workflow/transcript-and-notifications.md
-  // 「Saving the run, and running it again」）。两条路：交给 ZCode 提炼，或按原样直接写下去。
+  // 「Saving the run, and running it again」）。两条路：交给 XZCode 提炼，或按原样直接写下去。
   "chat.toolCall.workflow.saveRun.action": "Сохранить",
   "chat.toolCall.workflow.saveRun.runAgain": "Запустить снова",
   "chat.toolCall.workflow.saveRun.starting": "Запуск…",
@@ -7067,10 +7067,10 @@ const ruRU: Record<string, string> = {
   "chat.toolCall.workflow.saveRun.announce.project": "Сохранено в проект",
   "chat.toolCall.workflow.saveRun.announce.global": "Сохранено как глобальный рабочий процесс",
   "chat.toolCall.workflow.saveRun.title": "Сохранить рабочий процесс",
-  "chat.toolCall.workflow.saveRun.lead": "Пусть ZCode доработает и сохранит",
+  "chat.toolCall.workflow.saveRun.lead": "Пусть XZCode доработает и сохранит",
   "chat.toolCall.workflow.saveRun.lead.hint":
-    "ZCode выделит для вас переиспользуемый рабочий процесс и попросит подтвердить.",
-  "chat.toolCall.workflow.saveRun.lead.sending": "Передано ZCode…",
+    "XZCode выделит для вас переиспользуемый рабочий процесс и попросит подтвердить.",
+  "chat.toolCall.workflow.saveRun.lead.sending": "Передано XZCode…",
   "chat.toolCall.workflow.saveRun.lead.unsupported": "Этот агент не умеет сохранять напрямую.",
   "chat.toolCall.workflow.saveRun.or": "или сохраните как есть",
   "chat.toolCall.workflow.saveRun.name": "Имя",
@@ -7455,7 +7455,7 @@ const ruRU: Record<string, string> = {
   "chat.slash.skills.empty": "Нет подходящих навыков",
   "chat.slash.subagents.title": "Агенты",
   "chat.slash.subagents.empty": "Нет подходящих агентов",
-  "chat.slash.emptyUnavailable": "Текущий сеанс ZCode Agent не передал слеш-команд",
+  "chat.slash.emptyUnavailable": "Текущий сеанс XZCode Agent не передал слеш-команд",
   "chat.slash.emptyResults": "Нет подходящих слеш-команд",
   // Errors
   "chat.error.connectionLost": "Соединение с агентом потеряно",
@@ -7500,9 +7500,9 @@ const ruRU: Record<string, string> = {
   "chat.quota.startPlan.concurrentLimit.switchModel":
     "Достигнут лимит параллельных запросов к текущей модели. Смените модель, чтобы продолжить текущую задачу.",
   "chat.quota.mcp.quotaExhausted":
-    "ZCode MCP «{server}» израсходовал квоту на сегодня. Сброс — завтра.",
+    "XZCode MCP «{server}» израсходовал квоту на сегодня. Сброс — завтра.",
   "chat.quota.mcp.codingPlanRequired":
-    "Нет квоты ZCode MCP «{server}». Войдите или оформите Coding Plan, чтобы пользоваться им.",
+    "Нет квоты XZCode MCP «{server}». Войдите или оформите Coding Plan, чтобы пользоваться им.",
   "chat.quota.providerLimited":
     "Достигнут лимит квоты или тарифа текущего аккаунта. Повысьте или измените тариф, чтобы продолжить.",
   "chat.quota.action.upgrade": "Повысить",
@@ -7701,7 +7701,7 @@ const ruRU: Record<string, string> = {
   "planTool.panel.syncing": "Синхронизация плана…",
   "planTool.guidance.enterMode": "Включён режим планирования",
   "chat.permission.switchMode.placeholder": "План реализации",
-  // ZCode Agent
+  // XZCode Agent
   "zcode.unavailable": "ИИ-агент недоступен",
   "zcode.initFailed": "Не удалось запустить ИИ-агента",
   "zcode.error.TASK_OWNED_BY_OTHER_HOST": "Эта задача уже выполняется в другом подключённом окне.",
@@ -7776,7 +7776,7 @@ const ruRU: Record<string, string> = {
   "resourceManager.network.empty": "Ожидание новых сетевых запросов…",
   "resourceManager.network.noMatches": "Нет подходящих запросов",
   "resourceManager.storage": "Хранилище",
-  "resourceManager.appUsage": "ZCode",
+  "resourceManager.appUsage": "XZCode",
   "resourceManager.systemUsage": "Система",
   "resourceManager.category.base": "Базовые службы",
   "resourceManager.category.task": "Процессы задач",
@@ -8019,7 +8019,7 @@ const ruRU: Record<string, string> = {
   "feedback.submit.template.section.errorSummaryLine": "Сводка ошибки: {message}",
   "feedback.submit.template.section.errorDetail": "Подробности ошибки",
   "feedback.submit.template.section.errorTraceId": "TraceID: {traceId}",
-  "feedback.submit.template.section.copyErrorHeading": "Сведения об ошибке ZCode",
+  "feedback.submit.template.section.copyErrorHeading": "Сведения об ошибке XZCode",
   "feedback.submit.template.section.notProvided": "Не указано",
   "feedback.submit.template.section.remoteLogEmpty": "Логи подключения не собраны",
   "feedback.submit.template.section.taskFeedbackTitle": "Отзыв о задаче: {title}",
@@ -8180,7 +8180,7 @@ const ruRU: Record<string, string> = {
   "automations.statusFilter.completed": "Завершённые",
   "automations.statusFilter.failed": "С ошибкой",
   "automations.statusFilter.empty": "Нет задач, соответствующих фильтру",
-  "offPeak.keepAwakeBanner": "Не давайте компьютеру уснуть, пока ZCode ведёт чат.",
+  "offPeak.keepAwakeBanner": "Не давайте компьютеру уснуть, пока XZCode ведёт чат.",
   "offPeak.sectionTitle": "Задачи на время простоя",
   "offPeak.createButton": "Создать задачу на время простоя",
   "offPeak.templates.sectionTitle": "Шаблоны задач на время простоя",
@@ -8238,7 +8238,7 @@ const ruRU: Record<string, string> = {
   "offPeak.form.titlePlaceholder": "например, ночной рефакторинг",
   "offPeak.form.instructionsLabel": "Инструкции",
   "offPeak.form.instructionsPlaceholder":
-    "Опишите задачу, которую ZCode может выполнить в фоне, включая ожидаемый результат и ограничения…",
+    "Опишите задачу, которую XZCode может выполнить в фоне, включая ожидаемый результат и ограничения…",
   "offPeak.form.permissionWarning":
     "Запуски во время простоя проходят без присмотра. Действия, требующие подтверждения, приостановят задачу до вашего ответа.",
   "offPeak.form.modelLabel": "Модель",
@@ -8440,9 +8440,9 @@ const ruRU: Record<string, string> = {
   "automations.runs.nextPage": "Далее",
   // CUA (Computer Use)
   "chat.cuaReadiness.toolsNotLoaded":
-    "ZCode Computer Use ещё готовится — его инструменты пока не загружены (загружено: {count}). Выдайте разрешения ниже; инструменты появятся, когда помощник будет готов.",
+    "XZCode Computer Use ещё готовится — его инструменты пока не загружены (загружено: {count}). Выдайте разрешения ниже; инструменты появятся, когда помощник будет готов.",
   "chat.cuaReadiness.toolsPreparing":
-    "ZCode Computer Use ещё готовится — его инструменты пока не загружены. Выдайте разрешения ниже; инструменты появятся, когда помощник будет готов.",
+    "XZCode Computer Use ещё готовится — его инструменты пока не загружены. Выдайте разрешения ниже; инструменты появятся, когда помощник будет готов.",
   "chat.toolCall.cua.requestAccess": "Проверить доступ Computer Use",
   "chat.toolCall.cua.appName": "Computer Use",
   "chat.toolCall.cua.group.completedLabel": "Computer Use",
@@ -8570,9 +8570,9 @@ const ruRU: Record<string, string> = {
   "cuaPermission.modal.restartButton": "Перезапустить Helper",
   "cuaPermission.modal.restarting": "Перезапуск Helper…",
   "cuaPermission.modal.restartFailed": "Не удалось перезапустить Helper: {error}",
-  "cuaPermission.modal.relaunchAppButton": "Перезапустить ZCode",
+  "cuaPermission.modal.relaunchAppButton": "Перезапустить XZCode",
   "cuaPermission.modal.relaunchAppHint":
-    "Не помогает даже после перезапуска Helper? Перезапустите ZCode, чтобы полностью перезагрузить процесс Helper.",
+    "Не помогает даже после перезапуска Helper? Перезапустите XZCode, чтобы полностью перезагрузить процесс Helper.",
   "cuaPermission.status.granted": "Выдано",
   "cuaPermission.status.missing": "Отсутствует",
   "cuaPermission.status.unknown": "Неизвестно",
@@ -8586,7 +8586,7 @@ const ruRU: Record<string, string> = {
   "cuaPermission.tools.agentUpdateRequired":
     "Подключённый агент слишком старый для безопасной проверки готовности. Обновите или перезапустите его и проверьте снова.",
   "cuaPermission.tools.untrustedRuntime":
-    "Инструменты Computer Use найдены, но они получены не из проверенного плагина ZCode. Проверьте установку плагина и повторите проверку.",
+    "Инструменты Computer Use найдены, но они получены не из проверенного плагина XZCode. Проверьте установку плагина и повторите проверку.",
   "cuaPermission.perm.accessibility": "Универсальный доступ",
   "cuaPermission.perm.accessibility.purpose":
     "Чтение и управление элементами интерфейса + эмуляция ввода",
@@ -8598,7 +8598,7 @@ const ruRU: Record<string, string> = {
     "Перед использованием обновите macOS. На старых версиях настройку разрешений завершить нельзя.",
   "cuaPermission.ready": "Разрешения готовы",
   "cuaPermission.ready.sessionValidationHint":
-    "При запуске первого сеанса ZCode проверит инструменты Computer Use именно для этого сеанса.",
+    "При запуске первого сеанса XZCode проверит инструменты Computer Use именно для этого сеанса.",
   "settings.computerUse.title": "Computer Use",
   "settings.computerUse.toggleLabel": "Включить Computer Use",
   "settings.computerUse.toggleDescription": "Включает Computer Use — его MCP-сервер и навыки.",
@@ -8650,13 +8650,13 @@ const ruRU: Record<string, string> = {
   "globalNotice.highspeed.textCopyFailed":
     "Не удалось скопировать текст для публикации. Повторите попытку.",
   "globalNotice.highspeed.copyImage": "Копировать изображение",
-  "globalNotice.highspeed.badge": "Эксклюзивные преимущества ZCode & Coding Plan",
+  "globalNotice.highspeed.badge": "Эксклюзивные преимущества XZCode & Coding Plan",
   "globalNotice.highspeed.standardTaskSpeed": "Стандартная скорость генерации",
   "globalNotice.highspeed.relativeTaskDuration": "Относительное время генерации",
   "globalNotice.highspeed.speedSummary": "HighSpeed · {duration}",
   "globalNotice.highspeed.lessWaiting": "На {percent}% меньше ожидания",
   "globalNotice.highspeed.copySummary":
-    "Я воспользовался картой ZCode Highspeed и сэкономил {duration} с. Попробуйте и вы. Скачать ZCode: https://zcode.z.ai",
+    "Я воспользовался картой XZCode Highspeed и сэкономил {duration} с. Попробуйте и вы. Скачать XZCode: https://zcode.z.ai",
   "globalNotice.highspeed.imageSummary": "Токенов: {tokens} · сэкономлено {duration} с",
   "globalNotice.highspeed.close": "Закрыть карточку Highspeed",
   "remoteSync.title": "Синхронизация данных",

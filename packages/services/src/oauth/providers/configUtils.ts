@@ -4,7 +4,8 @@ import {
   buildRuntimeZCodeEndpointUrls,
 } from "@zcode/shared";
 
-const DESKTOP_OAUTH_CALLBACK_URI = "zcode://oauth/callback";
+// XZCode 发行版独立回调 scheme（docs/desktop/xzcode-product-identity.md）。
+const DESKTOP_OAUTH_CALLBACK_URI = "xzcode://oauth/callback";
 
 export function readEnv(env: NodeJS.ProcessEnv, key: string): string | undefined {
   const value = env[key];

@@ -118,7 +118,7 @@ export async function showRendererCrashDialog(options: {
     win.show();
     const result = await dialog.showMessageBox(win, {
       type: "error",
-      title: "ZCode",
+      title: "XZCode",
       message: messages.message,
       detail: messages.detail,
       buttons: [messages.restart, messages.later],
@@ -464,7 +464,7 @@ function showZCodeEndpointPromptWindow(options: {
       resizable: false,
       minimizable: false,
       maximizable: false,
-      title: "ZCode Endpoint",
+      title: "XZCode Endpoint",
       webPreferences: {
         contextIsolation: true,
         nodeIntegration: false,
@@ -770,7 +770,7 @@ export async function executeDesktopCommand(options: {
       } catch (error) {
         await showMessageBoxWithOptionalParent(targetWindow, {
           type: "error",
-          title: "ZCode Endpoint",
+          title: "XZCode Endpoint",
           message: "Endpoint 无效",
           detail: error instanceof Error ? error.message : String(error),
         });

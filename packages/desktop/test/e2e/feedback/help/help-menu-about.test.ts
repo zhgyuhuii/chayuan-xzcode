@@ -133,7 +133,7 @@ async function assertAboutWindow() {
           );
           return (
             typeof title === "string" &&
-            title.includes("ZCode") &&
+            title.includes("XZCode") &&
             title.includes(electron.app.getVersion())
           );
         }),
@@ -196,13 +196,13 @@ describe(`问号菜单应用入口（${expectedFlavor}）`, () => {
       "Copy device MID",
       "Resource manager",
       ...(production ? ["Check for updates"] : []),
-      "About ZCode",
+      "About XZCode",
     ]);
     expect(await $$('[role="menu"] [role="separator"]')).toHaveLength(1);
     await browser.saveScreenshot(join(tmpdir(), "zcode-help-export-en-light.png"));
     await assertLogExport("Export logs", "Exporting logs...");
     await openMenu();
-    await $('[role="menuitem"]*=About ZCode').click();
+    await $('[role="menuitem"]*=About XZCode').click();
     await assertAboutWindow();
   });
 
@@ -309,13 +309,13 @@ describe(`问号菜单应用入口（${expectedFlavor}）`, () => {
       "复制设备 MID",
       "资源管理器",
       ...(production ? ["检查更新"] : []),
-      "关于 ZCode",
+      "关于 XZCode",
     ]);
     expect(await $$('[role="menu"] [role="separator"]')).toHaveLength(1);
     await browser.saveScreenshot(join(tmpdir(), "zcode-help-export-zh-dark.png"));
     await assertLogExport("导出日志", "正在导出日志中");
     await openMenu();
-    await $('[role="menuitem"]*=关于 ZCode').click();
+    await $('[role="menuitem"]*=关于 XZCode').click();
     await assertAboutWindow();
   });
 });

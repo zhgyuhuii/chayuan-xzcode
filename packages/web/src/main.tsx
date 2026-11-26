@@ -295,7 +295,7 @@ function isWebOAuthCallback(params: URLSearchParams): boolean {
 }
 
 function renderWebAuthCallbackPage(): void {
-  document.title = "ZCode - Web Remote Control Sign In";
+  document.title = "XZCode - Web Remote Control Sign In";
   // 区域登录的 state 来自服务端，回跳地址只记在 pending 里；必须在 handleCallback 取出前读取。
   const safeRetryTarget = webAuthService.resolveCallbackReturnTo(window.location.href);
   root.render(
@@ -318,7 +318,7 @@ async function renderConversationSharePage(): Promise<void> {
   document.documentElement.lang = routeLocale;
   // 分享页必须设置 title：否则浏览器标签只显示 index.html 的通用标题。
   // 会话标题要等 preview 加载完，先给一个语言正确的兜底。
-  document.title = routeLocale === "zh-CN" ? "ZCode 会话分享" : "ZCode Conversation Share";
+  document.title = routeLocale === "zh-CN" ? "XZCode 会话分享" : "XZCode Conversation Share";
   const shareCode = resolveConversationShareCodeFromPath(window.location.pathname);
   if (!shareCode) {
     root.render(
@@ -386,7 +386,7 @@ async function renderConversationSharePage(): Promise<void> {
 }
 
 function renderWebLoginPage(): void {
-  document.title = "ZCode - Web Remote Control Sign In";
+  document.title = "XZCode - Web Remote Control Sign In";
   // 察元定制（2026-11-18 用户裁定）：官方 Z.AI 登录页换微信扫码/直接进入（新文件，最小 patch）
   root.render(<WebWechatLoginPage />);
 }
@@ -420,7 +420,7 @@ const remoteEntry = new WebRemoteControlEntry({
     if (view.kind === "callback") renderWebAuthCallbackPage();
     else if (view.kind === "login") renderWebLoginPage();
     else if (view.kind === "devices") {
-      document.title = "ZCode - Web Remote Control";
+      document.title = "XZCode - Web Remote Control";
       root.render(
         <WebRemoteControlDeviceListPage
           view={view}
@@ -828,7 +828,7 @@ function renderWebRemoteControlLoading(
   state: WebRemoteControlTerminalTransportState,
   device: WebRemoteControlConnectingDevice,
 ): void {
-  document.title = "ZCode - Web Remote Control";
+  document.title = "XZCode - Web Remote Control";
   root.render(
     <WebRemoteControlLoadingScreen
       state={state}
@@ -1548,7 +1548,7 @@ async function bootstrapExternalRelayWebRemoteControl(
   ) => {
     if (terminated || versionGuard.isBlocked()) return;
     ready = true;
-    document.title = "ZCode - Web Remote Control";
+    document.title = "XZCode - Web Remote Control";
     root.render(
       <AppErrorBoundary key={bridge.bridgeSessionId}>
         <ZCodeIntlProvider
@@ -1680,7 +1680,7 @@ async function bootstrapExternalRelayWebRemoteControl(
     currentWorkspaceKey = workspaceKey;
     currentTaskId = taskId;
     await updateMobileViewState(workspaceKey, taskId);
-    document.title = "ZCode - Web Remote Control";
+    document.title = "XZCode - Web Remote Control";
     if (terminated || versionGuard.isBlocked()) return;
     // Bug 原因：staging 合并 a861a83cbc 丢了这里的 ready 标记，home-only 挂载后每次配对状态抖动
     // 都会被 onStateChange 当成首屏重渲染加载页，配对恢复后再整页重挂，引导与本地状态全部丢失。
@@ -1872,7 +1872,7 @@ async function bootstrapWebApp() {
       onClose: () => {},
     });
     const platform = createWebPlatform();
-    document.title = "ZCode - Web + Server";
+    document.title = "XZCode - Web + Server";
 
     root.render(
       <AppErrorBoundary>
