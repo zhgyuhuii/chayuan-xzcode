@@ -132,6 +132,7 @@ import { ConversationHookDetailsAction } from "@/v4/ConversationHookDetailsActio
 import { ConversationTimelineMarkerDivider } from "@/v4/ConversationShareReadonlyTimeline.js";
 import { formatMessageTimeLabel } from "@/v4/messageTimeLabel.js";
 import { parseConversationShareContext } from "@/lib/conversationShareContext.js";
+import { writeClipboardText } from "@/lib/clipboard.js";
 import {
   ForkDestinationMenu,
   WorktreeCreatedMarker,
@@ -289,10 +290,13 @@ const CopyRowAction = memo(function CopyRowAction({
 }) {
   const [copied, setCopied] = useState(false);
   const handleCopy = useCallback(() => {
-    if (!text || !navigator.clipboard) return;
+    if (!text) return;
+    // 察元定制（2026-11-27）：writeClipboardText 内含 execCommand 后备——
+    // 内嵌 webview guest 的 navigator.clipboard.writeText 权限/焦点语义下
+    // 静默 NotAllowedError（真机实锤），经典编辑栈路径绕开剪贴板权限面。
     void runUserActionAsync({
       input: { featureId: "conversation.history.feedback", action: "copy", trigger: "button" },
-      operation: () => navigator.clipboard.writeText(text),
+      operation: () => writeClipboardText(text),
       completed: { resultSource: "platform_result" },
       failureStage: "clipboard_write",
     }).then(() => {
